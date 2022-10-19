@@ -1,0 +1,10 @@
+{
+    "name": "utilities",
+    "description": "IN_DEVELOPMENT -- support time library",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+    },
+    "devDependencies": {
+    }
+}

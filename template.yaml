@@ -1,0 +1,115 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Twitter Following Tracker
+
+Globals:
+  Function:
+    Runtime: nodejs16.x
+    Handler: index.handler
+    MemorySize: 128
+    Policies:
+      - DynamoDBCrudPolicy:
+          TableName: !Ref TrackingUserTable
+    Layers:
+      - !Ref ShareLibraryLayer
+    Environment:
+      Variables:
+        TABLE_NAME: !Ref TrackingUserTable
+    
+Resources:
+  TrackingUserTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: PK
+          AttributeType: S
+        - AttributeName: SK
+          AttributeType: S
+        - AttributeName: createTime
+          AttributeType: S
+      KeySchema:
+        - AttributeName: PK
+          KeyType: HASH
+        - AttributeName: SK
+          KeyType: RANGE
+      GlobalSecondaryIndexes:
+        - IndexName: trackingIndex
+          KeySchema:
+          - AttributeName: isVictim
+            KeyType: HASH
+          - AttributeName: SK
+            KeyType: RANGE
+          Projection:
+            ProjectionType: INCLUDE
+            NonKeyAttributes:
+              - createTime
+
+##################################################################################
+  ShareLibraryLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      ContentUri: src/common
+      RetentionPolicy : Delete
+    Metadata:
+      BuildMethod: nodejs16.x
+
+##################################################################################
+  ApiGatewayApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: DEV
+      Cors:
+        AllowMethods: "'*'"
+        AllowHeaders: "'*'"
+        AllowOrigin: "'*'"
+##################################################################################
+  preflightFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri : src/preflight
+      Events:
+        OptionApi:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: OPTIONS
+            RestApiId:
+              Ref: ApiGatewayApi
+
+##################################################################################
+  YoutubeChannelVideoUpdateFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      MemorySize: 256
+      CodeUri: schedule/t/youtube_crawler
+      Timeout: 600
+      Events:
+        ScheduleTrigger:
+          Type: Schedule
+          Properties:
+            Schedule: 'rate(1 hours)'
+
+  YoutubeVideoAPI:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/youtube_application
+      Handler: app.lambda_handler
+      Runtime: python3.8
+      Timeout: 5
+      Events:
+        GetChannelApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /channel
+            Method: get
+
+Outputs:
+  WebEndpoint:
+    Description: "API Gateway endpoint URL for DEV stage"
+    Value: !Sub "https://${ApiGatewayApi}.execute-api.${AWS::Region}.amazonaws.com/DEV"
+
+  Database:
+    Description: "DynamoDB endpoint"
+    Value: !Ref TrackingUserTable

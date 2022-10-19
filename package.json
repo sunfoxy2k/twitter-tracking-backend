@@ -1,0 +1,9 @@
+{
+  "name": "twitter_tracker_backend",
+  "version": "1.0.0",
+  "devDependencies": {
+    "aws-sdk": "^2.1179.0",
+    "dotenv": "^16.0.1",
+    "jest": "^28.1.3"
+  }
+}
