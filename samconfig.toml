@@ -1,0 +1,12 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "twitter-following-tracker"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-bzcsetpumge9"
+s3_prefix = "twitter-following-tracker"
+region = "us-east-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+parameter_overrides = "BearerToken=\"AAAAAAAAAAAAAAAAAAAAAI3IiAEAAAAAjIFb3%2FK52UzrapilHCG%2BU9O6dj0%3Digh4LiT74EQfT570lkXpH3DUhNswwjMFDMP3p1uXt1vJlUyxAW\""
+image_repositories = []

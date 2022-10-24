@@ -1,0 +1,5 @@
+START RequestId: b4acf48b-5391-4d5c-8bd8-f5b4388710b4 Version: $LATEST
+2022-10-24T17:22:31.605Z	b4acf48b-5391-4d5c-8bd8-f5b4388710b4	INFO	SCHEDULE_CHECK_AND_UPDATE handleCheckAndUpdateVictims victim:  {"app_username":"tung","victim_id":"44196397","track_count":0,"created_time":"2022-10-24T04:49:10.721Z","is_victim":true}
+END RequestId: b4acf48b-5391-4d5c-8bd8-f5b4388710b4
+REPORT RequestId: b4acf48b-5391-4d5c-8bd8-f5b4388710b4	Init Duration: 0.31 ms	Duration: 1413.68 ms	Billed Duration: 1414 ms	Memory Size: 256 MB	Max Memory Used: 256 MB	
+{"statusCode":200,"headers":{"Access-Control-Allow-Headers":"*","Access-Control-Allow-Origin":"*","Access-Control-Allow-Methods":"*"},"body":[]}

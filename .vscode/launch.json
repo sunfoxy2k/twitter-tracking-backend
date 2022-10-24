@@ -1,0 +1,49 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "SCHEDULE check_and_update",
+            "type": "node",
+            "request": "attach",
+            "address": "localhost",
+            "port": 9999,
+            "localRoot": "${workspaceRoot}/src/schedule/twitter/check_and_update/src",
+            "remoteRoot": "/var/task",
+            "protocol": "inspector",
+            "stopOnEntry": false
+        },
+        {
+            "name": "API get_user",
+            "type": "node",
+            "request": "attach",
+            "address": "localhost",
+            "port": 9999,
+            "localRoot": "${workspaceRoot}/src/public/user/GET/src",
+            "remoteRoot": "/var/task",
+            "protocol": "inspector",
+            "stopOnEntry": false
+        },
+        {
+            "name": "API list_victims",
+            "type": "node",
+            "request": "attach",
+            "address": "localhost",
+            "port": 9999,
+            "localRoot": "${workspaceRoot}/src/public/victim/LIST/src",
+            "remoteRoot": "/var/task",
+            "protocol": "inspector",
+            "stopOnEntry": false
+        },
+        {
+            "name": "API list_followings",
+            "type": "node",
+            "request": "attach",
+            "address": "localhost",
+            "port": 9999,
+            "localRoot": "${workspaceRoot}/src/public/following/LIST/src",
+            "remoteRoot": "/var/task",
+            "protocol": "inspector",
+            "stopOnEntry": false
+        },
+    ]
+}

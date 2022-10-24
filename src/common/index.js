@@ -1,6 +1,9 @@
+const entity = require('./entity')
+const database = require('./database')
 const _addZ = (n) => { return n < 10 ? '0' + n : '' + n }
 
-exports.get_formated_time = function get_formated_time  (time) {
+
+const get_formated_time = (time) => {
     const now = process.env.MOCK_TIME ? parseInt(process.env.MOCK_TIME) : Date.now()
     const Time = time || new Date(now)
 
@@ -12,4 +15,38 @@ exports.get_formated_time = function get_formated_time  (time) {
     const second = _addZ(Time.getSeconds())
 
     return [year, month, day, hour, min, second].join('_')
+}
+
+
+
+async function response_wrapper(main, event, context) {
+    const response = {
+        statusCode: 500,
+        headers: {
+            "Access-Control-Allow-Headers": "*",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "*"
+
+        },
+        body: "Internal Server Error"
+    }
+
+    try {
+        const result = await main(event, context)
+
+        response.statusCode = 200;
+        response.body = result
+
+    } catch (e) {
+        console.error(`ERROR: `, e)
+    }
+
+    return response
+}
+
+module.exports = {
+    get_formated_time,
+    response_wrapper,
+    database,
+    entity,
 }

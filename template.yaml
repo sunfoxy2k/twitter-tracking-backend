@@ -8,15 +8,17 @@ Globals:
     Runtime: nodejs16.x
     Handler: index.handler
     MemorySize: 128
-    Policies:
-      - DynamoDBCrudPolicy:
-          TableName: !Ref TrackingUserTable
     Layers:
       - !Ref ShareLibraryLayer
     Environment:
       Variables:
         TABLE_NAME: !Ref TrackingUserTable
-    
+        BEARER_TOKEN : !Ref BearerToken
+
+Parameters:
+  BearerToken:
+    Type: String
+  
 Resources:
   TrackingUserTable:
     Type: AWS::DynamoDB::Table
@@ -27,7 +29,9 @@ Resources:
           AttributeType: S
         - AttributeName: SK
           AttributeType: S
-        - AttributeName: createTime
+        # - AttributeName: createTime
+        #   AttributeType: S
+        - AttributeName: victimType
           AttributeType: S
       KeySchema:
         - AttributeName: PK
@@ -37,14 +41,12 @@ Resources:
       GlobalSecondaryIndexes:
         - IndexName: trackingIndex
           KeySchema:
-          - AttributeName: isVictim
+          - AttributeName: victimType
             KeyType: HASH
           - AttributeName: SK
             KeyType: RANGE
           Projection:
-            ProjectionType: INCLUDE
-            NonKeyAttributes:
-              - createTime
+            ProjectionType: KEYS_ONLY
 
 ##################################################################################
   ShareLibraryLayer:
@@ -56,60 +58,97 @@ Resources:
       BuildMethod: nodejs16.x
 
 ##################################################################################
-  ApiGatewayApi:
-    Type: AWS::Serverless::Api
-    Properties:
-      StageName: DEV
-      Cors:
-        AllowMethods: "'*'"
-        AllowHeaders: "'*'"
-        AllowOrigin: "'*'"
+  # ApiGatewayApi:
+  #   Type: AWS::Serverless::Api
+  #   Properties:
+  #     StageName: DEV
+  #     Cors:
+  #       AllowMethods: "'*'"
+  #       AllowHeaders: "'*'"
+  #       AllowOrigin: "'*'"
 ##################################################################################
   preflightFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri : src/preflight
+      CodeUri : src/public/preflight
       Events:
         OptionApi:
           Type: Api
           Properties:
             Path: /{proxy+}
             Method: OPTIONS
-            RestApiId:
-              Ref: ApiGatewayApi
+            # RestApiId:
+            #   Ref: ApiGatewayApi
 
 ##################################################################################
-  YoutubeChannelVideoUpdateFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      MemorySize: 256
-      CodeUri: schedule/t/youtube_crawler
-      Timeout: 600
-      Events:
-        ScheduleTrigger:
-          Type: Schedule
-          Properties:
-            Schedule: 'rate(1 hours)'
+  # TwitterHourlyScheduler:
+  #   Type: AWS::Serverless::Function
+  #   Properties:
+  #     MemorySize: 512
+  #     CodeUri: src/schedule/twitter/check_and_update/src
+  #     Timeout: 3000
+  #     Events:
+  #       ScheduleTrigger:
+  #         Type: Schedule
+  #         Properties:
+  #           Schedule: 'rate(2 hours)'
 
-  YoutubeVideoAPI:
+  # GetAppUserApi:
+  #   Type: AWS::Serverless::Function
+  #   Properties:
+  #     CodeUri: src/public/user/GET/src
+  #     Runtime: nodejs16.x
+  #     Timeout: 5
+  #     Events:
+  #       GetChannelApiEvent:
+  #         Type: Api
+  #         Properties:
+  #           Path: api/user
+  #           Method: get
+  
+  # ListVictimsApi:
+  #   Type: AWS::Serverless::Function
+  #   Properties:
+  #     CodeUri: src/public/victim/LIST/src
+  #     Runtime: nodejs16.x
+  #     Timeout: 5
+  #     Events:
+  #       GetChannelApiEvent:
+  #         Type: Api
+  #         Properties:
+  #           Path: api/victims
+  #           Method: get
+
+  ListFollowingsApi:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: src/youtube_application
-      Handler: app.lambda_handler
-      Runtime: python3.8
+      CodeUri: src/public/following/LIST/src
+      Runtime: nodejs16.x
       Timeout: 5
       Events:
         GetChannelApiEvent:
-          Type: HttpApi
+          Type: Api
           Properties:
-            Path: /channel
+            Path: api/followings
             Method: get
 
-Outputs:
-  WebEndpoint:
-    Description: "API Gateway endpoint URL for DEV stage"
-    Value: !Sub "https://${ApiGatewayApi}.execute-api.${AWS::Region}.amazonaws.com/DEV"
+  # PostAppUserApi:
+  #   Type: AWS::Serverless::Function
+  #   Properties:
+  #     CodeUri: src/public/user/POST
+  #     Runtime: nodejs16.x
+  #     Timeout: 5
+  #     Events:
+  #       GetChannelApiEvent:
+  #         Type: HttpApi
+  #         Properties:
+  #           Path: /user
+  #           Method: post
+# Outputs:
+#   WebEndpoint:
+#     Description: "API Gateway endpoint URL for DEV stage"
+#     Value: !Sub "https://${ApiGatewayApi}.execute-api.${AWS::Region}.amazonaws.com/DEV"
 
-  Database:
-    Description: "DynamoDB endpoint"
-    Value: !Ref TrackingUserTable
+#   Database:
+#     Description: "DynamoDB endpoint"
+#     Value: !Ref TrackingUserTable
