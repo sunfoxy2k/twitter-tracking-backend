@@ -6,6 +6,7 @@ const client = new DocumentClient();
 
 const TABLE_NAME = process.env.TABLE_NAME
 const VICTIM_GSI = 'trackingIndex'
+const MAX_WRITE_REQUESTS = 25
 
 const get_user_by_username = async (app_username) => {
     const params = {
@@ -32,19 +33,54 @@ const insert_entity = async (entity) => {
     }
 }
 
-const batch_update_victims = async (put_victims, delete_victims) => {
+const batch_update_entities = async (put_entities, delete_entities) => {
     try {
-        const params = {
-            RequestItems: {
-                [TABLE_NAME]: put_victims.map((victim) => ({
-                    PutRequest: {
-                        Item: victim.toORM(),
-                    },
-                })),
-            },
-        };
-        const result = await client.batchWrite(params).promise();
-        return result;
+        let request_promises = []
+        for (let idx = 0; idx < put_entities.length; idx += MAX_WRITE_REQUESTS) {
+            const chunk = put_entities.slice(idx, idx + MAX_WRITE_REQUESTS)
+            const params = {
+                RequestItems: {
+                    [TABLE_NAME]: chunk.map((entity) => ({
+                        PutRequest: {
+                            Item: entity.toORM(),
+                        }
+                    }))
+                }
+            }
+            request_promises.push(new Promise((resolve, reject) => {
+                client.batchWrite(params, (err, data) => {
+                    if (err) {
+                        reject(err)
+                    } else {
+                        resolve(data)
+                    }
+                })
+            }))
+        }
+
+        for (let idx = 0; idx < delete_entities.length; idx += MAX_WRITE_REQUESTS) {
+            const chunk = delete_entities.slice(idx, idx + MAX_WRITE_REQUESTS)
+            const params = {
+                RequestItems: {
+                    [TABLE_NAME]: chunk.map((entity) => ({
+                        DeleteRequest: {
+                            Key: entity.getORMKey(),
+                        }
+                    })),
+                }
+            }
+            request_promises.push(new Promise((resolve, reject) => {
+                client.batchWrite(params, (err, data) => {
+                    if (err) {
+                        reject(err)
+                    } else {
+                        resolve(data)
+                    }
+                })
+            }))
+        }
+
+        await Promise.all(request_promises)
     } catch (error) {
         console.log(error);
     }
@@ -69,16 +105,16 @@ const scan_all_victims = async (victim_type = 'twitter') => {
         while (cursor) {
             const result = await client.query(params).promise()
             result_all.Items = [...result_all.Items,
-                ...result.Items.map((item)=> Victim.fromORM(item))
+            ...result.Items.map((item) => Victim.fromORM(item))
             ]
             result_all.Count += result.Count
             result_all.ScannedCount += result.ScannedCount
-            
+
             cursor = result.LastEvaluatedKey
             params.ExclusiveStartKey = cursor
         }
-    
-        return result_all;        
+
+        return result_all;
     } catch (error) {
         console.log(error);
     }
@@ -95,26 +131,29 @@ const list_victims_by_app_username = async (app_username, victim_type = 'twitter
             }
         }
         const result = await client.query(params).promise()
-        result.Items = result.Items.map((item)=> Victim.fromORM(item));
+        result.Items = result.Items.map((item) => Victim.fromORM(item));
         return result
     } catch (error) {
         console.log(error);
     }
 }
 
-const list_followings_by_app_username = async (app_username) => {
+const list_followings_by_victim_by_user = async (app_username, victim_id) => {
     try {
         let params = {
             TableName: TABLE_NAME,
-            KeyConditionExpression: `PK = :pk and begins_with(SK, :sk)`,
+            KeyConditionExpression: `PK = :pk`,
             ExpressionAttributeValues: {
-                ':pk': `USER@${app_username}`,
-                ':sk': `UPDATED_TIME@`,
+                ':pk': `TWITTER_VICTIM@${victim_id}#USER@${app_username}`,
             }
         }
         const result = await client.query(params).promise()
-        result.Items = result.Items.map((item)=> Following.fromORM(item));
-        return result
+        let data = {}
+        for (let item of result.Items) {
+            const following = Following.fromORM(item)
+            data[following.following_username] = following
+        }
+        return data
     } catch (error) {
         console.log(error);
     }
@@ -124,7 +163,7 @@ module.exports = {
     get_user_by_username,
     insert_entity,
     scan_all_victims,
-    batch_update_victims,
+    batch_update_entities,
     list_victims_by_app_username,
-    list_followings_by_app_username,
+    list_followings_by_victim_by_user,
 }

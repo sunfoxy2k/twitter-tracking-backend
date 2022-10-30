@@ -8,5 +8,5 @@ s3_prefix = "twitter-following-tracker"
 region = "us-east-1"
 confirm_changeset = true
 capabilities = "CAPABILITY_IAM"
-parameter_overrides = "BearerToken=\"AAAAAAAAAAAAAAAAAAAAAI3IiAEAAAAAjIFb3%2FK52UzrapilHCG%2BU9O6dj0%3Digh4LiT74EQfT570lkXpH3DUhNswwjMFDMP3p1uXt1vJlUyxAW\""
+parameter_overrides = "BearerToken=\"AAAAAAAAAAAAAAAAAAAAAI3IiAEAAAAAjIFb3%2FK52UzrapilHCG%2BU9O6dj0%3Digh4LiT74EQfT570lkXpH3DUhNswwjMFDMP3p1uXt1vJlUyxAW\" Authrorization=\"Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA\" XCsrfToken=\"6ff231a30d98c5c5279d49eabf40a823294328bb6eaae2908447ce6f52715b5aa6fc4bee6d2ab9ba785731abd8b11fd1bb15bf09fe254791171e03c56c79b224c6148c52bf603fceb8c16e03eb96899d\" CookieAuthToken=\"51febdf7b43ec6654bd93b60386cc409229e01cc\""
 image_repositories = []

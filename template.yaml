@@ -14,9 +14,17 @@ Globals:
       Variables:
         TABLE_NAME: !Ref TrackingUserTable
         BEARER_TOKEN : !Ref BearerToken
-
+        AUTHORIZATION: !Ref Authrorization
+        X_CSRF_TOKEN: !Ref XCsrfToken
+        COOKIE_AUTH_TOKEN: !Ref CookieAuthToken
 Parameters:
   BearerToken:
+    Type: String
+  Authrorization:
+    Type: String
+  XCsrfToken:
+    Type: String
+  CookieAuthToken:
     Type: String
   
 Resources:
@@ -73,7 +81,7 @@ Resources:
       CodeUri : src/public/preflight
       Events:
         OptionApi:
-          Type: Api
+          Type: HttpApi
           Properties:
             Path: /{proxy+}
             Method: OPTIONS
@@ -86,69 +94,69 @@ Resources:
     Properties:
       MemorySize: 512
       CodeUri: src/schedule/twitter/check_and_update/src
-      Timeout: 3000
+      Timeout: 900
       # Events:
       #   ScheduleTrigger:
       #     Type: Schedule
       #     Properties:
       #       Schedule: 'rate(2 hours)'
 
-  GetAppUserApi:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: src/public/user/GET/src
-      Runtime: nodejs16.x
-      Timeout: 5
-      Events:
-        GetChannelApiEvent:
-          Type: Api
-          Properties:
-            Path: api/user
-            Method: get
+  # GetAppUserApi:
+  #   Type: AWS::Serverless::Function
+  #   Properties:
+  #     CodeUri: src/public/user/GET/src
+  #     Runtime: nodejs16.x
+  #     Timeout: 10
+  #     Events:
+  #       GetChannelApiEvent:
+  #         Type: HttpApi
+  #         Properties:
+  #           Path: /api/user
+  #           Method: get
   
-  ListVictimsApi:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: src/public/victim/LIST/src
-      Runtime: nodejs16.x
-      Timeout: 5
-      Events:
-        GetChannelApiEvent:
-          Type: Api
-          Properties:
-            Path: api/victims
-            Method: get
+  # ListVictimsApi:
+  #   Type: AWS::Serverless::Function
+  #   Properties:
+  #     CodeUri: src/public/victim/LIST/src
+  #     Runtime: nodejs16.x
+  #     Timeout: 10
+  #     Events:
+  #       GetChannelApiEvent:
+  #         Type: HttpApi
+  #         Properties:
+  #           Path: /api/victims
+  #           Method: get
 
-  ListFollowingsApi:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: src/public/following/LIST/src
-      Runtime: nodejs16.x
-      Timeout: 5
-      Events:
-        GetChannelApiEvent:
-          Type: Api
-          Properties:
-            Path: api/followings
-            Method: get
+  # ListFollowingsApi:
+  #   Type: AWS::Serverless::Function
+  #   Properties:
+  #     CodeUri: src/public/following/LIST/src
+  #     Runtime: nodejs16.x
+  #     Timeout: 10
+  #     Events:
+  #       GetChannelApiEvent:
+  #         Type: HttpApi
+  #         Properties:
+  #           Path: /api/followings
+  #           Method: get
 
-  PostAppUserApi:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: src/public/user/POST
-      Runtime: nodejs16.x
-      Timeout: 5
-      Events:
-        GetChannelApiEvent:
-          Type: HttpApi
-          Properties:
-            Path: /user
-            Method: post
-# Outputs:
+  # PostAppUserApi:
+  #   Type: AWS::Serverless::Function
+  #   Properties:
+  #     CodeUri: src/public/user/POST
+  #     Runtime: nodejs16.x
+  #     Timeout: 5
+  #     Events:
+  #       GetChannelApiEvent:
+  #         Type: HttpApi
+  #         Properties:
+  #           Path: /api/user
+  #           Method: post
+Outputs:
 #   WebEndpoint:
 #     Description: "API Gateway endpoint URL for DEV stage"
 #     Value: !Sub "https://${ApiGatewayApi}.execute-api.${AWS::Region}.amazonaws.com/DEV"
 
-#   Database:
-#     Description: "DynamoDB endpoint"
-#     Value: !Ref TrackingUserTable
+  Database:
+    Description: "DynamoDB endpoint"
+    Value: !Ref TrackingUserTable

@@ -7,16 +7,16 @@ class Victim {
         this.profile_picture_url = profile_picture_url
         this.created_time = created_time || Date.now()
 
-        this.is_victim = true
+        // this.victim_type = victim_type
     }
     toORM() {
         return {
             PK: `USER@${this.app_username}`,
-            SK: `CREATED_TIME@${this.created_time}#TWITTER_VICTIM@${this.victim_username}`,
+            SK: `CREATED_TIME@${this.created_time.valueOf()}#TWITTER_VICTIM@${this.victim_username}`,
             trackCount: this.track_count,
             profilePictureUrl: this.profile_picture_url,
             victimUsername: this.victim_username,
-            isVictim: this.is_victim,
+            victim_type: this.victim_type,
         }
     }
 
@@ -27,6 +27,7 @@ class Victim {
             track_count: this.track_count,
             profile_picture_url: this.profile_picture_url,
             created_time: this.created_time,
+            // victim_type: this.victim_type,
         }
     }
 
@@ -37,10 +38,10 @@ class Victim {
             victim_id,
         ] = orm.SK.split('#')
         created_time = created_time.replace('CREATED_TIME@', '')
-        created_time = new Date(Number(created_time))
-        victim_id = Number(victim_id.replace('TWITTER_VICTIM@', ''))
+        created_time = Number(created_time)
+        victim_id = victim_id.replace('TWITTER_VICTIM@', '')
         const profile_picture_url = orm.profilePictureUrl
-        const victim_type = orm.victimType
+        // const victim_type = orm.victimType
         const victim_username = orm.victimUsername
         const track_count = orm.trackCount || 0
 
@@ -88,24 +89,24 @@ class User {
 }
 
 class Following {
-    constructor(app_username, victim_id, following_username, picture_profile_url, updated_time) {
+    constructor(app_username, victim_id, following_username, picture_profile_url, created_time) {
         this.app_username = app_username
         this.victim_id = victim_id
         this.following_username = following_username
         this.picture_profile_url = picture_profile_url
-        this.created_time = updated_time || Date.now()
+        this.created_time = created_time || Date.now()
     }
 
-    static fromTwitterAPI(app_username, victim_id, api, updated_time) {
+    static fromTwitterAPI(app_username, victim_id, api, created_time) {
         const following_username = api.content.itemContent.user_results.result.legacy.screen_name
         const picture_profile_url = api.content.itemContent.user_results.result.legacy.profile_image_url_https
-        return new Following(app_username, victim_id, following_username, picture_profile_url, updated_time)
+        return new Following(app_username, victim_id, following_username, picture_profile_url, created_time)
     }
 
     toORM() {
         return {
-            PK: `USER@${this.app_username}`,
-            SK: `UPDATED_TIME@${this.updated_time}#TWITTER_FOLLOWING@${this.following_username}#BY_TWITTER_VICTIM@${this.victim_id}`,
+            PK: `TWITTER_VICTIM@${this.victim_id}#USER@${this.app_username}`,
+            SK: `CREATED_TIME@${this.created_time}#TWITTER_FOLLOWING@${this.following_username}`,
             pictureProfileUrl: this.picture_profile_url,
         }
     }
@@ -116,24 +117,35 @@ class Following {
             victim_id: this.victim_id,
             following_username: this.following_username,
             picture_profile_url: this.picture_profile_url,
-            updated_time: this.updated_time,
+            created_time: this.created_time,
+        }
+    }
+
+    getORMKey() {
+        return {
+            PK: `TWITTER_VICTIM@${this.victim_id}#USER@${this.app_username}`,
+            SK: `CREATED_TIME@${this.created_time}#TWITTER_FOLLOWING@${this.following_username}`,
         }
     }
 
     static fromORM(orm) {
-        const app_username = orm.PK.replace('USER@', '')
         let [
-            updated_time,
-            following_username,
             victim_id,
+            app_username,
+        ] = orm.PK.split('#')
+        victim_id = victim_id.replace('TWITTER_VICTIM@', '')
+        app_username = app_username.replace('USER@', '')
+        let [
+            created_time,
+            following_username,
         ] = orm.SK.split('#')
-        updated_time = updated_time.replace('UPDATED_TIME@', '')
-        updated_time = new Date(Number(updated_time))
-        victim_id = Number(victim_id.replace('BY_TWITTER_VICTIM@', ''))
-        following_username = following_username.replace('BY_TWITTER_VICTIM@', '')
+        created_time = created_time.replace('CREATED_TIME@', '')
+        created_time = Number(created_time)
+
+        following_username = following_username.replace('TWITTER_FOLLOWING@', '')
         const picture_profile_url = orm.pictureProfileUrl
 
-        return new Following(app_username, victim_id, following_username, picture_profile_url, updated_time)
+        return new Following(app_username, victim_id, following_username, picture_profile_url, created_time)
     }
 }
 
