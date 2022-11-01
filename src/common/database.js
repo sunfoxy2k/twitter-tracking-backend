@@ -20,7 +20,7 @@ const get_user_by_username = async (app_username) => {
     return User.fromORM(result.Item);
 }
 
-const insert_entity = async (entity) => {
+const put_entity = async (entity) => {
     try {
         const params = {
             TableName: TABLE_NAME,
@@ -33,7 +33,7 @@ const insert_entity = async (entity) => {
     }
 }
 
-const batch_update_entities = async (put_entities, delete_entities) => {
+const batch_update_following = async (put_entities, delete_entities) => {
     try {
         let request_promises = []
         for (let idx = 0; idx < put_entities.length; idx += MAX_WRITE_REQUESTS) {
@@ -120,6 +120,27 @@ const scan_all_victims = async (victim_type = 'twitter') => {
     }
 }
 
+const scan_victims_with_cursor = async (cursor, victim_type = 'twitter') => {
+    try {
+        let params = {
+            TableName: TABLE_NAME,
+            IndexName: VICTIM_GSI,
+            KeyConditionExpression: 'victimType = :victim_type',
+            ExpressionAttributeValues: {
+                ':victim_type': victim_type,
+            },
+        }
+        if (cursor && cursor !== 'dummy') {
+            params.ExclusiveStartKey = cursor
+        }
+        const result = await client.query(params).promise()
+        result.Items = result.Items.map((item) => Victim.fromORM(item));
+        return result
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 const list_victims_by_app_username = async (app_username, victim_type = 'twitter') => {
     try {
         let params = {
@@ -161,9 +182,10 @@ const list_followings_by_victim_by_user = async (app_username, victim_id) => {
 
 module.exports = {
     get_user_by_username,
-    insert_entity,
+    put_entity,
     scan_all_victims,
-    batch_update_entities,
+    batch_update_following,
     list_victims_by_app_username,
     list_followings_by_victim_by_user,
+    scan_victims_with_cursor,
 }

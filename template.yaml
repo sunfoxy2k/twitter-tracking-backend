@@ -17,6 +17,7 @@ Globals:
         AUTHORIZATION: !Ref Authrorization
         X_CSRF_TOKEN: !Ref XCsrfToken
         COOKIE_AUTH_TOKEN: !Ref CookieAuthToken
+        TELEGRAM_BOT_TOKEN: !Ref TelegramBotToken
 Parameters:
   BearerToken:
     Type: String
@@ -25,6 +26,8 @@ Parameters:
   XCsrfToken:
     Type: String
   CookieAuthToken:
+    Type: String
+  TelegramBotToken:
     Type: String
   
 Resources:
@@ -54,7 +57,7 @@ Resources:
           - AttributeName: SK
             KeyType: RANGE
           Projection:
-            ProjectionType: KEYS_ONLY
+            ProjectionType: ALL
 
 ##################################################################################
   ShareLibraryLayer:
@@ -95,11 +98,11 @@ Resources:
       MemorySize: 512
       CodeUri: src/schedule/twitter/check_and_update/src
       Timeout: 900
-      # Events:
-      #   ScheduleTrigger:
-      #     Type: Schedule
-      #     Properties:
-      #       Schedule: 'rate(2 hours)'
+      Events:
+        ScheduleTrigger:
+          Type: Schedule
+          Properties:
+            Schedule: 'rate(2 hours)'
 
   # GetAppUserApi:
   #   Type: AWS::Serverless::Function
