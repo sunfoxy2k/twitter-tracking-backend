@@ -1,5 +1,6 @@
 const entity = require('./entity')
 const database = require('./database')
+const twitter = require('./twitter_utils')
 const _addZ = (n) => { return n < 10 ? '0' + n : '' + n }
 
 
@@ -49,4 +50,5 @@ module.exports = {
     response_wrapper,
     database,
     entity,
+    twitter,
 }

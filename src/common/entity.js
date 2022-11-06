@@ -50,6 +50,18 @@ class Victim {
             profile_picture_url, created_time,
         )
     }
+
+    static fromAPI(app_username, api) {
+        const victim_id = api.rest_id
+        const victim_username = api.screen_name
+        const track_count = api.friends_count || 0
+        const profile_picture_url = api.profile_image_url_https
+        const created_time = Date.now()
+        return new Victim(app_username, victim_id,
+            victim_username, track_count,
+            profile_picture_url, created_time,
+        )
+    }
 }
 
 class User {

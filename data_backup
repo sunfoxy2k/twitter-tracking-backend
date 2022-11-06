@@ -1,0 +1,93 @@
+{
+    "PK": {
+      "S": "USER@tung"
+    },
+    "SK": {
+      "S": "METADATA"
+    },
+    "telegramChatId": {
+      "S": "5785329653"
+    },
+    "trackCount": {
+      "N": "0"
+    }
+  }
+
+{
+  "PK": {
+    "S": "USER@tung"
+  },
+  "SK": {
+    "S": "CREATED_TIME@1666586950721#TWITTER_VICTIM@1144056820375277569"
+  },
+  "profilePictureUrl": {
+    "S": "https://pbs.twimg.com/profile_images/1144108955758555141/pW3v6zRS_normal.jpg"
+  },
+  "trackCount": {
+    "N": "0"
+  },
+  "victimType": {
+    "S": "twitter"
+  },
+  "victimUsername": {
+    "S": "hoangtung1802"
+  }
+}
+
+{
+    "PK": {
+      "S": "USER@tung"
+    },
+    "SK": {
+      "S": "CREATED_TIME@1666586950721#TWITTER_VICTIM@826381583489855490"
+    },
+    "profilePictureUrl": {
+      "S": "https://pbs.twimg.com/profile_images/1144108955758555141/pW3v6zRS_normal.jpg"
+    },
+    "trackCount": {
+      "N": "0"
+    },
+    "victimType": {
+      "S": "twitter"
+    },
+    "victimUsername": {
+      "S": "ericcryptoman"
+    }
+  }
+
+
+{
+    "PK": {
+      "S": "USER@nicola"
+    },
+    "SK": {
+      "S": "METADATA"
+    },
+    "telegram_chat_id": {
+      "S": "1127584978"
+    },
+    "trackCount": {
+      "N": "0"
+    }
+  }
+
+  {
+    "PK": {
+      "S": "USER@nicola"
+    },
+    "SK": {
+      "S": "CREATED_TIME@1666586950721#TWITTER_VICTIM@826381583489855490"
+    },
+    "profilePictureUrl": {
+      "S": "https://pbs.twimg.com/profile_images/1144108955758555141/pW3v6zRS_normal.jpg"
+    },
+    "trackCount": {
+      "N": "0"
+    },
+    "victimType": {
+      "S": "twitter"
+    },
+    "victimUsername": {
+      "S": "ericcryptoman"
+    }
+  }

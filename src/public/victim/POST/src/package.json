@@ -1,0 +1,11 @@
+{
+    "name": "victim",
+    "description": "IN_DEVELOPMENT",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+    },
+    "devDependencies": {
+        "aws-sdk": "^2.799.0"
+    }
+}
