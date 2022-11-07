@@ -25,7 +25,6 @@ Updated followings from @${victim.victim_username}:
 => Current following count: ${victim.track_count}
 New followings:
 ${new_followings_str}
-
 Deleted followings:
 ${deleted_followings_str}
 `,

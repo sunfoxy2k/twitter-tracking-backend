@@ -1,6 +1,6 @@
 const { database, response_wrapper } = require('/opt/nodejs')
 // const { scan_victim, response_wrapper } = require('../../../../../src/common/')
-const { schedule_update_following_by_id } = require('./twitter')
+const { schedule_update_following_by_id_old } = require('./twitter')
 
 const main = async (event, context) => {
     let cursor = 'dummy'
@@ -21,7 +21,7 @@ const main = async (event, context) => {
         // await Promise.all(victims)
 
         for (let victim of victims.Items) {
-            await schedule_update_following_by_id(victim)
+            await schedule_update_following_by_id_old(victim)
         }
     }
 

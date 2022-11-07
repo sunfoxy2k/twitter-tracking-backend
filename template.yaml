@@ -102,8 +102,10 @@ Resources:
         ScheduleTrigger:
           Type: Schedule
           Properties:
-            Schedule: 'rate(2 hours)'
-
+            Schedule: 'rate(1 hour)'
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TrackingUserTable
   # GetAppUserApi:
   #   Type: AWS::Serverless::Function
   #   Properties:
