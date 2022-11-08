@@ -1,6 +1,7 @@
 const entity = require('./entity')
 const database = require('./database')
 const twitter = require('./twitter_utils')
+const telegram = require('./telegram')
 const _addZ = (n) => { return n < 10 ? '0' + n : '' + n }
 
 
@@ -51,4 +52,5 @@ module.exports = {
     database,
     entity,
     twitter,
+    telegram,
 }
