@@ -7,7 +7,7 @@ const client = new DocumentClient();
 const TABLE_NAME = process.env.TABLE_NAME
 const VICTIM_GSI = 'trackingIndex'
 const MAX_WRITE_REQUESTS = 25
-const INDENTITY_KEY = "xT___-0eivCDyHYqBWXWHawDWyatHOLW8_O1VbfavjrwtwE87-Scb6k_jGKcsMOebcpfHAxxDThIsAwmDmLMj19lUvJDPxT-zPBDqPGbN5qX8mnb12_wnRUqfMDGMAlb_YhLgXKioyIBUR5G1J7jKHfRa06weLxjvQvvzBw67quljgFB7Y8jC0AjKGWdL6Yxsk3B4kEUlEys3IIm3EKis2RoFf0FCklxJwxZhpR1KB26bq7WWUAv6YcB6MT2J5MO4TFlNcprnWuhSSY_HBo9P4rNlLayHKnuae6O--QWQv9MBE1xY1LU2qGpd3CRKeQMboAI-ufn0RvE1l7qZfdweQ"
+
 const get_user_by_username = async (app_username) => {
     const params = {
         TableName: TABLE_NAME,
@@ -180,6 +180,28 @@ const list_followings_by_victim_by_user = async (app_username, victim_id) => {
     }
 }
 
+const list_all_followings_by_victim = async (victim_id) => {
+    let params = {
+        TableName: TABLE_NAME,
+        KeyConditionExpression: `PK = :pk`,
+        ExpressionAttributeValues: {
+            ':pk': `TWITTER_VICTIM@${victim_id}#USER@${app_username}`,
+        }
+    }
+    let data = {}
+    let cursor = 'dummy'
+    while(cursor) {
+        result = await client.query(params).promise()
+        result.Items = result.Items.map((item) => Following.fromORM(item));
+        data = {...data, ...result.Items}
+        
+        cursor = result.LastEvaluatedKey
+        params.ExclusiveStartKey = cursor
+    }
+
+    return data
+}
+
 module.exports = {
     get_user_by_username,
     put_entity,
@@ -188,4 +210,5 @@ module.exports = {
     list_victims_by_app_username,
     list_followings_by_victim_by_user,
     scan_victims_with_cursor,
+    list_all_followings_by_victim,
 }

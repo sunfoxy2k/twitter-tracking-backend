@@ -65,11 +65,11 @@ class Victim {
 }
 
 class User {
-    constructor(app_username, telegram_chat_id, subcribe_start, subcribe_end, track_count) {
+    constructor(app_username, telegram_chat_id, subscribe_start, subscribe_end, track_count) {
         this.app_username = app_username
         this.telegram_chat_id = telegram_chat_id
-        this.subcribe_start = subcribe_start || null
-        this.subcribe_end = subcribe_end || null
+        this.subscribe_start = subscribe_start || null
+        this.subscribe_end = subscribe_end || null
 
         this.track_count = track_count || 0
 
@@ -80,8 +80,8 @@ class User {
             PK: `USER@${this.app_username}`,
             SK: `METADATA`,
             telegram_chat_id: this.telegram_chat_id,
-            subcribe_start: this.subcribe_start,
-            subcribe_end: this.subcribe_end,
+            subscribe_start: this.subscribe_start,
+            subscribe_end: this.subscribe_end,
         }
     }
 

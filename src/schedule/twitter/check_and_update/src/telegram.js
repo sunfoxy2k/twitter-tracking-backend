@@ -17,7 +17,7 @@ const send_message = async (user, victim, new_followings, deleted_followings) =>
     console.log('new_followings_str', new_followings_str);
     console.log('deleted_followings_str', deleted_followings_str);
     console.log('====================================');
-    if (new_followings_str.length > 0 && deleted_followings_str.length > 0) {
+    if (new_followings_str.length > 0 || deleted_followings_str.length > 0) {
         const response = await axios.post(`https://api.telegram.org/${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
             chat_id: user.telegram_chat_id,
             text: `
