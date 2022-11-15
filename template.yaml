@@ -69,14 +69,17 @@ Resources:
       BuildMethod: nodejs16.x
 
 ##################################################################################
-  # ApiGatewayApi:
-  #   Type: AWS::Serverless::Api
-  #   Properties:
-  #     StageName: DEV
-  #     Cors:
-  #       AllowMethods: "'*'"
-  #       AllowHeaders: "'*'"
-  #       AllowOrigin: "'*'"
+  ApiGatewayApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      StageName: DEV
+      CorsConfiguration:
+        AllowMethods: 
+          - "*"
+        AllowHeaders: 
+          - "*"
+        AllowOrigins:
+          - "*"
 ##################################################################################
   preflightFunction:
     Type: AWS::Serverless::Function
@@ -88,8 +91,8 @@ Resources:
           Properties:
             Path: /{proxy+}
             Method: OPTIONS
-            # RestApiId:
-            #   Ref: ApiGatewayApi
+            ApiId:
+              Ref: ApiGatewayApi
 
 ##################################################################################
   TwitterHourlyScheduler:
@@ -106,6 +109,20 @@ Resources:
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref TrackingUserTable
+  Healthcheck:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/public/healthcheck/src
+      Runtime: nodejs16.x
+      Timeout: 5
+      Events:
+        HttpApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /healthcheck
+            Method: GET
+            ApiId: !Ref ApiGatewayApi
+
   # GetAppUserApi:
   #   Type: AWS::Serverless::Function
   #   Properties:
@@ -158,9 +175,9 @@ Resources:
   #           Path: /api/user
   #           Method: post
 Outputs:
-#   WebEndpoint:
-#     Description: "API Gateway endpoint URL for DEV stage"
-#     Value: !Sub "https://${ApiGatewayApi}.execute-api.${AWS::Region}.amazonaws.com/DEV"
+  WebEndpoint:
+    Description: "API Gateway endpoint URL for DEV stage"
+    Value: !Sub "https://${ApiGatewayApi}.execute-api.${AWS::Region}.amazonaws.com/DEV"
 
   Database:
     Description: "DynamoDB endpoint"

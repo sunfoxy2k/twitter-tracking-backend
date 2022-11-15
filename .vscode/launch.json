@@ -4,6 +4,20 @@
         {
             "type": "aws-sam",
             "request": "direct-invoke",
+            "name": "twitter-tracking-backend:TwitterHourlyScheduler",
+            "invokeTarget": {
+                "target": "template",
+                "templatePath": "${workspaceFolder}/template.yaml",
+                "logicalId": "TwitterHourlyScheduler"
+            },
+            "lambda": {
+                "payload": {},
+                "environmentVariables": {}
+            }
+        },
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
             "name": "API twitter-tracking-backend:GetAppUserApi",
             "invokeTarget": {
                 "target": "api",

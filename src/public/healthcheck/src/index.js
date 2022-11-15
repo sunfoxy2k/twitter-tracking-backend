@@ -8,13 +8,9 @@ const main = async (event, context) => {
     console.log('====================================');
     return {
         status: 'healthy',
-        healthcheck: {
-            event,
-            context,
-        }
     }
 }
 
 exports.handler = async (event, context) => {
-    return await response_wrapper(main)
+    return await response_wrapper(main, event, context)
 }

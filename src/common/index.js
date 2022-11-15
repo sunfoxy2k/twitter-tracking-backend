@@ -21,7 +21,7 @@ const get_formated_time = (time) => {
 
 
 
-async function response_wrapper(main, event, context) {
+async function response_wrapper(main, event, context, body_data_type = 'json') {
     const response = {
         statusCode: 500,
         headers: {
@@ -35,10 +35,18 @@ async function response_wrapper(main, event, context) {
 
     try {
         const result = await main(event, context)
+        
+        response.statusCode = result.statusCode || 200;
 
-        response.statusCode = 200;
-        response.body = result
-
+        switch (body_data_type) {
+            case 'json':
+                response.headers['Content-Type'] = 'application/json'
+                response.body = JSON.stringify(result);
+                break;
+            default:
+                response.headers['Content-Type'] = 'text/plain'
+                response.body = result;
+        }
     } catch (e) {
         console.error(`ERROR: `, e)
     }
