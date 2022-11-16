@@ -7,26 +7,26 @@ class Victim {
         this.profile_picture_url = profile_picture_url
         this.created_time = created_time || Date.now()
 
-        // this.victim_type = victim_type
+        this.victim_type = 'twitter'
     }
     toORM() {
         return {
             PK: `USER@${this.app_username}`,
-            SK: `CREATED_TIME@${this.created_time.valueOf()}#TWITTER_VICTIM@${this.victim_username}`,
+            SK: `CREATED_TIME@${this.created_time.valueOf()}#TWITTER_VICTIM@${this.victim_id}`,
             trackCount: this.track_count,
             profilePictureUrl: this.profile_picture_url,
             victimUsername: this.victim_username,
-            victim_type: this.victim_type,
+            victimType: this.victim_type,
         }
     }
 
     toAPI() {
         return {
-            app_username: this.app_username,
+            userName: this.app_username,
             victim_username: this.victim_username,
-            track_count: this.track_count,
-            profile_picture_url: this.profile_picture_url,
-            created_time: this.created_time,
+            totalFollowing: this.track_count,
+            pictureProfileUrl: this.profile_picture_url,
+            createTime: this.created_time,
             // victim_type: this.victim_type,
         }
     }
@@ -79,9 +79,9 @@ class User {
         return {
             PK: `USER@${this.app_username}`,
             SK: `METADATA`,
-            telegram_chat_id: this.telegram_chat_id,
-            subscribe_start: this.subscribe_start,
-            subscribe_end: this.subscribe_end,
+            telegramChatId: this.telegram_chat_id,
+            subscribeStart: this.subscribe_start,
+            subscribeEnd: this.subscribe_end,
         }
     }
 

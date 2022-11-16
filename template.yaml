@@ -146,7 +146,7 @@ Resources:
   #       GetChannelApiEvent:
   #         Type: HttpApi
   #         Properties:
-  #           Path: /api/victims
+  #           Path: /api/list/victim/{id}
   #           Method: get
 
   # ListFollowingsApi:

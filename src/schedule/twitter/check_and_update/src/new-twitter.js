@@ -24,7 +24,7 @@ class TwitterSchedulerClient {
                 }
             }
             victim.track_count = await twitter.get_following_count_by_id(victim.victim_id)
-            await Promise.all([
+            Promise.all([
                 database.put_entity(victim),
                 database.batch_update_following(Object.values(response_followings), Object.values(current_followings)),
                 send_message(this.users[victim.app_username], victim, response_followings, current_followings),
