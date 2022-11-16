@@ -1,6 +1,6 @@
 import { Context, APIGatewayProxyResult, APIGatewayEvent } from 'aws-lambda';
 
-export async function response_wrapper(main: (event: APIGatewayEvent, context: Context) => any, event: APIGatewayEvent, context: Context, body_data_type = 'json')
+export async function response_wrapper(main: (event: APIGatewayEvent, context: Context) => any, event?: APIGatewayEvent, context?: Context, body_data_type = 'json')
     : Promise<APIGatewayProxyResult> {
     const response = {
         statusCode: 500,

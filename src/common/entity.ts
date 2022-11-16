@@ -24,17 +24,27 @@ export interface FollowingInput {
     created_time?: Date;
 }
 
-export class Victim {
+export abstract class Entity {
+    toORM(): any {
+        throw new Error('not implemented');
+    };
+    static fromORM(orm: any): Entity{
+        throw new Error('not implemented');
+    }
+}
+
+export class Victim extends Entity {
     public app_username: string;
     public victim_id: string;
     public victim_username: string;
-    public track_count: number;
+    public track_count: number; 
     public profile_picture_url: string;
     public victim_type: string;
     public created_time: Date;
     public updated_time: Date;
 
     constructor(input: VictimInput) {
+        super();
         this.app_username = input.app_username;
         this.victim_id = input.victim_id;
         this.victim_username = input.victim_username;
@@ -69,7 +79,7 @@ export class Victim {
         }
     }
 
-    static fromORM(orm): Victim {
+    static fromORM(orm: any): Victim {
         const app_username = orm.PK.replace('USER@', '')
         let [
             created_time,
@@ -139,7 +149,8 @@ export class User {
     toAPI() {
         return {
             app_username: this.app_username,
-            telegram_chat_id: this.telegram_chat_id
+            telegram_chat_id: this.telegram_chat_id,
+            track_count: this.track_count,
         }
     }
 
@@ -169,7 +180,7 @@ export class Following {
         this.created_time = input.created_time || new Date();
     }
 
-    static fromTwitterAPI(app_username, victim_id, api, created_time) {
+    static fromTwitterAPI(app_username, victim_id, api, created_time?) {
         const following_username = api.content.itemContent.user_results.result.legacy.screen_name
         const picture_profile_url = api.content.itemContent.user_results.result.legacy.profile_image_url_https
         return new Following({

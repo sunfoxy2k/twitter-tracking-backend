@@ -99,7 +99,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       MemorySize: 512
-      CodeUri: dist/schedule/twitter/check_and_update/src
+      CodeUri: dist/schedule/check_and_update/src
       Timeout: 900
       Events:
         ScheduleTrigger:
@@ -112,7 +112,7 @@ Resources:
   Healthcheck:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: dist/public/healthcheck/src
+      CodeUri: dist/public/healthcheck
       Runtime: nodejs16.x
       Timeout: 5
       Events:
@@ -123,19 +123,19 @@ Resources:
             Method: GET
             ApiId: !Ref ApiGatewayApi
 
-  # GetAppUserApi:
-  #   Type: AWS::Serverless::Function
-  #   Properties:
-  #     CodeUri: dist/public/user/GET/src
-  #     Runtime: nodejs16.x
-  #     Timeout: 10
-  #     Events:
-  #       GetChannelApiEvent:
-  #         Type: HttpApi
-  #         Properties:
-  #           Path: /api/user
-  #           Method: get
-  
+  GetAppUserApi:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dist/public/user/GET/src
+      Runtime: nodejs16.x
+      Timeout: 10
+      Events:
+        GetChannelApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /api/user/{id}
+            Method: get
+            ApiId: !Ref ApiGatewayApi
   # ListVictimsApi:
   #   Type: AWS::Serverless::Function
   #   Properties:
