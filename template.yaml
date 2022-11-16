@@ -63,7 +63,7 @@ Resources:
   ShareLibraryLayer:
     Type: AWS::Serverless::LayerVersion
     Properties:
-      ContentUri: src/common
+      ContentUri: dist/common
       RetentionPolicy : Delete
     Metadata:
       BuildMethod: nodejs16.x
@@ -84,7 +84,7 @@ Resources:
   preflightFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri : src/public/preflight
+      CodeUri : dist/public/preflight
       Events:
         OptionApi:
           Type: HttpApi
@@ -99,7 +99,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       MemorySize: 512
-      CodeUri: src/schedule/twitter/check_and_update/src
+      CodeUri: dist/schedule/twitter/check_and_update/src
       Timeout: 900
       Events:
         ScheduleTrigger:
@@ -112,7 +112,7 @@ Resources:
   Healthcheck:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: src/public/healthcheck/src
+      CodeUri: dist/public/healthcheck/src
       Runtime: nodejs16.x
       Timeout: 5
       Events:
@@ -126,7 +126,7 @@ Resources:
   # GetAppUserApi:
   #   Type: AWS::Serverless::Function
   #   Properties:
-  #     CodeUri: src/public/user/GET/src
+  #     CodeUri: dist/public/user/GET/src
   #     Runtime: nodejs16.x
   #     Timeout: 10
   #     Events:
@@ -139,7 +139,7 @@ Resources:
   # ListVictimsApi:
   #   Type: AWS::Serverless::Function
   #   Properties:
-  #     CodeUri: src/public/victim/LIST/src
+  #     CodeUri: dist/public/victim/LIST/src
   #     Runtime: nodejs16.x
   #     Timeout: 10
   #     Events:
@@ -152,7 +152,7 @@ Resources:
   # ListFollowingsApi:
   #   Type: AWS::Serverless::Function
   #   Properties:
-  #     CodeUri: src/public/following/LIST/src
+  #     CodeUri: dist/public/following/LIST/src
   #     Runtime: nodejs16.x
   #     Timeout: 10
   #     Events:
@@ -165,7 +165,7 @@ Resources:
   # PostAppUserApi:
   #   Type: AWS::Serverless::Function
   #   Properties:
-  #     CodeUri: src/public/user/POST
+  #     CodeUri: dist/public/user/POST
   #     Runtime: nodejs16.x
   #     Timeout: 5
   #     Events:
