@@ -2,79 +2,44 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "aws-sam",
-            "request": "direct-invoke",
-            "name": "twitter-tracking-backend:TwitterHourlyScheduler",
-            "invokeTarget": {
-                "target": "template",
-                "templatePath": "${workspaceFolder}/template.yaml",
-                "logicalId": "TwitterHourlyScheduler"
-            },
-            "lambda": {
-                "payload": {},
-                "environmentVariables": {}
-            }
-        },
-        {
-            "type": "aws-sam",
-            "request": "direct-invoke",
-            "name": "API twitter-tracking-backend:GetAppUserApi",
-            "invokeTarget": {
-                "target": "api",
-                "templatePath": "${workspaceFolder}/template.yaml",
-                "logicalId": "GetAppUserApi"
-            },
-            "api": {
-                "path": "/",
-                "httpMethod": "get",
-                "payload": {
-                    "json": {}
-                }
-            }
-        },
-        {
             "name": "SCHEDULE check_and_update",
             "type": "node",
             "request": "attach",
             "address": "localhost",
             "port": 9999,
-            "localRoot": "${workspaceRoot}/src/schedule/twitter/check_and_update/src",
+            "localRoot": "${workspaceRoot}/dist/schedule/check_and_update/src",
             "remoteRoot": "/var/task",
             "protocol": "inspector",
-            "stopOnEntry": false
+            "stopOnEntry": false,
+            "outFiles": ["${workspaceRoot}/dist/schedule/check_and_update/src"],
+            "sourceMaps": true,
         },
         {
-            "name": "API get_user",
+            "name": "Healthcheck",
             "type": "node",
             "request": "attach",
             "address": "localhost",
             "port": 9999,
-            "localRoot": "${workspaceRoot}/src/public/user/GET/src",
+            "localRoot": "${workspaceRoot}/src/public/healthcheck",
             "remoteRoot": "/var/task",
             "protocol": "inspector",
-            "stopOnEntry": false
+            "stopOnEntry": false,
+            "sourceMaps": true,
+            // "outDir": "/var/task",
         },
         {
-            "name": "API list_victims",
+            "name": "Get User",
             "type": "node",
             "request": "attach",
             "address": "localhost",
             "port": 9999,
-            "localRoot": "${workspaceRoot}/src/public/victim/LIST/src",
+            "localRoot": "${workspaceRoot}/dist/public/user/GET/src",
             "remoteRoot": "/var/task",
             "protocol": "inspector",
-            "stopOnEntry": false
-        },
-        {
-            "name": "API list_followings",
-            "type": "node",
-            "request": "attach",
-            "address": "localhost",
-            "port": 9999,
-            "localRoot": "${workspaceRoot}/src/public/following/LIST/src",
-            "remoteRoot": "/var/task",
-            "protocol": "inspector",
-            "stopOnEntry": false
+            "stopOnEntry": false,
+            "sourceMaps": true,
+            "outFiles": ["${workspaceRoot}/dist/public/user/GET/src"],
+            // "outDir": "/var/task",
         }
     ]
 }
