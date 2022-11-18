@@ -160,7 +160,7 @@ Resources:
     Properties:
       CodeUri: dist/public/following/LIST/src
       Runtime: nodejs16.x
-      Timeout: 10
+      Timeout: 100
       Events:
         GetChannelApiEvent:
           Type: HttpApi
@@ -172,9 +172,9 @@ Resources:
   PostVictimUserApi:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: dist/public/victim/POST
+      CodeUri: dist/public/victim/POST/src
       Runtime: nodejs16.x
-      Timeout: 5
+      Timeout: 600
       Events:
         GetChannelApiEvent:
           Type: HttpApi

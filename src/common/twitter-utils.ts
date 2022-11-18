@@ -57,37 +57,38 @@ const GET_USER_BY_SCREENNAME_API = 'https://twitter.com/i/api/graphql/HThKoC4xtX
 const GET_USER_BY_ID = 'https://twitter.com/i/api/graphql/h8lgEqxcqoXc7XAvK6lUeA/UserByRestId'
 const GET_FOLLOWING_WEB_API_URL = 'https://twitter.com/i/api/graphql/pvBUaKeJsJF9jeth-OmlAQ/Following'
 
+export interface TwitterUserItem {
+    __typename: 'User' | 'UserUnavailable';
+    id: string;
+    rest_id: string;
+    has_nft_avatar: boolean;
+    legacy: {
+        can_dm: boolean;
+        created_at: string;
+        default_profile: boolean;
+        default_profile_image: boolean;
+        description: string;
+        follow_request_sent: boolean;
+        followers_count: number;
+        following: boolean;
+        friends_count: number;
+        has_custom_timelines: boolean;
+        location: string;
+        name: string;
+        pinned_tweet_ids_str: string[];
+        possibly_sensitive: boolean;
+        profile_banner_url: string;
+        profile_image_url_https: string;
+        protected: boolean;
+        screen_name: string;
+        statuses_count: number;
+        verified: boolean;
+    }
+}
 export interface TwitterUserResponseApi {
     data: {
         user: {
-            result: {
-                __typename: 'User' | 'UserUnavailable';
-                id: string;
-                rest_id: string;
-                has_nft_avatar: boolean;
-                legacy: {
-                    can_dm: boolean;
-                    created_at: string;
-                    default_profile: boolean;
-                    default_profile_image: boolean;
-                    description: string;
-                    follow_request_sent: boolean;
-                    followers_count: number;
-                    following: boolean;
-                    friends_count: number;
-                    has_custom_timelines: boolean;
-                    location: string;
-                    name: string;
-                    pinned_tweet_ids_str: string[];
-                    possibly_sensitive: boolean;
-                    profile_banner_url: string;
-                    profile_image_url_https: string;
-                    protected: boolean;
-                    screen_name: string;
-                    statuses_count: number;
-                    verified: boolean;
-                }
-            }
+            result: TwitterUserItem
         }
     }
 }
@@ -114,7 +115,7 @@ export interface CursorBottom {
 export interface FollowingEdge {
     content: {
         itemContent: {
-            user_results: TwitterUserResponseApi['data']['user'];
+            user_results: { result: TwitterUserItem };
         }
     }
 }
@@ -139,7 +140,7 @@ export interface TwitterFollowingResponseApi {
     }
 }
 
-export const get_user_by_screenname = async (screen_name: string): Promise<TwitterUserResponseApi> => {
+export const get_twitter_user_by_screenname = async (screen_name: string): Promise<TwitterUserResponseApi> => {
     get_user_by_screenname_variables.screen_name = screen_name
     const response = await axios.get(`${GET_USER_BY_SCREENNAME_API}`, {
         params: {
@@ -177,23 +178,20 @@ export const get_following_api = async (victim_id: string, cursor: string) => {
 }
 
 export const get_all_following_api = async (app_username: string, victim_id: string): Promise<Following[]> => {
-    let cursor = '-1'
+    let cursor: string | CursorBottom = '-1'
     let all_followings: Following[] = []
-    while (cursor !== '0') {
-        const response_followings = await get_following_api(victim_id, cursor)
-        // @ts-ignore
-        const cursor_top = entries[entries.length - 2].content.value
-        cursor = cursor_top.content.value
-        // @ts-ignore
-        let followings: FollowingEdge[] = response_followings.filter(e => e.content.itemContent !== undefined)
-        let parse_followings = followings.map(e => Following.fromTwitterAPI(app_username, victim_id, e))
+    while (cursor.startsWith('0|') === false) {
+        let response_followings = await get_following_api(victim_id, cursor)
+        cursor = response_followings[response_followings.length - 2] as CursorBottom
+        cursor = cursor.content.value as string
+        let edges: FollowingEdge[] = response_followings.slice(0, response_followings.length - 2) as FollowingEdge[]
 
-        all_followings = [...all_followings, ...parse_followings]
+        for (let edge of edges) {
+            const result = edge.content.itemContent.user_results.result
+            if (result.__typename !== 'UserUnavailable') {
+                all_followings.push(Following.fromTwitterAPI(app_username, victim_id, result))
+            }
+        }
     }
     return all_followings
-}
-
-export const init_victim_following = async (app_username: string, victim_id: string) => {
-    const victim_following = await get_all_following_api(app_username, victim_id)
-    const new_victim = get_user_by_screenname(victim_id)
 }

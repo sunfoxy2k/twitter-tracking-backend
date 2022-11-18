@@ -36,9 +36,11 @@ export async function response_wrapper(config: ResponseWrapperConfig)
 
     try {
         const result = await config.main(config.event, config.context)
-        
-        response.statusCode = result.statusCode || 200;
-        delete result.statusCode
+        response.statusCode = 200
+        if (result) {
+            response.statusCode = result.statusCode || 200;
+            delete result.statusCode
+        }
 
         switch (config.body_data_type) {
             case 'json':

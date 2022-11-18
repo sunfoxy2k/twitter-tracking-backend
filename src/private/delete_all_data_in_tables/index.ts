@@ -1,7 +1,6 @@
 import { response_wrapper } from "/opt/nodejs/response";
 import { client } from "/opt/nodejs/database";
 import { Context, APIGatewayEvent } from 'aws-lambda';
-import { Victim } from "/opt/nodejs/entity";
 
 const main = async (event: APIGatewayEvent, context: Context) => {
     const all_keys = await client.scan({
@@ -32,6 +31,10 @@ const main = async (event: APIGatewayEvent, context: Context) => {
             }
         }).promise()
     }))
+
+    return {
+        code: 'SUCCESS',
+    }
 }
 
 exports.handler = async (event: APIGatewayEvent, context: Context) => {

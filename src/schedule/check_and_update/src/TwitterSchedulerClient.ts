@@ -15,6 +15,8 @@ export class TwitterSchedulerClient {
                 current_followings,
                 response_followings,
             } = await this.get_followings_by_id(victim)
+            victim.track_count = Object.keys(response_followings).length
+
             for (let key of Object.keys(response_followings)) {
                 // remove existed followings from response and current
                 // => what left in response_followings are new followings
@@ -24,8 +26,6 @@ export class TwitterSchedulerClient {
                     delete response_followings[key]
                 }
             }
-            victim.track_count = await twitter.get_following_count_by_id(victim.victim_id)
-            victim.updated_time = new Date()
             Promise.all([
                 database.put_entity(victim),
                 database.batch_update_following(Object.values(response_followings), Object.values(current_followings)),
@@ -83,7 +83,7 @@ export class TwitterSchedulerClient {
             const result = following.content.itemContent.user_results.result
             if (result.__typename !== 'UserUnavailable') {
                 followings[result.legacy.screen_name] =
-                    entity.Following.fromTwitterAPI(app_username, victim_id, following)
+                    entity.Following.fromTwitterAPI(app_username, victim_id, result)
             }
         })
         return {

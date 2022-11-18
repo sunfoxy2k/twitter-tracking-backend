@@ -173,7 +173,10 @@ export const list_victims_by_app_username = async (app_username: string, victim_
         }
         const result = await client.query(params).promise()
         result.Items = result.Items.map((item) => Victim.fromORM(item));
-        return result
+        return {
+            Items: result.Items as Victim[],
+            Count: result.Count,
+        }
     } catch (error) {
         console.log(error);
     }
@@ -196,6 +199,45 @@ export const list_followings_by_victim_by_user = async (app_username: string, vi
             data[following.following_username] = following
         }
         return data
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const update_user_track_count = async (app_username: string, track_count: number) => {
+    try {
+        // set track count and update last updated time
+        const params: DocumentClient.UpdateItemInput = {
+            TableName: TABLE_NAME,
+            Key: {
+                PK: `USER@${app_username}`,
+                SK: `METADATA`,
+            },
+            UpdateExpression: 'set trackCount = :track_count, updateTime = :update_time',
+            ExpressionAttributeValues: {
+                ':track_count': track_count,
+                ':update_time': Date.now(),
+            },
+        }
+        await client.update(params).promise()
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const update_victim_track_count = async (victim: Victim, track_count: number) => {
+    try {
+        // set track count and update last updated time
+        const params: DocumentClient.UpdateItemInput = {
+            TableName: TABLE_NAME,
+            Key: victim.toQueryKey(),
+            UpdateExpression: 'set trackCount = :track_count, updateTime = :update_time',
+            ExpressionAttributeValues: {
+                ':track_count': track_count,
+                ':update_time': Date.now(),
+            },
+        }
+        await client.update(params).promise()
     } catch (error) {
         console.log(error);
     }
