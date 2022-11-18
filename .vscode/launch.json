@@ -2,6 +2,20 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "twitter-tracking-backend:ListVictimsApi",
+            "invokeTarget": {
+                "target": "template",
+                "templatePath": "${workspaceFolder}/template.yaml",
+                "logicalId": "ListVictimsApi"
+            },
+            "lambda": {
+                "payload": {},
+                "environmentVariables": {}
+            }
+        },
+        {
             "name": "SCHEDULE check_and_update",
             "type": "node",
             "request": "attach",
@@ -11,8 +25,10 @@
             "remoteRoot": "/var/task",
             "protocol": "inspector",
             "stopOnEntry": false,
-            "outFiles": ["${workspaceRoot}/dist/schedule/check_and_update/src"],
-            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceRoot}/dist/schedule/check_and_update/src"
+            ],
+            "sourceMaps": true
         },
         {
             "name": "Healthcheck",
@@ -24,8 +40,7 @@
             "remoteRoot": "/var/task",
             "protocol": "inspector",
             "stopOnEntry": false,
-            "sourceMaps": true,
-            // "outDir": "/var/task",
+            "sourceMaps": true
         },
         {
             "name": "Get User",
@@ -38,8 +53,24 @@
             "protocol": "inspector",
             "stopOnEntry": false,
             "sourceMaps": true,
-            "outFiles": ["${workspaceRoot}/dist/public/user/GET/src"],
-            // "outDir": "/var/task",
+            "outFiles": [
+                "${workspaceRoot}/dist/public/user/GET/src"
+            ]
+        },
+        {
+            "name": "List Victim",
+            "type": "node",
+            "request": "attach",
+            "address": "localhost",
+            "port": 9999,
+            "localRoot": "${workspaceRoot}/dist/public/victim/LIST/src",
+            "remoteRoot": "/var/task",
+            "protocol": "inspector",
+            "stopOnEntry": false,
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceRoot}/dist/public/victim/LIST/src"
+            ]
         }
     ]
 }

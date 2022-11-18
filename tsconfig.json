@@ -103,7 +103,7 @@
   },
   "include": [
     "src/**/*.ts",
-    "src/**/package.json"
+    "src/**/*.json"
   ],
   "exclude": [
     "node_modules"

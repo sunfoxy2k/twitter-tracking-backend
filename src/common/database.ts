@@ -1,6 +1,6 @@
 import { DocumentClient } from 'aws-sdk/clients/dynamodb';
 import { User, Victim, Following, Entity } from './entity';
-const client = new DocumentClient();
+export const client = new DocumentClient();
 
 const TABLE_NAME = process.env.TABLE_NAME
 const VICTIM_GSI = 'trackingIndex'
@@ -138,20 +138,21 @@ export const scan_victims_with_cursor = async (cursor: string | DocumentClient.Q
     }
 }
 
-export const list_all_followings_by_victim = async (victim: Victim) => {
+export const list_all_followings_by_victim = async (app_username: string, victim_id: string)
+    : Promise<Following[]> => {
     let params: DocumentClient.QueryInput = {
         TableName: TABLE_NAME,
         KeyConditionExpression: `PK = :pk`,
         ExpressionAttributeValues: {
-            ':pk': `TWITTER_VICTIM@${victim.victim_id}#USER@${victim.app_username}`,
+            ':pk': `TWITTER_VICTIM@${victim_id}#USER@${app_username}`,
         }
     }
-    let data = {}
+    let data = []
     let cursor: string | DocumentClient.QueryInput['ExclusiveStartKey'] = 'dummy'
     while(cursor) {
         const result = await client.query(params).promise()
         result.Items = result.Items.map((item) => Following.fromORM(item));
-        data = {...data, ...result.Items}
+        data = [ ...data, ...result.Items ]
         
         cursor = result.LastEvaluatedKey
         params.ExclusiveStartKey = cursor as DocumentClient.QueryInput['ExclusiveStartKey']

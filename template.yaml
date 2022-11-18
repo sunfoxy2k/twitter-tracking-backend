@@ -109,6 +109,7 @@ Resources:
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref TrackingUserTable
+##################################################################################
   Healthcheck:
     Type: AWS::Serverless::Function
     Properties:
@@ -123,6 +124,7 @@ Resources:
             Method: GET
             ApiId: !Ref ApiGatewayApi
 
+##################################################################################
   GetAppUserApi:
     Type: AWS::Serverless::Function
     Properties:
@@ -136,44 +138,58 @@ Resources:
             Path: /api/user/{id}
             Method: get
             ApiId: !Ref ApiGatewayApi
-  # ListVictimsApi:
-  #   Type: AWS::Serverless::Function
-  #   Properties:
-  #     CodeUri: dist/public/victim/LIST/src
-  #     Runtime: nodejs16.x
-  #     Timeout: 10
-  #     Events:
-  #       GetChannelApiEvent:
-  #         Type: HttpApi
-  #         Properties:
-  #           Path: /api/list/victim/{id}
-  #           Method: get
 
-  # ListFollowingsApi:
-  #   Type: AWS::Serverless::Function
-  #   Properties:
-  #     CodeUri: dist/public/following/LIST/src
-  #     Runtime: nodejs16.x
-  #     Timeout: 10
-  #     Events:
-  #       GetChannelApiEvent:
-  #         Type: HttpApi
-  #         Properties:
-  #           Path: /api/followings
-  #           Method: get
+##################################################################################
+  ListVictimsApi:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dist/public/victim/LIST/src
+      Runtime: nodejs16.x
+      Timeout: 10
+      Events:
+        GetChannelApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /api/list/victim
+            Method: get
+            ApiId: !Ref ApiGatewayApi
 
-  # PostAppUserApi:
-  #   Type: AWS::Serverless::Function
-  #   Properties:
-  #     CodeUri: dist/public/user/POST
-  #     Runtime: nodejs16.x
-  #     Timeout: 5
-  #     Events:
-  #       GetChannelApiEvent:
-  #         Type: HttpApi
-  #         Properties:
-  #           Path: /api/user
-  #           Method: post
+##################################################################################
+  ListFollowingsApi:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dist/public/following/LIST/src
+      Runtime: nodejs16.x
+      Timeout: 10
+      Events:
+        GetChannelApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /api/list/following/{id}
+            Method: get
+            ApiId: !Ref ApiGatewayApi
+
+  PostVictimUserApi:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dist/public/victim/POST
+      Runtime: nodejs16.x
+      Timeout: 5
+      Events:
+        GetChannelApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /api/victim/{id}
+            Method: post
+            ApiId: !Ref ApiGatewayApi
+
+  PrivateDeleteAllItem:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dist/private/delete_all_data_in_tables
+      Runtime: nodejs16.x
+      Timeout: 10
+
 Outputs:
   WebEndpoint:
     Description: "API Gateway endpoint URL for DEV stage"

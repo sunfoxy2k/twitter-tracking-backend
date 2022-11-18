@@ -5,7 +5,7 @@ import * as entity from "/opt/nodejs/entity"
 import { send_message } from "./telegram"
 export class TwitterSchedulerClient {
     public processing_victims: Victim[] = []
-    public users: {[key: string]: User} = {}
+    public users: { [key: string]: User } = {}
     async sync_update_following() {
         for (let victim of this.processing_victims) {
             if (this.users[victim.app_username] === undefined) {
@@ -25,10 +25,11 @@ export class TwitterSchedulerClient {
                 }
             }
             victim.track_count = await twitter.get_following_count_by_id(victim.victim_id)
+            victim.updated_time = new Date()
             Promise.all([
                 database.put_entity(victim),
                 database.batch_update_following(Object.values(response_followings), Object.values(current_followings)),
-                send_message(this.users[victim.app_username], victim, response_followings, current_followings),
+                // send_message(this.users[victim.app_username], victim, response_followings, current_followings),
             ])
         }
     }
@@ -52,16 +53,16 @@ export class TwitterSchedulerClient {
         }
     }
 
-    async get_response_followings_by_id(victim: Victim): Promise<{[key: string]: entity.Following}> {
+    async get_response_followings_by_id(victim: Victim): Promise<{ [key: string]: entity.Following }> {
         let cursor = '-1'
-        let followings = {}
+        let followings: { [key: string]: entity.Following } = {}
         try {
             while (cursor.startsWith('0|') === false) {
                 let response_followings = await twitter.get_following_api(victim.victim_id, cursor)
-                response_followings = this.parse_followings_from_api_entries(victim.app_username, victim.victim_id, response_followings.entries)
+                let parse_response_followings = this.parse_followings_from_api_entries(victim.app_username, victim.victim_id, response_followings)
 
-                followings = { ...followings, ...response_followings.followings }
-                cursor = response_followings.cursor_bottom
+                followings = { ...followings, ...parse_response_followings.followings }
+                cursor = parse_response_followings.cursor_bottom
             }
             return followings
         } catch (error) {
@@ -70,15 +71,15 @@ export class TwitterSchedulerClient {
         }
     }
 
-    parse_followings_from_api_entries(app_username: string, victim_id: string, response_followings: any)
-        : { followings: {[key: string]: entity.Following}, cursor_top: string , cursor_bottom: string } {
-        const followings = {}
-        const cursor_top = response_followings[response_followings.length - 1].content.value
+    parse_followings_from_api_entries(app_username: string, victim_id: string, response_followings)
+        : { followings: { [key: string]: entity.Following }, cursor_top: string, cursor_bottom: string } {
+        const followings: { [key: string]: entity.Following } = {}
+        const cursor_top = response_followings[response_followings.length - 1].content.value as twitter.CursorTop['content']['value']
         response_followings.pop()
-        const cursor_bottom = response_followings[response_followings.length - 1].content.value
+        const cursor_bottom = response_followings[response_followings.length - 1].content.value as twitter.CursorBottom['content']['value']
         response_followings.pop()
 
-        response_followings.forEach((following) => {
+        response_followings.forEach((following: twitter.FollowingEdge) => {
             const result = following.content.itemContent.user_results.result
             if (result.__typename !== 'UserUnavailable') {
                 followings[result.legacy.screen_name] =

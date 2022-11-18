@@ -1,3 +1,4 @@
+import { FollowingEdge, TwitterUserResponseApi } from "./twitter-utils";
 export interface VictimInput {
     app_username: string;
     victim_id: string;
@@ -29,6 +30,13 @@ export abstract class Entity {
         throw new Error('not implemented');
     };
     static fromORM(orm: any): Entity{
+        throw new Error('not implemented');
+    }
+
+    toAPI(): any {
+        throw new Error('not implemented');
+    }
+    toQueryKey(): {PK: string, SK: string} {
         throw new Error('not implemented');
     }
 }
@@ -73,8 +81,8 @@ export class Victim extends Entity {
             victim_username: this.victim_username,
             totalFollowing: this.track_count,
             pictureProfileUrl: this.profile_picture_url,
-            createTime: this.created_time,
-            updateTime: this.updated_time,
+            createTime: this.created_time.valueOf(),
+            updateTime: this.updated_time.valueOf(),
             // victim_type: this.victim_type,
         }
     }
@@ -105,11 +113,11 @@ export class Victim extends Entity {
         })
     }
 
-    static fromAPI(app_username, api) {
+    static fromAPI(app_username: string, api: TwitterUserResponseApi['data']['user']['result']): Victim {
         const victim_id = api.rest_id
-        const victim_username = api.screen_name
-        const track_count = api.friends_count || 0
-        const profile_picture_url = api.profile_image_url_https
+        const victim_username = api.legacy.screen_name
+        const track_count = api.legacy.friends_count || 0
+        const profile_picture_url = api.legacy.profile_image_url_https
         const created_time = new Date()
         return new Victim({
             app_username,
@@ -119,6 +127,13 @@ export class Victim extends Entity {
             profile_picture_url,
             created_time,
         })
+    }
+
+    toQueryKey() {
+        return {
+            PK: `USER@${this.app_username}`,
+            SK: `CREATED_TIME@${this.created_time.valueOf()}#TWITTER_VICTIM@${this.victim_id}`,
+        }
     }
 }
 
@@ -164,6 +179,13 @@ export class User {
             track_count,
         })
     }
+
+    toQueryKey() {
+        return {
+            PK: `USER@${this.app_username}`,
+            SK: `METADATA`,
+        }
+    }
 }
 
 export class Following {
@@ -180,7 +202,7 @@ export class Following {
         this.created_time = input.created_time || new Date();
     }
 
-    static fromTwitterAPI(app_username, victim_id, api, created_time?) {
+    static fromTwitterAPI(app_username: string, victim_id: string, api: FollowingEdge, created_time?: Date) {
         const following_username = api.content.itemContent.user_results.result.legacy.screen_name
         const picture_profile_url = api.content.itemContent.user_results.result.legacy.profile_image_url_https
         return new Following({
@@ -201,11 +223,13 @@ export class Following {
 
     toAPI() {
         return {
-            app_username: this.app_username,
+            userName: this.following_username,
             victim_id: this.victim_id,
             following_username: this.following_username,
-            picture_profile_url: this.picture_profile_url,
-            created_time: this.created_time,
+            pictureProfileUrl: this.picture_profile_url,
+            updateTime: this.created_time,
+            profileUrl: `https://twitter.com/${this.following_username}`,
+
         }
     }
 
@@ -240,5 +264,12 @@ export class Following {
             picture_profile_url,
             created_time,
         })
+    }
+
+    toQueryKey() {
+        return {
+            PK: `TWITTER_VICTIM@${this.victim_id}#USER@${this.app_username}`,
+            SK: `CREATED_TIME@${this.created_time}#TWITTER_FOLLOWING@${this.following_username}`,
+        }
     }
 }

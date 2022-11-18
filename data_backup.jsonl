@@ -9,7 +9,7 @@
       "S": "5785329653"
     },
     "trackCount": {
-      "N": "0"
+      "N": "2"
     }
   }
 
@@ -63,11 +63,11 @@
     "SK": {
       "S": "METADATA"
     },
-    "telegram_chat_id": {
+    "telegramChatId": {
       "S": "1127584978"
     },
     "trackCount": {
-      "N": "0"
+      "N": "1"
     }
   }
 

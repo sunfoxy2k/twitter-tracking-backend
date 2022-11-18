@@ -4,7 +4,7 @@ import { scan_victims_with_cursor } from '/opt/nodejs/database';
 import { TwitterSchedulerClient } from "./TwitterSchedulerClient";
 import { Victim } from "/opt/nodejs/entity";
 
-const main = async (event: APIGatewayEvent, context: Context) => {
+const main = async () => {
     let cursor: any = 'dummy'
     const twitter_scheduler_client = new TwitterSchedulerClient()
     while (cursor) {
@@ -18,5 +18,5 @@ const main = async (event: APIGatewayEvent, context: Context) => {
 }
 
 exports.handler = async (event: APIGatewayEvent, context: Context) => {
-    return await response_wrapper(main)
+    return await response_wrapper({ main })
 }
