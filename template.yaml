@@ -115,7 +115,7 @@ Resources:
         ScheduleTrigger:
           Type: Schedule
           Properties:
-            Schedule: 'rate(1 hour)'
+            Schedule: 'rate(3 hour)'
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref TrackingUserTable
