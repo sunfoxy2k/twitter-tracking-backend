@@ -9,7 +9,7 @@ const MAX_VICTIMS = 50
 const main = async (event: APIGatewayEvent, context: Context) => {
     // get api gateway body
     // const { id } = event.pathParameters;
-    const app_username = 'tung'
+    const app_username = 'nicola'
     const user = await get_user_by_username(app_username)
     if (user.track_count >= MAX_VICTIMS) {
         return {

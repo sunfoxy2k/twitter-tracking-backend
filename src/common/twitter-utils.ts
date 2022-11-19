@@ -2,10 +2,17 @@ import { Following } from "./entity"
 
 const axios = require('axios')
 
-const INTERNAL_REQUEST_HEADERS = {
-    'Authorization': process.env.AUTHORIZATION,
-    'x-csrf-token': process.env.X_CSRF_TOKEN,
-    'Cookie': `ct0=${process.env.X_CSRF_TOKEN};auth_token=${process.env.COOKIE_AUTH_TOKEN};`,
+const INTERNAL_REQUEST_HEADERS_SCHEDULE = {
+    'Authorization': process.env.TWITTER_AUTHORIZATION_SCHEDULE,
+    'x-csrf-token': process.env.X_CSRF_TOKEN_SCHEDULE,
+    'Cookie': `ct0=${process.env.X_CSRF_TOKEN_SCHEDULE};auth_token=${process.env.COOKIE_AUTH_TOKEN_SCHEDULE};`,
+    'Content-Type': 'application/json',
+}
+
+const INTERNAL_REQUEST_HEADERS_CRUD = {
+    'Authorization': process.env.TWITTER_AUTHORIZATION_CRUD,
+    'x-csrf-token': process.env.X_CSRF_TOKEN_CRUD,
+    'Cookie': `ct0=${process.env.X_CSRF_TOKEN_CRUD};auth_token=${process.env.COOKIE_AUTH_TOKEN_CRUD};`,
     'Content-Type': 'application/json',
 }
 
@@ -147,7 +154,7 @@ export const get_twitter_user_by_screenname = async (screen_name: string): Promi
             variables: JSON.stringify(get_user_by_screenname_variables),
             features: get_user_features_stringify,
         },
-        headers: INTERNAL_REQUEST_HEADERS,
+        headers: INTERNAL_REQUEST_HEADERS_CRUD,
     })
     return response.data
 }
@@ -159,7 +166,7 @@ export const get_following_count_by_id = async (user_id: string) => {
             variables: JSON.stringify(get_user_by_id_variables),
             features: get_user_features_stringify,
         },
-        headers: INTERNAL_REQUEST_HEADERS,
+        headers: INTERNAL_REQUEST_HEADERS_CRUD,
     })
     return response.data.data.user.result.legacy.friends_count
 }
@@ -172,7 +179,7 @@ export const get_following_api = async (victim_id: string, cursor: string) => {
             variables: JSON.stringify(get_following_variables),
             features: get_following_features_stringify,
         },
-        headers: INTERNAL_REQUEST_HEADERS,
+        headers: INTERNAL_REQUEST_HEADERS_SCHEDULE,
     })
     return response_followings.data.data.user.result.timeline.timeline.instructions.find(e => e.type === 'TimelineAddEntries').entries
 }

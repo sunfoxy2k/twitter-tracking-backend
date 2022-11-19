@@ -5,7 +5,7 @@ import { Context, APIGatewayEvent } from 'aws-lambda';
 const main = async (event: APIGatewayEvent, context: Context) => {
     // get api gateway body
     const { id } = event.pathParameters;
-    const user = 'tung'
+    const app_username = 'nicola'
     let victim_id = id.split('#')
     if (victim_id.length !== 2) {
         return {
@@ -24,7 +24,7 @@ const main = async (event: APIGatewayEvent, context: Context) => {
     }
     let parse_victim_id = victim_id[1]
 
-    const followings = await list_all_followings_by_victim(user, parse_victim_id);
+    const followings = await list_all_followings_by_victim(app_username, parse_victim_id);
     const response = {
         "allIds": [],
         "byId": {}

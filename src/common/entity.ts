@@ -272,7 +272,7 @@ export class Following {
     toQueryKey() {
         return {
             PK: `TWITTER_VICTIM@${this.victim_id}#USER@${this.app_username}`,
-            SK: `UPDATE_TIME@${this.update_time}#TWITTER_FOLLOWING@${this.following_username}`,
+            SK: `UPDATE_TIME@${this.update_time.valueOf()}#TWITTER_FOLLOWING@${this.following_username}`,
         }
     }
 }

@@ -29,7 +29,7 @@ export class TwitterSchedulerClient {
             Promise.all([
                 database.put_entity(victim),
                 database.batch_update_following(Object.values(response_followings), Object.values(current_followings)),
-                // send_message(this.users[victim.app_username], victim, response_followings, current_followings),
+                send_message(this.users[victim.app_username], victim, response_followings, current_followings),
             ])
         }
     }

@@ -14,22 +14,31 @@ Globals:
       Variables:
         TABLE_NAME: !Ref TrackingUserTable
         BEARER_TOKEN : !Ref BearerToken
-        AUTHORIZATION: !Ref Authrorization
-        X_CSRF_TOKEN: !Ref XCsrfToken
-        COOKIE_AUTH_TOKEN: !Ref CookieAuthToken
+        TWITTER_AUTHORIZATION_SCHEDULE: !Ref TwitterAuthorizationSchedule
+        TWITTER_AUTHORIZATION_CRUD: !Ref TwitterAuthorizationCrud
+        X_CSRF_TOKEN_SCHEDULE: !Ref XCsrfTokenSchedule
+        X_CSRF_TOKEN_CRUD: !Ref XCsrfTokenCrud
+        COOKIE_AUTH_TOKEN_SCHEDULE: !Ref CookieAuthTokenSchedule
+        COOKIE_AUTH_TOKEN_CRUD: !Ref CookieAuthTokenCrud
         TELEGRAM_BOT_TOKEN: !Ref TelegramBotToken
 Parameters:
   BearerToken:
     Type: String
-  Authrorization:
+  TwitterAuthorizationSchedule:
     Type: String
-  XCsrfToken:
+  TwitterAuthorizationCrud:
     Type: String
-  CookieAuthToken:
+  XCsrfTokenSchedule:
+    Type: String
+  XCsrfTokenCrud:
+    Type: String
+  CookieAuthTokenSchedule:
+    Type: String
+  CookieAuthTokenCrud:
     Type: String
   TelegramBotToken:
     Type: String
-  
+
 Resources:
   TrackingUserTable:
     Type: AWS::DynamoDB::Table
@@ -80,6 +89,7 @@ Resources:
           - "*"
         AllowOrigins:
           - "*"
+
 ##################################################################################
   preflightFunction:
     Type: AWS::Serverless::Function
@@ -91,7 +101,7 @@ Resources:
           Properties:
             Path: /{proxy+}
             Method: OPTIONS
-            ApiId:
+            ApiId: 
               Ref: ApiGatewayApi
 
 ##################################################################################
@@ -109,6 +119,7 @@ Resources:
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref TrackingUserTable
+
 ##################################################################################
   Healthcheck:
     Type: AWS::Serverless::Function
@@ -123,6 +134,9 @@ Resources:
             Path: /healthcheck
             Method: GET
             ApiId: !Ref ApiGatewayApi
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TrackingUserTable
 
 ##################################################################################
   GetAppUserApi:
@@ -138,6 +152,9 @@ Resources:
             Path: /api/user/{id}
             Method: get
             ApiId: !Ref ApiGatewayApi
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TrackingUserTable
 
 ##################################################################################
   ListVictimsApi:
@@ -153,6 +170,9 @@ Resources:
             Path: /api/list/victim
             Method: get
             ApiId: !Ref ApiGatewayApi
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TrackingUserTable
 
 ##################################################################################
   ListFollowingsApi:
@@ -168,10 +188,15 @@ Resources:
             Path: /api/list/following/{id}
             Method: get
             ApiId: !Ref ApiGatewayApi
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TrackingUserTable
 
+##################################################################################
   PostVictimUserApi:
     Type: AWS::Serverless::Function
     Properties:
+      MemorySize: 256
       CodeUri: dist/public/victim/POST/src
       Runtime: nodejs16.x
       Timeout: 600
@@ -182,14 +207,38 @@ Resources:
             Path: /api/victim/{id}
             Method: post
             ApiId: !Ref ApiGatewayApi
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TrackingUserTable
 
+##################################################################################
   PrivateDeleteAllItem:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: dist/private/delete_all_data_in_tables
       Runtime: nodejs16.x
       Timeout: 10
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TrackingUserTable
 
+##################################################################################
+  TelegramWebhook:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dist/private/telegram_webhook/src
+      Runtime: nodejs16.x
+      Timeout: 10
+      Events:
+        GetChannelApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /api/telegram/webhook
+            Method: post
+            ApiId: !Ref ApiGatewayApi
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TrackingUserTable
 Outputs:
   WebEndpoint:
     Description: "API Gateway endpoint URL for DEV stage"

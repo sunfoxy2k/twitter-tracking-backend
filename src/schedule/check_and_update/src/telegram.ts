@@ -10,7 +10,7 @@ export const send_message = async (user: User, victim: Victim, new_followings: {
 
         let deleted_followings_str = ''
         for (const [key, value] of Object.entries(deleted_followings)) {
-            deleted_followings_str += `- @(${value.following_username})\n`
+            deleted_followings_str += `- @${value.following_username}\n`
         }
         console.log('====================================');
         console.log('user', user.app_username)
@@ -24,10 +24,10 @@ export const send_message = async (user: User, victim: Victim, new_followings: {
                 text: `
         Updated followings from @${victim.victim_username}:
         => Current following count: ${victim.track_count}
-        New followings:
-        ${new_followings_str}
-        Deleted followings:
-        ${deleted_followings_str}
+        * New followings:
+${new_followings_str}
+        * Deleted followings:
+${deleted_followings_str}
         `,
             })
             console.log('sendMessage Result: ',JSON.stringify(result.data), null, 2);
