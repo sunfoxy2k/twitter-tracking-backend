@@ -115,7 +115,7 @@ Resources:
         ScheduleTrigger:
           Type: Schedule
           Properties:
-            Schedule: 'rate(3 hour)'
+            Schedule: 'rate(3 hours)'
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref TrackingUserTable
@@ -149,7 +149,7 @@ Resources:
         GetChannelApiEvent:
           Type: HttpApi
           Properties:
-            Path: /api/user/{id}
+            Path: /api/user
             Method: get
             ApiId: !Ref ApiGatewayApi
       Policies:
@@ -206,6 +206,25 @@ Resources:
           Properties:
             Path: /api/victim/{id}
             Method: post
+            ApiId: !Ref ApiGatewayApi
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TrackingUserTable
+
+##################################################################################
+  DeleteVictimUserApi:
+    Type: AWS::Serverless::Function
+    Properties:
+      MemorySize: 256
+      CodeUri: dist/public/victim/DELETE/src
+      Runtime: nodejs16.x
+      Timeout: 600
+      Events:
+        GetChannelApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /api/victim/{id}
+            Method: delete
             ApiId: !Ref ApiGatewayApi
       Policies:
         - DynamoDBCrudPolicy:

@@ -77,12 +77,13 @@ export class Victim extends Entity {
 
     toAPI() {
         return {
-            userName: this.app_username,
-            victim_username: this.victim_username,
+            // userName: this.app_username,
+            userName: this.victim_username,
             totalFollowing: this.track_count,
             pictureProfileUrl: this.profile_picture_url,
             createTime: this.created_time.valueOf(),
             updateTime: this.update_time.valueOf(),
+            id: this.toQueryKey().SK,
             // victim_type: this.victim_type,
         }
     }
@@ -228,11 +229,10 @@ export class Following {
     toAPI() {
         return {
             userName: this.following_username,
-            victim_id: this.victim_id,
-            following_username: this.following_username,
             pictureProfileUrl: this.picture_profile_url,
             updateTime: this.update_time,
             profileUrl: `https://twitter.com/${this.following_username}`,
+            id: this.toQueryKey().SK,
         }
     }
 
