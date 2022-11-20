@@ -1,12 +1,17 @@
 import { Context, APIGatewayProxyResult, APIGatewayEvent } from 'aws-lambda';
-import { verifyToken } from './authentication';
+import { JwtPayload } from 'jsonwebtoken';
+import { verifyToken, decodeToken } from './authentication';
+
+export type MainFunction = (event: APIGatewayEvent, context: Context, authenticated_user?: JwtPayload) => any
+
 export interface ResponseWrapperConfig {
-    main: (event: APIGatewayEvent, context: Context) => any;
+    main: MainFunction;
     event?: APIGatewayEvent;
     context?: Context;
     authentication?: boolean;
     body_data_type?: string;
 }
+
 
 export async function response_wrapper(config: ResponseWrapperConfig)
     : Promise<APIGatewayProxyResult> {
@@ -21,21 +26,23 @@ export async function response_wrapper(config: ResponseWrapperConfig)
         body: "Internal Server Error"
     }
 
-    config.authentication = config.authentication || true
+    config.authentication = config.authentication === false ? false : true;
     config.body_data_type = config.body_data_type || 'json'
-
-    // if (config.authentication) {
-    //     const token = config.event.headers.Authorization
-    //     const user = verifyToken(token)
-    //     if (!user) {
-    //         response.statusCode = 401
-    //         response.body = "Unauthorized"
-    //         return response
-    //     }
-    // }
-
+    
     try {
-        const result = await config.main(config.event, config.context)
+        let authenticated_user = null
+        if (config.authentication) {
+            const token = config.event.headers.Authorization || config.event.headers.authorization
+            authenticated_user = decodeToken(token)
+
+            if (!authenticated_user) {
+                response.statusCode = 401
+                response.body = "Unauthorized User"
+                return response
+            }
+        }
+
+        const result = await config.main(config.event, config.context, authenticated_user)
         response.statusCode = 200
         if (result) {
             response.statusCode = result.statusCode || 200;

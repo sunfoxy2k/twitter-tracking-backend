@@ -4,7 +4,7 @@ export interface VictimInput {
     victim_id: string;
     victim_username: string;
     track_count: number;
-    profile_picture_url: string;
+    profile_picture_url?: string;
     created_time?: Date;
     update_time?: Date;
 }
@@ -140,11 +140,11 @@ export class Victim extends Entity {
 }
 
 export class User {
-    app_username: any;
-    telegram_chat_id: any;
-    subscribe_start: any;
-    subscribe_end: any;
-    track_count: any;
+    app_username: string;
+    telegram_chat_id: string;
+    subscribe_start: Date;
+    subscribe_end: Date;
+    track_count: number;
     constructor(input: UserInput) {
         this.app_username = input.app_username;
         this.telegram_chat_id = input.telegram_chat_id;
@@ -230,16 +230,16 @@ export class Following {
         return {
             userName: this.following_username,
             pictureProfileUrl: this.picture_profile_url,
-            updateTime: this.update_time,
+            updateTime: this.update_time.valueOf(),
             profileUrl: `https://twitter.com/${this.following_username}`,
             id: this.toQueryKey().SK,
         }
     }
 
-    getORMKey() {
+    toQueryKey() {
         return {
             PK: `TWITTER_VICTIM@${this.victim_id}#USER@${this.app_username}`,
-            SK: `UPDATE_TIME@${this.update_time}#TWITTER_FOLLOWING@${this.following_username}`,
+            SK: `UPDATE_TIME@${this.update_time.valueOf()}#TWITTER_FOLLOWING@${this.following_username}`,
         }
     }
 
@@ -265,14 +265,6 @@ export class Following {
             victim_id,
             following_username,
             picture_profile_url,
-
         })
-    }
-
-    toQueryKey() {
-        return {
-            PK: `TWITTER_VICTIM@${this.victim_id}#USER@${this.app_username}`,
-            SK: `UPDATE_TIME@${this.update_time.valueOf()}#TWITTER_FOLLOWING@${this.following_username}`,
-        }
     }
 }

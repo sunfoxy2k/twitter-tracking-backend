@@ -9,11 +9,11 @@ const main = async (event: APIGatewayEvent, context: Context) => {
     console.log('====================================');
     return {
         status: 'healthy',
-        event: event,
-        context: context,
+        event,
+        context,
     }
 }
 
 exports.handler = async (event: APIGatewayEvent, context: Context) => {
-    return await response_wrapper({ main, event, context })
+    return await response_wrapper({ main, event, context, authentication: false })
 }

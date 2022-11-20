@@ -1,20 +1,12 @@
-import { response_wrapper } from "/opt/nodejs/response";
-import { verifyToken } from "/opt/nodejs/authentication";
+import { MainFunction, response_wrapper } from "/opt/nodejs/response";
 import { get_user_by_username } from "/opt/nodejs/database";
 import { Context, APIGatewayEvent } from 'aws-lambda';
 
-const main = async (event: APIGatewayEvent, context: Context) => {
+const main: MainFunction = async (event, context, authenticated_user) => {
     // get api gateway body
-    const jwt = event.headers.Authorization || event.headers.authorization;
-    const app_user = verifyToken(jwt);
-    if (!app_user) {
-        return {
-            statusCode: 401,
-            code: 'UNAUTHORIZED',
-            message: 'Unauthorized'
-        }
-    }
-    return app_user
+    const app_username = authenticated_user.username
+    const user = await get_user_by_username(app_username)
+    return user.toAPI()
 }
 
 exports.handler = async (event: APIGatewayEvent, context: Context) => {

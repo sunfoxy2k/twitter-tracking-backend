@@ -1,4 +1,4 @@
-import { verify, decode } from 'jsonwebtoken'
+import { verify, decode, JwtPayload } from 'jsonwebtoken'
 import { Jwt } from 'jsonwebtoken'
 // import { keys } from './jwks.json'
 import jwt_convert from 'jwk-to-pem'
@@ -23,18 +23,24 @@ const public_jwks = [
 ]
 export const verifyToken = (payload: any) => {
     // const public_key_0 = jwt_convert(keys[0])
-    let result = null
-    const decoded = decode(payload, { complete: true })
-    const kid = decoded.header.kid
-    const public_jwk = public_jwks.find(key => key.kid === kid)
-    if (!public_jwk) {
-        return null
-    }
-    const public_key = jwt_convert(public_jwk)
     try {
-        result = verify(payload, public_key)
+        const decoded = decode(payload, { complete: true })
+        const kid = decoded.header.kid
+        const public_jwk = public_jwks.find(key => key.kid === kid)
+        if (!public_jwk) {
+            return null
+        }
+        const public_key = jwt_convert(public_jwk)
+        return verify(payload, public_key) as JwtPayload
     } catch (error) {
         return null
     }
-    return result
+}
+
+export const decodeToken = (payload: any) => {
+    try {
+        return decode(payload) as JwtPayload
+    } catch (error) {
+        return null
+    }
 }

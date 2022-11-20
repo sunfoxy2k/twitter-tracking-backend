@@ -7,15 +7,19 @@ const VICTIM_GSI = 'trackingIndex'
 const MAX_WRITE_REQUESTS = 25
 
 export const get_user_by_username = async (app_username: string): Promise<User> => {
+    try {
+        const result = await client.get({
+            TableName: TABLE_NAME,
+            Key: {
+                PK: `USER@${app_username}`,
+                SK: `METADATA`
+            }
+        }).promise()
 
-    const result = await client.get({
-        TableName: TABLE_NAME,
-        Key: {
-            PK: `USER@${app_username}`,
-            SK: `METADATA`
-        }
-    }).promise()
-    return User.fromORM(result.Item)
+        return User.fromORM(result.Item)
+    } catch (error) {
+        return null
+    }
 }
 
 export const put_entity = async (entity: Entity) => {
@@ -61,7 +65,7 @@ export const batch_update_following = async (put_followings: Following[], delete
                 RequestItems: {
                     [TABLE_NAME]: chunk.map((entity) => ({
                         DeleteRequest: {
-                            Key: entity.getORMKey(),
+                            Key: entity.toQueryKey(),
                         }
                     })),
                 }
@@ -140,7 +144,7 @@ export const scan_victims_with_cursor = async (cursor: string | DocumentClient.Q
 
 export const list_all_followings_by_victim = async (app_username: string, victim_id: string)
     : Promise<Following[]> => {
-    let params: DocumentClient.QueryInput = {
+    const params: DocumentClient.QueryInput = {
         TableName: TABLE_NAME,
         KeyConditionExpression: `PK = :pk`,
         ExpressionAttributeValues: {
@@ -153,7 +157,7 @@ export const list_all_followings_by_victim = async (app_username: string, victim
         const result = await client.query(params).promise()
         result.Items = result.Items.map((item) => Following.fromORM(item));
         data = [ ...data, ...result.Items ]
-        
+
         cursor = result.LastEvaluatedKey
         params.ExclusiveStartKey = cursor as DocumentClient.QueryInput['ExclusiveStartKey']
     }
@@ -204,16 +208,34 @@ export const list_followings_by_victim_by_user = async (app_username: string, vi
     }
 }
 
-export const update_user_track_count = async (app_username: string, track_count: number) => {
+// export const update_user_track_count = async (app_username: string, track_count: number) => {
+//     try {
+//         // set track count and update last updated time
+//         const params: DocumentClient.UpdateItemInput = {
+//             TableName: TABLE_NAME,
+//             Key: {
+//                 PK: `USER@${app_username}`,
+//                 SK: `METADATA`,
+//             },
+//             UpdateExpression: 'SET trackCount = trackCount + :track_count, updateTime = :update_time',
+//             ExpressionAttributeValues: {
+//                 ':track_count': track_count,
+//                 ':update_time': Date.now(),
+//             },
+//         }
+//         await client.update(params).promise()
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
+
+export const update_victim_track_count = async (victim: Victim, track_count: number) => {
     try {
         // set track count and update last updated time
         const params: DocumentClient.UpdateItemInput = {
             TableName: TABLE_NAME,
-            Key: {
-                PK: `USER@${app_username}`,
-                SK: `METADATA`,
-            },
-            UpdateExpression: 'set trackCount = :track_count, updateTime = :update_time',
+            Key: victim.toQueryKey(),
+            UpdateExpression: 'SET trackCount = :track_count, updateTime = :update_time',
             ExpressionAttributeValues: {
                 ':track_count': track_count,
                 ':update_time': Date.now(),
@@ -225,19 +247,53 @@ export const update_user_track_count = async (app_username: string, track_count:
     }
 }
 
-export const update_victim_track_count = async (victim: Victim, track_count: number) => {
+export const delete_item_by_key = async (pk: string, sk: string) => {
+    try {
+        const params: DocumentClient.DeleteItemInput = {
+            TableName: TABLE_NAME,
+            Key: {
+                PK: pk,
+                SK: sk,
+            }
+        }
+        await client.delete(params).promise()
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const variant_user_track_count = async (app_username: string, variant_track_count: number) => {
     try {
         // set track count and update last updated time
         const params: DocumentClient.UpdateItemInput = {
             TableName: TABLE_NAME,
-            Key: victim.toQueryKey(),
-            UpdateExpression: 'set trackCount = :track_count, updateTime = :update_time',
+            Key: {
+                PK: `USER@${app_username}`,
+                SK: `METADATA`,
+            },
+            UpdateExpression: 'SET trackCount = trackCount + :variant_track_count, updateTime = :update_time',
             ExpressionAttributeValues: {
-                ':track_count': track_count,
+                ':variant_track_count': variant_track_count,
                 ':update_time': Date.now(),
             },
         }
         await client.update(params).promise()
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const get_item_with_key = async (pk: string, sk: string) => {
+    try {
+        const params: DocumentClient.GetItemInput = {
+            TableName: TABLE_NAME,
+            Key: {
+                PK: pk,
+                SK: sk,
+            }
+        }
+        const result = await client.get(params).promise()
+        return result.Item
     } catch (error) {
         console.log(error);
     }

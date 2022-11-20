@@ -1,13 +1,11 @@
-import { response_wrapper } from "/opt/nodejs/response";
+import { MainFunction, response_wrapper } from "/opt/nodejs/response";
 import { list_victims_by_app_username } from "/opt/nodejs/database";
 import { Context, APIGatewayEvent } from 'aws-lambda';
 import { Victim } from "/opt/nodejs/entity";
 
-const main = async (event: APIGatewayEvent, context: Context) => {
-    // get api gateway body
-    // const { id } = event.pathParameters;
-    const id = 'tung'
-    const app_user = await list_victims_by_app_username(id);
+const main: MainFunction = async (event, context, authenticated_user) => {
+
+    const app_user = await list_victims_by_app_username(authenticated_user.username);
     const response = {
         "allIds": [],
         "byId": {}

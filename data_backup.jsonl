@@ -1,17 +1,17 @@
 {
-    "PK": {
-      "S": "USER@tung"
-    },
-    "SK": {
-      "S": "METADATA"
-    },
-    "telegramChatId": {
-      "S": "5785329653"
-    },
-    "trackCount": {
-      "N": "0"
-    }
+  "PK": {
+    "S": "USER@hoangtung"
+  },
+  "SK": {
+    "S": "METADATA"
+  },
+  "telegramChatId": {
+    "S": "5785329653"
+  },
+  "trackCount": {
+    "N": "0"
   }
+}
 
 {
   "PK": {

@@ -167,7 +167,7 @@ Resources:
         GetChannelApiEvent:
           Type: HttpApi
           Properties:
-            Path: /api/list/victim
+            Path: /api/list/victims
             Method: get
             ApiId: !Ref ApiGatewayApi
       Policies:
@@ -185,7 +185,7 @@ Resources:
         GetChannelApiEvent:
           Type: HttpApi
           Properties:
-            Path: /api/list/following/{id}
+            Path: /api/list/following
             Method: get
             ApiId: !Ref ApiGatewayApi
       Policies:
@@ -204,7 +204,7 @@ Resources:
         GetChannelApiEvent:
           Type: HttpApi
           Properties:
-            Path: /api/victim/{id}
+            Path: /api/victim
             Method: post
             ApiId: !Ref ApiGatewayApi
       Policies:
@@ -223,7 +223,7 @@ Resources:
         GetChannelApiEvent:
           Type: HttpApi
           Properties:
-            Path: /api/victim/{id}
+            Path: /api/victim
             Method: delete
             ApiId: !Ref ApiGatewayApi
       Policies:
@@ -236,7 +236,7 @@ Resources:
     Properties:
       CodeUri: dist/private/delete_all_data_in_tables
       Runtime: nodejs16.x
-      Timeout: 10
+      Timeout: 900
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref TrackingUserTable
@@ -252,8 +252,43 @@ Resources:
         GetChannelApiEvent:
           Type: HttpApi
           Properties:
-            Path: /api/telegram/webhook
+            Path: /private/telegram/webhook
             Method: post
+            ApiId: !Ref ApiGatewayApi
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TrackingUserTable
+
+##################################################################################
+  PrivateAddVictim:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dist/private/victim/add_victim/src
+      Runtime: nodejs16.x
+      Timeout: 200
+      Events:
+        GetChannelApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /private/victim
+            Method: post
+            ApiId: !Ref ApiGatewayApi
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TrackingUserTable
+
+  PrivateDeleteVictim:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dist/private/victim/delete_victim/src
+      Runtime: nodejs16.x
+      Timeout: 200
+      Events:
+        GetChannelApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /private/victim
+            Method: delete
             ApiId: !Ref ApiGatewayApi
       Policies:
         - DynamoDBCrudPolicy:
