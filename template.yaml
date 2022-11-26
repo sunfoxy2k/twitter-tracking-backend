@@ -101,8 +101,7 @@ Resources:
           Properties:
             Path: /{proxy+}
             Method: OPTIONS
-            ApiId: 
-              Ref: ApiGatewayApi
+            ApiId: !Ref ApiGatewayApi
 
 ##################################################################################
   TwitterHourlyScheduler:

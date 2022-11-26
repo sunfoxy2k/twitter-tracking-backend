@@ -7,6 +7,7 @@ const main = async (event: APIGatewayEvent, context: Context) => {
     const { message } = body
     const chat_id = message.chat.id
     if (message.text === '/start') {
+        await send_message(chat_id, 'Hello, I am a Twitter Tracking bot, please copy Chat ID below to our website to start receiving updated information')
         await send_message(chat_id, chat_id)
     }
     return {
@@ -28,7 +29,7 @@ const send_message = async (chat_id: string, text: string) => {
         chat_id,
         text,
     })
-    return response.data
+    response.data
 }
 
 exports.handler = async (event: APIGatewayEvent, context: Context) => {

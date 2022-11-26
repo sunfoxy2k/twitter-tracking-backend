@@ -102,7 +102,7 @@ export class Victim extends Entity {
         // const victim_type = orm.victimType
         const victim_username = orm.victimUsername
         const track_count = orm.trackCount || 0
-        const update_time = new Date(orm.updateTime)
+        const update_time = orm.updateTime
 
         return new Victim({
             app_username,
@@ -265,6 +265,7 @@ export class Following {
             victim_id,
             following_username,
             picture_profile_url,
+            update_time,
         })
     }
 }

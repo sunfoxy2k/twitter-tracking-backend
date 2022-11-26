@@ -18,5 +18,5 @@ const main = async () => {
 }
 
 exports.handler = async (event: APIGatewayEvent, context: Context) => {
-    return await response_wrapper({ main })
+    return await response_wrapper({ main, authentication: false })
 }
