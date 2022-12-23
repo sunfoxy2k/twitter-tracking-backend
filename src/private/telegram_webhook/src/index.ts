@@ -1,4 +1,4 @@
-import { response_wrapper } from "/opt/nodejs/response";
+import { responseWrapper } from "/opt/nodejs/response";
 import axios from "axios";
 import { Context, APIGatewayEvent } from 'aws-lambda';
 
@@ -33,5 +33,5 @@ const send_message = async (chat_id: string, text: string) => {
 }
 
 exports.handler = async (event: APIGatewayEvent, context: Context) => {
-    return await response_wrapper({ main, event, context, authentication: false })
+    return await responseWrapper({ main, event, context, authentication: false })
 }

@@ -2,18 +2,18 @@ import { Context, APIGatewayProxyResult, APIGatewayEvent } from 'aws-lambda';
 import { JwtPayload } from 'jsonwebtoken';
 import { verifyToken, decodeToken } from './authentication';
 
-export type MainFunction = (event: APIGatewayEvent, context: Context, authenticated_user?: JwtPayload) => any
+export type MainFunction = (event: APIGatewayEvent, context: Context, authenticatedUser?: JwtPayload) => any
 
 export interface ResponseWrapperConfig {
     main: MainFunction;
     event?: APIGatewayEvent;
     context?: Context;
     authentication?: boolean;
-    body_data_type?: string;
+    bodyDataType?: string;
 }
 
 
-export async function response_wrapper(config: ResponseWrapperConfig)
+export async function responseWrapper(config: ResponseWrapperConfig)
     : Promise<APIGatewayProxyResult> {
     const response = {
         statusCode: 500,
@@ -27,29 +27,29 @@ export async function response_wrapper(config: ResponseWrapperConfig)
     }
 
     config.authentication = config.authentication === false ? false : true;
-    config.body_data_type = config.body_data_type || 'json'
+    config.bodyDataType = config.bodyDataType || 'json'
     
     try {
-        let authenticated_user = null
+        let authenticatedUser = null
         if (config.authentication) {
             const token = config.event.headers.Authorization || config.event.headers.authorization
-            authenticated_user = decodeToken(token)
+            authenticatedUser = decodeToken(token)
 
-            if (!authenticated_user) {
+            if (!authenticatedUser) {
                 response.statusCode = 401
                 response.body = "Unauthorized User"
                 return response
             }
         }
 
-        const result = await config.main(config.event, config.context, authenticated_user)
+        const result = await config.main(config.event, config.context, authenticatedUser)
         response.statusCode = 200
         if (result) {
             response.statusCode = result.statusCode || 200;
             delete result.statusCode
         }
 
-        switch (config.body_data_type) {
+        switch (config.bodyDataType) {
             case 'json':
                 response.headers['Content-Type'] = 'application/json'
                 response.body = JSON.stringify(result);

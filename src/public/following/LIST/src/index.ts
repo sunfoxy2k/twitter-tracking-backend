@@ -1,35 +1,35 @@
-import { MainFunction, response_wrapper } from "/opt/nodejs/response";
-import { list_all_followings_by_victim } from "/opt/nodejs/database";
+import { MainFunction, responseWrapper } from "/opt/nodejs/response";
+import { listAllFollowingsByVictim } from "/opt/nodejs/database";
 import { Context, APIGatewayEvent } from 'aws-lambda';
 
-const main: MainFunction = async (event, context, authenticated_user) => {
+const main: MainFunction = async (event, context, authenticatedUser) => {
     
-    const app_username = authenticated_user.username
+    const appEmail = authenticatedUser.username
     const { id } = event.queryStringParameters;
     
-    let [ created_time, victim_id ] = id.split('#')
-    if (created_time === undefined || victim_id === undefined) {
+    let [ createdTime, victimId ] = id.split('#')
+    if (createdTime === undefined || victimId === undefined) {
         return {
             statusCode: 400,
             code: 'INVALID_ID',
             message: `Invalid id ${id}`
         }
     }
-    victim_id = victim_id.replace('TWITTER_VICTIM@', '')
+    victimId = victimId.replace('TWITTER_VICTIM@', '')
 
-    const followings = await list_all_followings_by_victim(app_username, victim_id);
+    const followings = await listAllFollowingsByVictim(appEmail, victimId);
     const response = {
         "allIds": [],
         "byId": {}
     }
     followings.forEach((item) => {
-        const query_key = item.toQueryKey().SK;
-        response.allIds.push(query_key);
-        response.byId[query_key] = item.toAPI();
+        const queryKey = item.toQueryKey().SK;
+        response.allIds.push({queryKey});
+        response.byId[queryKey] = item.toAPI();
     })
     return response
 }
 
 exports.handler = async (event: APIGatewayEvent, context: Context) => {
-    return await response_wrapper({ main, event, context })
+    return await responseWrapper({ main, event, context })
 }

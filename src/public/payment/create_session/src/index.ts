@@ -1,12 +1,12 @@
-import { MainFunction, response_wrapper } from "/opt/nodejs/response";
+import { MainFunction, responseWrapper } from "/opt/nodejs/response";
 import { Context, APIGatewayEvent } from 'aws-lambda';
 
-const main: MainFunction = async (event, context, authenticated_user) => {
+const main: MainFunction = async (event, context, authenticatedUser) => {
     // get api gateway body
-    const app_username = authenticated_user.username
+    const appEmail = authenticatedUser.username
     
 }
 
 exports.handler = async (event: APIGatewayEvent, context: Context) => {
-    return await response_wrapper({ main, event, context })
+    return await responseWrapper({ main, event, context })
 }

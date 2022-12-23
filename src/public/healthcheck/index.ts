@@ -1,4 +1,4 @@
-import { response_wrapper } from "/opt/nodejs/response";
+import { responseWrapper } from "/opt/nodejs/response";
 import { Context, APIGatewayEvent } from 'aws-lambda';
 
 const main = async (event: APIGatewayEvent, context: Context) => {
@@ -15,5 +15,5 @@ const main = async (event: APIGatewayEvent, context: Context) => {
 }
 
 exports.handler = async (event: APIGatewayEvent, context: Context) => {
-    return await response_wrapper({ main, event, context, authentication: false })
+    return await responseWrapper({ main, event, context, authentication: false })
 }

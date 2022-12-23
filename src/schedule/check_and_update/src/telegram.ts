@@ -1,33 +1,33 @@
 import axios from 'axios';
 import { User, Following, Victim } from '/opt/nodejs/entity';
 
-export const send_message = async (user: User, victim: Victim, new_followings: { [key: string]: Following }, deleted_followings: { [key: string]: Following }) => {
+export const send_message = async (user: User, victim: Victim, newFollowings: { [key: string]: Following }, deletedFollowings: { [key: string]: Following }) => {
     try {
-        let new_followings_str = ''
-        for (const [key, value] of Object.entries(new_followings)) {
-            new_followings_str += `+ @${value.following_username}\n`
+        let newFollowingsStr = ''
+        for (const [key, value] of Object.entries(newFollowings)) {
+            newFollowingsStr += `+ @${value.followingUsername}\n`
         }
 
-        let deleted_followings_str = ''
-        for (const [key, value] of Object.entries(deleted_followings)) {
-            deleted_followings_str += `- @${value.following_username}\n`
+        let deletedFollowingsStr = ''
+        for (const [key, value] of Object.entries(deletedFollowings)) {
+            deletedFollowingsStr += `- @${value.followingUsername}\n`
         }
         console.log('====================================');
-        console.log('user', user.app_username)
-        console.log('victim', victim.victim_username)
-        console.log('new_followings_str', new_followings_str);
-        console.log('deleted_followings_str', deleted_followings_str);
+        console.log('user', user.appEmail)
+        console.log('victim', victim.victimUsername)
+        console.log('newFollowingsStr', newFollowingsStr);
+        console.log('deletedFollowingsStr', deletedFollowingsStr);
         console.log('====================================');
-        if (new_followings_str.length > 0 || deleted_followings_str.length > 0) {
+        if (newFollowingsStr.length > 0 || deletedFollowingsStr.length > 0) {
             const result = await axios.post(`https://api.telegram.org/${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
-                chat_id: user.telegram_chat_id,
+                chat_id: user.telegramChatId,
                 text: `
-        Updated followings from @${victim.victim_username}:
-        => Current following count: ${victim.track_count}
+        Updated followings from @${victim.victimUsername}:
+        => Current following count: ${victim.trackCount}
         * New followings:
-${new_followings_str}
+${newFollowingsStr}
         * Deleted followings:
-${deleted_followings_str}
+${deletedFollowingsStr}
         `,
             })
             console.log('sendMessage Result: ',JSON.stringify(result.data), null, 2);

@@ -4,65 +4,65 @@ import * as twitter from "/opt/nodejs/twitter-utils"
 import * as entity from "/opt/nodejs/entity"
 import { send_message } from "./telegram"
 export class TwitterSchedulerClient {
-    public processing_victims: Victim[] = []
+    public processingVictims: Victim[] = []
     public users: { [key: string]: User } = {}
-    async sync_update_following() {
-        for (let victim of this.processing_victims) {
-            if (this.users[victim.app_username] === undefined) {
-                this.users[victim.app_username] = await database.get_user_by_username(victim.app_username)
+    async syncUpdateFollowing() {
+        for (let victim of this.processingVictims) {
+            if (this.users[victim.appEmail] === undefined) {
+                this.users[victim.appEmail] = await database.getUserByUsername(victim.appEmail)
             }
             const {
-                current_followings,
-                response_followings,
-            } = await this.get_followings_by_id(victim)
-            victim.track_count = Object.keys(response_followings).length
+                currentFollowings,
+                responseFollowings,
+            } = await this.getFollowingsById(victim)
+            victim.trackCount = Object.keys(responseFollowings).length
 
-            for (let key of Object.keys(response_followings)) {
+            for (let key of Object.keys(responseFollowings)) {
                 // remove existed followings from response and current
-                // => what left in response_followings are new followings
-                // => what left in current_followings  are deleted followings
-                if (current_followings[key] !== undefined) {
-                    delete current_followings[key]
-                    delete response_followings[key]
+                // => what left in responseFollowings are new followings
+                // => what left in currentFollowings  are deleted followings
+                if (currentFollowings[key] !== undefined) {
+                    delete currentFollowings[key]
+                    delete responseFollowings[key]
                 }
             }
             Promise.all([
-                database.put_entity(victim),
-                database.batch_update_following(Object.values(response_followings), Object.values(current_followings)),
-                send_message(this.users[victim.app_username], victim, response_followings, current_followings),
+                database.putEntity(victim),
+                database.batchUpdateFollowing(Object.values(responseFollowings), Object.values(currentFollowings)),
+                send_message(this.users[victim.appEmail], victim, responseFollowings, currentFollowings),
             ])
         }
     }
 
-    async get_followings_by_id(victim: entity.Victim) {
+    async getFollowingsById(victim: entity.Victim) {
         try {
             const [
-                current_followings,
-                response_followings,
+                currentFollowings,
+                responseFollowings,
             ] = await Promise.all([
-                database.list_followings_by_victim_by_user(victim.app_username, victim.victim_id),
-                this.get_response_followings_by_id(victim),
+                database.listFollowingsByVictimByUser(victim.appEmail, victim.victimId),
+                this.getResponseFollowingsById(victim),
             ])
 
             return {
-                current_followings,
-                response_followings,
+                currentFollowings,
+                responseFollowings,
             }
         } catch (error) {
             console.log('ERROR update_following_by_id: ', error)
         }
     }
 
-    async get_response_followings_by_id(victim: Victim): Promise<{ [key: string]: entity.Following }> {
+    async getResponseFollowingsById(victim: Victim): Promise<{ [key: string]: entity.Following }> {
         let cursor = '-1'
         let followings: { [key: string]: entity.Following } = {}
         try {
             while (cursor.startsWith('0|') === false) {
-                let response_followings = await twitter.get_following_api(victim.victim_id, cursor)
-                let parse_response_followings = this.parse_followings_from_api_entries(victim.app_username, victim.victim_id, response_followings)
+                let responseFollowings = await twitter.getFollowingApi(victim.victimId, cursor)
+                let parseResponseFollowings = this.parseFollowingsFromApiEntries(victim.appEmail, victim.victimId, responseFollowings)
 
-                followings = { ...followings, ...parse_response_followings.followings }
-                cursor = parse_response_followings.cursor_bottom
+                followings = { ...followings, ...parseResponseFollowings.followings }
+                cursor = parseResponseFollowings.cursorBottom
             }
             return followings
         } catch (error) {
@@ -71,25 +71,25 @@ export class TwitterSchedulerClient {
         }
     }
 
-    parse_followings_from_api_entries(app_username: string, victim_id: string, response_followings)
-        : { followings: { [key: string]: entity.Following }, cursor_top: string, cursor_bottom: string } {
+    parseFollowingsFromApiEntries(appEmail: string, victimId: string, responseFollowings)
+        : { followings: { [key: string]: entity.Following }, cursorTop: string, cursorBottom: string } {
         const followings: { [key: string]: entity.Following } = {}
-        const cursor_top = response_followings[response_followings.length - 1].content.value as twitter.CursorTop['content']['value']
-        response_followings.pop()
-        const cursor_bottom = response_followings[response_followings.length - 1].content.value as twitter.CursorBottom['content']['value']
-        response_followings.pop()
+        const cursorTop = responseFollowings[responseFollowings.length - 1].content.value as twitter.CursorTop['content']['value']
+        responseFollowings.pop()
+        const cursorBottom = responseFollowings[responseFollowings.length - 1].content.value as twitter.CursorBottom['content']['value']
+        responseFollowings.pop()
 
-        response_followings.forEach((following: twitter.FollowingEdge) => {
+        responseFollowings.forEach((following: twitter.FollowingEdge) => {
             const result = following.content.itemContent.user_results.result
             if (result.__typename !== 'UserUnavailable') {
                 followings[result.legacy.screen_name] =
-                    entity.Following.fromTwitterAPI(app_username, victim_id, result)
+                    entity.Following.fromTwitterAPI(appEmail, victimId, result)
             }
         })
         return {
             followings,
-            cursor_top,
-            cursor_bottom,
+            cursorTop,
+            cursorBottom,
         }
     }
 }
