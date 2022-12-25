@@ -15,6 +15,8 @@ export interface UserInput {
     subscribeStart?: Date;
     subscribeEnd?: Date;
     trackCount: number;
+    subscriptionStartTime?: Date;
+    subscriptionEndTime?: Date;
 }
 
 export interface FollowingInput {
@@ -142,14 +144,14 @@ export class Victim extends Entity {
 export class User {
     appEmail: string;
     telegramChatId: string;
-    subscribeStart: Date;
-    subscribeEnd: Date;
     trackCount: number;
+    subscriptionStartTime: Date;
+    subscriptionEndTime: Date;
     constructor(input: UserInput) {
         this.appEmail = input.appEmail;
         this.telegramChatId = input.telegramChatId;
-        // this.subscribeStart = input.subscribeStart || new Date();
-        // this.subscribeEnd = input.subscribeEnd || new Date();
+        this.subscriptionStartTime = input.subscriptionStartTime || new Date();
+        this.subscriptionEndTime = input.subscriptionEndTime || new Date();
         this.trackCount = input.trackCount || 0;
     }
 
@@ -159,8 +161,8 @@ export class User {
             SK: `METADATA`,
             telegramChatId: this.telegramChatId,
             trackCount: this.trackCount || 0,
-            // subscribeStart: this.subscribeStart,
-            // subscribeEnd: this.subscribeEnd,
+            subscriptionStartTime: this.subscriptionStartTime,
+            subscriptionEndTime: this.subscriptionEndTime,
         }
     }
 
@@ -169,8 +171,8 @@ export class User {
             appEmail: this.appEmail,
             telegramChatId: this.telegramChatId,
             trackCount: this.trackCount,
-            // subscribeStart: this.subscribeStart,
-            // subscribeEnd: this.subscribeEnd,
+            subscriptionStartTime: this.subscriptionStartTime,
+            subscriptionEndTime: this.subscriptionEndTime,
         }
     }
 

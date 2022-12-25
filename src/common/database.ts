@@ -299,3 +299,30 @@ export const getItemWithKey = async (pk: string, sk: string) => {
         console.log(error);
     }
 }
+
+export const updateSubscription = async (appEmail: string, startTime: number, endTime: number) => {
+    try {
+        const params: DocumentClient.UpdateItemInput = {
+            TableName: TABLE_NAME,
+            Key: {
+                PK: `USER@${appEmail}`,
+                SK: `METADATA`,
+            },
+            UpdateExpression: 'SET subscriptionStartTime = :startTime, subscriptionEndTime = :endTime, updateTime = :updateTime',
+            ExpressionAttributeValues: {
+                ':startTime': startTime,
+                ':endTime': endTime,
+                ':updateTime': Date.now().valueOf(),
+            }
+        }
+        console.log('update database subscription')
+        console.log({ appEmail })
+        console.log({ startTime })
+        console.log({ endTime })
+        console.log('update database subscription')
+        await client.update(params).promise()
+    } catch (error) {
+        console.log(error);
+    }
+
+}

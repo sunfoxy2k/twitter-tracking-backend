@@ -210,7 +210,6 @@ Resources:
         - DynamoDBCrudPolicy:
             TableName: !Ref TrackingUserTable
 
-##################################################################################
   DeleteVictimUserApi:
     Type: AWS::Serverless::Function
     Properties:
@@ -224,6 +223,24 @@ Resources:
           Properties:
             Path: /api/victim
             Method: delete
+            ApiId: !Ref ApiGatewayApi
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TrackingUserTable
+##################################################################################
+
+  CreatePaymentSession:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dist/public/payment/create_session/src
+      Runtime: nodejs16.x
+      Timeout: 10
+      Events:
+        GetChannelApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /api/session/create
+            Method: post
             ApiId: !Ref ApiGatewayApi
       Policies:
         - DynamoDBCrudPolicy:
@@ -252,6 +269,23 @@ Resources:
           Type: HttpApi
           Properties:
             Path: /private/telegram/webhook
+            Method: post
+            ApiId: !Ref ApiGatewayApi
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TrackingUserTable
+    
+  StripeWebhook:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dist/private/stripe_webhook/src
+      Runtime: nodejs16.x
+      Timeout: 10
+      Events:
+        GetChannelApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /private/stripe/webhook
             Method: post
             ApiId: !Ref ApiGatewayApi
       Policies:
@@ -292,6 +326,7 @@ Resources:
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref TrackingUserTable
+  
 Outputs:
   WebEndpoint:
     Description: "API Gateway endpoint URL for DEV stage"
