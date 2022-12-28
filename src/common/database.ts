@@ -209,27 +209,6 @@ export const listFollowingsByVictimByUser = async (appEmail: string, victimId: s
     }
 }
 
-// export const update_user_trackCount = async (appEmail: string, trackCount: number) => {
-//     try {
-//         // set track count and update last updated time
-//         const params: DocumentClient.UpdateItemInput = {
-//             TableName: TABLE_NAME,
-//             Key: {
-//                 PK: `USER@${appEmail}`,
-//                 SK: `METADATA`,
-//             },
-//             UpdateExpression: 'SET trackCount = trackCount + :trackCount, updateTime = :update_time',
-//             ExpressionAttributeValues: {
-//                 ':trackCount': trackCount,
-//                 ':update_time': Date.now(),
-//             },
-//         }
-//         await client.update(params).promise()
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
-
 export const updateVictimTrackCount = async (victim: Victim, trackCount: number) => {
     try {
         // set track count and update last updated time
@@ -320,6 +299,27 @@ export const updateSubscription = async (appEmail: string, startTime: number, en
         console.log({ startTime })
         console.log({ endTime })
         console.log('update database subscription')
+        await client.update(params).promise()
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const putTelegramChatId = async (appEmail: string, telegramChatId: string) => {
+    try {
+        const params: DocumentClient.UpdateItemInput = {
+            TableName: TABLE_NAME,
+            Key: {
+                PK: `USER@${appEmail}`,
+                SK: `METADATA`,
+            },
+            UpdateExpression: 'SET telegramChatId = :telegramChatId, updateTime = :updateTime',
+            ExpressionAttributeValues: {
+                ':telegramChatId': telegramChatId,
+                ':updateTime': Date.now().valueOf(),
+            }
+        }
+
         await client.update(params).promise()
     } catch (error) {
         console.log(error);
