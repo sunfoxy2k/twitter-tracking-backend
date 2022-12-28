@@ -11,10 +11,10 @@ export interface VictimInput {
 
 export interface UserInput {
     appEmail: string;
-    telegramChatId: string;
+    telegramChatId?: string;
     subscribeStart?: Date;
     subscribeEnd?: Date;
-    trackCount: number;
+    trackCount?: number;
     subscriptionStartTime?: Date;
     subscriptionEndTime?: Date;
 }
@@ -149,7 +149,7 @@ export class User {
     subscriptionEndTime: Date;
     constructor(input: UserInput) {
         this.appEmail = input.appEmail;
-        this.telegramChatId = input.telegramChatId;
+        this.telegramChatId = input.telegramChatId || null;
         this.subscriptionStartTime = input.subscriptionStartTime || new Date();
         this.subscriptionEndTime = input.subscriptionEndTime || new Date();
         this.trackCount = input.trackCount || 0;

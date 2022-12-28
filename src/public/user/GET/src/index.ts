@@ -1,6 +1,5 @@
 import { MainFunction, responseWrapper } from "/opt/nodejs/response";
 import { getUserByUsername } from "/opt/nodejs/database";
-import { Context, APIGatewayEvent } from 'aws-lambda';
 
 const main: MainFunction = async (event, context, authenticatedUser) => {
     // get api gateway body
@@ -9,6 +8,6 @@ const main: MainFunction = async (event, context, authenticatedUser) => {
     return user.toAPI()
 }
 
-exports.handler = async (event: APIGatewayEvent, context: Context) => {
+exports.handler = async (event, context) => {
     return await responseWrapper({ main, event, context })
 }

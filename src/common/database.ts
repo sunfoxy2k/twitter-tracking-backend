@@ -324,5 +324,4 @@ export const updateSubscription = async (appEmail: string, startTime: number, en
     } catch (error) {
         console.log(error);
     }
-
 }
