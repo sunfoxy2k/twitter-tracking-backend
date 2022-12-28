@@ -1,6 +1,7 @@
 import { Context, APIGatewayProxyResult, APIGatewayEvent } from 'aws-lambda';
 import { JwtPayload } from 'jsonwebtoken';
 import { verifyToken, decodeToken } from './authentication';
+import { errorLogger } from './logger';
 
 export type MainFunction = (event: APIGatewayEvent, context: Context, authenticatedUser?: JwtPayload) => any
 
@@ -59,7 +60,7 @@ export async function responseWrapper(config: ResponseWrapperConfig)
                 response.body = result;
         }
     } catch (e) {
-        console.error(`ERROR: `, e)
+        errorLogger('responseWrapper', e)
     }
 
     return response

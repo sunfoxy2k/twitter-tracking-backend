@@ -154,7 +154,23 @@ Resources:
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref TrackingUserTable
-
+  
+  PostAppUserApi:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dist/public/user/POST/src
+      Runtime: nodejs16.x
+      Timeout: 10
+      Events:
+        GetChannelApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /api/user
+            Method: post
+            ApiId: !Ref ApiGatewayApi
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TrackingUserTable
 ##################################################################################
   ListVictimsApi:
     Type: AWS::Serverless::Function
@@ -173,25 +189,6 @@ Resources:
         - DynamoDBCrudPolicy:
             TableName: !Ref TrackingUserTable
 
-##################################################################################
-  ListFollowingsApi:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: dist/public/following/LIST/src
-      Runtime: nodejs16.x
-      Timeout: 100
-      Events:
-        GetChannelApiEvent:
-          Type: HttpApi
-          Properties:
-            Path: /api/list/following
-            Method: get
-            ApiId: !Ref ApiGatewayApi
-      Policies:
-        - DynamoDBCrudPolicy:
-            TableName: !Ref TrackingUserTable
-
-##################################################################################
   PostVictimUserApi:
     Type: AWS::Serverless::Function
     Properties:
@@ -228,6 +225,26 @@ Resources:
         - DynamoDBCrudPolicy:
             TableName: !Ref TrackingUserTable
 ##################################################################################
+  ListFollowingsApi:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dist/public/following/LIST/src
+      Runtime: nodejs16.x
+      Timeout: 100
+      Events:
+        GetChannelApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /api/list/following
+            Method: get
+            ApiId: !Ref ApiGatewayApi
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TrackingUserTable
+
+##################################################################################
+
+##################################################################################
 
   CreatePaymentSession:
     Type: AWS::Serverless::Function
@@ -239,7 +256,24 @@ Resources:
         GetChannelApiEvent:
           Type: HttpApi
           Properties:
-            Path: /api/session/create
+            Path: /api/subscription/create
+            Method: post
+            ApiId: !Ref ApiGatewayApi
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TrackingUserTable
+
+  CancelPayment:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dist/public/payment/cancel_at_end/src
+      Runtime: nodejs16.x
+      Timeout: 10
+      Events:
+        GetChannelApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /api/subscription/cancel
             Method: post
             ApiId: !Ref ApiGatewayApi
       Policies:
@@ -326,7 +360,23 @@ Resources:
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref TrackingUserTable
-  
+##################################################################################
+  PutTelegramChatId:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dist/public/telegram/PUT/src
+      Runtime: nodejs16.x
+      Timeout: 200
+      Events:
+        GetChannelApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /api/telegram/chat_id
+            Method: put
+            ApiId: !Ref ApiGatewayApi
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TrackingUserTable
 Outputs:
   WebEndpoint:
     Description: "API Gateway endpoint URL for DEV stage"
