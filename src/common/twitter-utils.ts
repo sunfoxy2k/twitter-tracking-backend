@@ -16,12 +16,12 @@ const INTERNAL_REQUEST_HEADERS_CRUD = {
     'Content-Type': 'application/json',
 }
 
-const get_user_features_stringify = JSON.stringify({
+const getUserFeaturesStringify = JSON.stringify({
     "verified_phone_label_enabled": false,
     "responsive_web_graphql_timeline_navigation_enabled": false
 })
 
-const get_following_features_stringify = JSON.stringify({
+const getFollowingFeaturesStringify = JSON.stringify({
     "verified_phone_label_enabled": false,
     "responsive_web_graphql_timeline_navigation_enabled": true,
     "unified_cards_ad_metadata_container_dynamic_card_content_query_enabled": true,
@@ -37,19 +37,19 @@ const get_following_features_stringify = JSON.stringify({
     "responsive_web_enhance_cards_enabled": true
 })
 
-const get_user_by_screenname_variables = {
+const getUserByScreennameVariables = {
     "screen_name": "jack",
     "withSafetyModeUserFields": true,
     "withSuperFollowsUserFields": true
 }
 
-const get_user_by_id_variables = {
+const getUserByIdVariables = {
     "userId": "12",
     "withSafetyModeUserFields": true,
     "withSuperFollowsUserFields": true
 }
 
-const get_following_variables = {
+const getFollowingVariables = {
     "userId": "2954164566",
     "count": 200,
     "includePromotedContent": false,
@@ -147,56 +147,56 @@ export interface TwitterFollowingResponseApi {
     }
 }
 
-export const get_twitter_user_by_screenname = async (screen_name: string): Promise<TwitterUserResponseApi> => {
-    get_user_by_screenname_variables.screen_name = screen_name
+export const getTwitterUserByScreenname = async (screenName: string): Promise<TwitterUserResponseApi> => {
+    getUserByScreennameVariables.screen_name = screenName
     const response = await axios.get(`${GET_USER_BY_SCREENNAME_API}`, {
         params: {
-            variables: JSON.stringify(get_user_by_screenname_variables),
-            features: get_user_features_stringify,
+            variables: JSON.stringify(getUserByScreennameVariables),
+            features: getUserFeaturesStringify,
         },
         headers: INTERNAL_REQUEST_HEADERS_CRUD,
     })
     return response.data
 }
 
-export const get_following_count_by_id = async (user_id: string) => {
-    get_user_by_id_variables.userId = user_id
+export const getFollowingCountById = async (userId: string) => {
+    getUserByIdVariables.userId = userId
     const response: { data: TwitterUserResponseApi } = await axios.get(`${GET_USER_BY_ID}`, {
         params: {
-            variables: JSON.stringify(get_user_by_id_variables),
-            features: get_user_features_stringify,
+            variables: JSON.stringify(getUserByIdVariables),
+            features: getUserFeaturesStringify,
         },
         headers: INTERNAL_REQUEST_HEADERS_CRUD,
     })
     return response.data.data.user.result.legacy.friends_count
 }
 
-export const get_following_api = async (victim_id: string, cursor: string) => {
-    get_following_variables.userId = victim_id
-    get_following_variables.cursor = cursor
-    let response_followings: { data: TwitterFollowingResponseApi } = await axios.get(GET_FOLLOWING_WEB_API_URL, {
+export const getFollowingApi = async (victimId: string, cursor: string) => {
+    getFollowingVariables.userId = victimId
+    getFollowingVariables.cursor = cursor
+    let responseFollowings: { data: TwitterFollowingResponseApi } = await axios.get(GET_FOLLOWING_WEB_API_URL, {
         params: {
-            variables: JSON.stringify(get_following_variables),
-            features: get_following_features_stringify,
+            variables: JSON.stringify(getFollowingVariables),
+            features: getFollowingFeaturesStringify,
         },
         headers: INTERNAL_REQUEST_HEADERS_SCHEDULE,
     })
-    return response_followings.data.data.user.result.timeline.timeline.instructions.find(e => e.type === 'TimelineAddEntries').entries
+    return responseFollowings.data.data.user.result.timeline.timeline.instructions.find(e => e.type === 'TimelineAddEntries').entries
 }
 
-export const get_all_following_api = async (app_username: string, victim_id: string): Promise<Following[]> => {
+export const getAllFollowingApi = async (appEmail: string, victimId: string): Promise<Following[]> => {
     let cursor: string | CursorBottom = '-1'
     let all_followings: Following[] = []
     while (cursor.startsWith('0|') === false) {
-        let response_followings = await get_following_api(victim_id, cursor)
-        cursor = response_followings[response_followings.length - 2] as CursorBottom
+        let responseFollowings = await getFollowingApi(victimId, cursor)
+        cursor = responseFollowings[responseFollowings.length - 2] as CursorBottom
         cursor = cursor.content.value as string
-        let edges: FollowingEdge[] = response_followings.slice(0, response_followings.length - 2) as FollowingEdge[]
+        let edges: FollowingEdge[] = responseFollowings.slice(0, responseFollowings.length - 2) as FollowingEdge[]
 
         for (let edge of edges) {
             const result = edge.content.itemContent.user_results.result
             if (result.__typename !== 'UserUnavailable') {
-                all_followings.push(Following.fromTwitterAPI(app_username, victim_id, result))
+                all_followings.push(Following.fromTwitterAPI(appEmail, victimId, result))
             }
         }
     }

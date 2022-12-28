@@ -32,6 +32,20 @@
         {
             "type": "aws-sam",
             "request": "direct-invoke",
+            "name": "twitter-tracking-backend:StripeWebhook",
+            "invokeTarget": {
+                "target": "template",
+                "templatePath": "${workspaceFolder}/template.yaml",
+                "logicalId": "StripeWebhook"
+            },
+            "lambda": {
+                "payload": {},
+                "environmentVariables": {}
+            }
+        },
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
             "name": "twitter-tracking-backend:PrivateAddVictim",
             "invokeTarget": {
                 "target": "template",
@@ -112,6 +126,36 @@
             "sourceMaps": true,
             "outFiles": [
                 "${workspaceRoot}/dist/public/victim/LIST/src"
+            ]
+        },
+        {
+            "name": "Create Payment Session",
+            "type": "node",
+            "request": "attach",
+            "address": "localhost",
+            "port": 9999,
+            "localRoot": "${workspaceRoot}/src/public/payment/create_session/src",
+            "remoteRoot": "/var/task",
+            "protocol": "inspector",
+            "stopOnEntry": false,
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceRoot}/dist/public/payment/create_session/src"
+            ]
+        },
+        {
+            "name": "Stripe Webhook",
+            "type": "node",
+            "request": "attach",
+            "address": "localhost",
+            "port": 9999,
+            "localRoot": "${workspaceRoot}/src/private/stripe_webhook/src",
+            "remoteRoot": "/var/task",
+            "protocol": "inspector",
+            "stopOnEntry": false,
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceRoot}/dist/private/stripe_webhook/src"
             ]
         }
     ]

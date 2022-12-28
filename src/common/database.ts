@@ -6,12 +6,12 @@ const TABLE_NAME = process.env.TABLE_NAME
 const VICTIM_GSI = 'trackingIndex'
 const MAX_WRITE_REQUESTS = 25
 
-export const get_user_by_username = async (app_username: string): Promise<User> => {
+export const getUserByUsername = async (appEmail: string): Promise<User> => {
     try {
         const result = await client.get({
             TableName: TABLE_NAME,
             Key: {
-                PK: `USER@${app_username}`,
+                PK: `USER@${appEmail}`,
                 SK: `METADATA`
             }
         }).promise()
@@ -22,7 +22,7 @@ export const get_user_by_username = async (app_username: string): Promise<User> 
     }
 }
 
-export const put_entity = async (entity: Entity) => {
+export const putEntity = async (entity: Entity) => {
     try {
         await client.put({
             TableName: TABLE_NAME,
@@ -34,11 +34,11 @@ export const put_entity = async (entity: Entity) => {
     }
 }
 
-export const batch_update_following = async (put_followings: Following[], delete_followings: Following[]) => {
+export const batchUpdateFollowing = async (putFollowings: Following[], deleteFollowings: Following[]) => {
     try {
-        let request_promises = []
-        for (let idx = 0; idx < put_followings.length; idx += MAX_WRITE_REQUESTS) {
-            const chunk = put_followings.slice(idx, idx + MAX_WRITE_REQUESTS)
+        let requestPromises = []
+        for (let idx = 0; idx < putFollowings.length; idx += MAX_WRITE_REQUESTS) {
+            const chunk = putFollowings.slice(idx, idx + MAX_WRITE_REQUESTS)
             const params: DocumentClient.BatchWriteItemInput = {
                 RequestItems: {
                     [TABLE_NAME]: chunk.map((entity) => ({
@@ -48,7 +48,7 @@ export const batch_update_following = async (put_followings: Following[], delete
                     }))
                 }
             }
-            request_promises.push(new Promise((resolve, reject) => {
+            requestPromises.push(new Promise((resolve, reject) => {
                 client.batchWrite(params, (err, data) => {
                     if (err) {
                         reject(err)
@@ -59,8 +59,8 @@ export const batch_update_following = async (put_followings: Following[], delete
             }))
         }
 
-        for (let idx = 0; idx < delete_followings.length; idx += MAX_WRITE_REQUESTS) {
-            const chunk = delete_followings.slice(idx, idx + MAX_WRITE_REQUESTS)
+        for (let idx = 0; idx < deleteFollowings.length; idx += MAX_WRITE_REQUESTS) {
+            const chunk = deleteFollowings.slice(idx, idx + MAX_WRITE_REQUESTS)
             const params: DocumentClient.BatchWriteItemInput = {
                 RequestItems: {
                     [TABLE_NAME]: chunk.map((entity) => ({
@@ -70,7 +70,7 @@ export const batch_update_following = async (put_followings: Following[], delete
                     })),
                 }
             }
-            request_promises.push(new Promise((resolve, reject) => {
+            requestPromises.push(new Promise((resolve, reject) => {
                 client.batchWrite(params, (err, data) => {
                     if (err) {
                         reject(err)
@@ -81,54 +81,54 @@ export const batch_update_following = async (put_followings: Following[], delete
             }))
         }
 
-        await Promise.all(request_promises)
+        await Promise.all(requestPromises)
     } catch (error) {
         console.log(error);
     }
 }
 
-export const scan_all_victims = async (victim_type = 'twitter') => {
+export const scanAllVictims = async (victimType = 'twitter') => {
     try {
         let params: DocumentClient.QueryInput = {
             TableName: TABLE_NAME,
             IndexName: VICTIM_GSI,
-            KeyConditionExpression: 'victimType = :victim_type',
+            KeyConditionExpression: 'victimType = :victimType',
             ExpressionAttributeValues: {
-                ':victim_type': victim_type,
+                ':victimType': victimType,
             },
         }
         let cursor: string | DocumentClient.QueryInput['ExclusiveStartKey'] = 'dummy'
-        let result_all = {
+        let resultAll = {
             Items: [],
             Count: 0,
             ScannedCount: 0,
         }
         while (cursor) {
             const result = await client.query(params).promise()
-            result_all.Items = [...result_all.Items,
+            resultAll.Items = [...resultAll.Items,
             ...result.Items.map((item) => Victim.fromORM(item))
             ]
-            result_all.Count += result.Count
-            result_all.ScannedCount += result.ScannedCount
+            resultAll.Count += result.Count
+            resultAll.ScannedCount += result.ScannedCount
 
             cursor = result.LastEvaluatedKey
             params.ExclusiveStartKey = cursor
         }
 
-        return result_all;
+        return resultAll;
     } catch (error) {
         console.log(error);
     }
 }
 
-export const scan_victims_with_cursor = async (cursor: string | DocumentClient.QueryInput['ExclusiveStartKey'], victim_type = 'twitter') => {
+export const scanVictimsWithCursor = async (cursor: string | DocumentClient.QueryInput['ExclusiveStartKey'], victimType = 'twitter') => {
     try {
         let params: DocumentClient.QueryInput = {
             TableName: TABLE_NAME,
             IndexName: VICTIM_GSI,
-            KeyConditionExpression: 'victimType = :victim_type',
+            KeyConditionExpression: 'victimType = :victimType',
             ExpressionAttributeValues: {
-                ':victim_type': victim_type,
+                ':victimType': victimType,
             },
         }
         if (cursor && cursor !== 'dummy') {
@@ -142,15 +142,16 @@ export const scan_victims_with_cursor = async (cursor: string | DocumentClient.Q
     }
 }
 
-export const list_all_followings_by_victim = async (app_username: string, victim_id: string)
+export const listAllFollowingsByVictim = async (appEmail: string, victimId: string)
     : Promise<Following[]> => {
     const params: DocumentClient.QueryInput = {
         TableName: TABLE_NAME,
         KeyConditionExpression: `PK = :pk`,
         ExpressionAttributeValues: {
-            ':pk': `TWITTER_VICTIM@${victim_id}#USER@${app_username}`,
+            ':pk': `TWITTER_VICTIM@${victimId}#USER@${appEmail}`,
         }
     }
+
     let data = []
     let cursor: string | DocumentClient.QueryInput['ExclusiveStartKey'] = 'dummy'
     while(cursor) {
@@ -165,13 +166,13 @@ export const list_all_followings_by_victim = async (app_username: string, victim
     return data
 }
 
-export const list_victims_by_app_username = async (app_username: string, victim_type = 'twitter') => {
+export const listVictimsByAppEmail = async (appEmail: string, victimType = 'twitter') => {
     try {
         let params = {
             TableName: TABLE_NAME,
             KeyConditionExpression: `PK = :pk and begins_with(SK, :sk)`,
             ExpressionAttributeValues: {
-                ':pk': `USER@${app_username}`,
+                ':pk': `USER@${appEmail}`,
                 ':sk': `CREATED_TIME@`,
             }
         }
@@ -186,21 +187,21 @@ export const list_victims_by_app_username = async (app_username: string, victim_
     }
 }
 
-export const list_followings_by_victim_by_user = async (app_username: string, victim_id: string)
+export const listFollowingsByVictimByUser = async (appEmail: string, victimId: string)
 : Promise<{[key: string]: Following}> => {
     try {
         let params: DocumentClient.QueryInput = {
             TableName: TABLE_NAME,
             KeyConditionExpression: `PK = :pk`,
             ExpressionAttributeValues: {
-                ':pk': `TWITTER_VICTIM@${victim_id}#USER@${app_username}`,
+                ':pk': `TWITTER_VICTIM@${victimId}#USER@${appEmail}`,
             }
         }
         const result = await client.query(params).promise()
         let data = {}
         for (let item of result.Items) {
             const following = Following.fromORM(item)
-            data[following.following_username] = following
+            data[following.followingUsername] = following
         }
         return data
     } catch (error) {
@@ -208,36 +209,15 @@ export const list_followings_by_victim_by_user = async (app_username: string, vi
     }
 }
 
-// export const update_user_track_count = async (app_username: string, track_count: number) => {
-//     try {
-//         // set track count and update last updated time
-//         const params: DocumentClient.UpdateItemInput = {
-//             TableName: TABLE_NAME,
-//             Key: {
-//                 PK: `USER@${app_username}`,
-//                 SK: `METADATA`,
-//             },
-//             UpdateExpression: 'SET trackCount = trackCount + :track_count, updateTime = :update_time',
-//             ExpressionAttributeValues: {
-//                 ':track_count': track_count,
-//                 ':update_time': Date.now(),
-//             },
-//         }
-//         await client.update(params).promise()
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
-
-export const update_victim_track_count = async (victim: Victim, track_count: number) => {
+export const updateVictimTrackCount = async (victim: Victim, trackCount: number) => {
     try {
         // set track count and update last updated time
         const params: DocumentClient.UpdateItemInput = {
             TableName: TABLE_NAME,
             Key: victim.toQueryKey(),
-            UpdateExpression: 'SET trackCount = :track_count, updateTime = :update_time',
+            UpdateExpression: 'SET trackCount = :trackCount, updateTime = :update_time',
             ExpressionAttributeValues: {
-                ':track_count': track_count,
+                ':trackCount': trackCount,
                 ':update_time': Date.now(),
             },
         }
@@ -247,7 +227,7 @@ export const update_victim_track_count = async (victim: Victim, track_count: num
     }
 }
 
-export const delete_item_by_key = async (pk: string, sk: string) => {
+export const deleteItemByKey = async (pk: string, sk: string) => {
     try {
         const params: DocumentClient.DeleteItemInput = {
             TableName: TABLE_NAME,
@@ -262,18 +242,18 @@ export const delete_item_by_key = async (pk: string, sk: string) => {
     }
 }
 
-export const variant_user_track_count = async (app_username: string, variant_track_count: number) => {
+export const variantUserTrackCount = async (appEmail: string, variant_trackCount: number) => {
     try {
         // set track count and update last updated time
         const params: DocumentClient.UpdateItemInput = {
             TableName: TABLE_NAME,
             Key: {
-                PK: `USER@${app_username}`,
+                PK: `USER@${appEmail}`,
                 SK: `METADATA`,
             },
-            UpdateExpression: 'SET trackCount = trackCount + :variant_track_count, updateTime = :update_time',
+            UpdateExpression: 'SET trackCount = trackCount + :variant_trackCount, updateTime = :update_time',
             ExpressionAttributeValues: {
-                ':variant_track_count': variant_track_count,
+                ':variant_trackCount': variant_trackCount,
                 ':update_time': Date.now(),
             },
         }
@@ -283,7 +263,7 @@ export const variant_user_track_count = async (app_username: string, variant_tra
     }
 }
 
-export const get_item_with_key = async (pk: string, sk: string) => {
+export const getItemWithKey = async (pk: string, sk: string) => {
     try {
         const params: DocumentClient.GetItemInput = {
             TableName: TABLE_NAME,
@@ -294,6 +274,53 @@ export const get_item_with_key = async (pk: string, sk: string) => {
         }
         const result = await client.get(params).promise()
         return result.Item
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const updateSubscription = async (appEmail: string, startTime: number, endTime: number) => {
+    try {
+        const params: DocumentClient.UpdateItemInput = {
+            TableName: TABLE_NAME,
+            Key: {
+                PK: `USER@${appEmail}`,
+                SK: `METADATA`,
+            },
+            UpdateExpression: 'SET subscriptionStartTime = :startTime, subscriptionEndTime = :endTime, updateTime = :updateTime',
+            ExpressionAttributeValues: {
+                ':startTime': startTime,
+                ':endTime': endTime,
+                ':updateTime': Date.now().valueOf(),
+            }
+        }
+        console.log('update database subscription')
+        console.log({ appEmail })
+        console.log({ startTime })
+        console.log({ endTime })
+        console.log('update database subscription')
+        await client.update(params).promise()
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const putTelegramChatId = async (appEmail: string, telegramChatId: string) => {
+    try {
+        const params: DocumentClient.UpdateItemInput = {
+            TableName: TABLE_NAME,
+            Key: {
+                PK: `USER@${appEmail}`,
+                SK: `METADATA`,
+            },
+            UpdateExpression: 'SET telegramChatId = :telegramChatId, updateTime = :updateTime',
+            ExpressionAttributeValues: {
+                ':telegramChatId': telegramChatId,
+                ':updateTime': Date.now().valueOf(),
+            }
+        }
+
+        await client.update(params).promise()
     } catch (error) {
         console.log(error);
     }

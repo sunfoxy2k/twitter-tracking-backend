@@ -1,0 +1,2361 @@
+2022-12-25T15:11:07.359Z	abf51fc1-4ab2-4fd4-907b-e9a7ec684205	INFO	asdasdasdasd
+2022-12-25T15:11:07.363Z	abf51fc1-4ab2-4fd4-907b-e9a7ec684205	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1094',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981061,v1=d7fa1480db2f4f3ac8804dfa8de9ab2f6d4e225f0e76a8a6ac929fe316abb05c,v0=2294cfcf0419e42c084db6d13a21947493a6938b3405994e40fea598a1a31907',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:11:07.363Z	abf51fc1-4ab2-4fd4-907b-e9a7ec684205	INFO	asdasdasdasd
+2022-12-25T15:11:07.364Z	abf51fc1-4ab2-4fd4-907b-e9a7ec684205	INFO	Unhandled event type customer.created
+END RequestId: abf51fc1-4ab2-4fd4-907b-e9a7ec684205
+REPORT RequestId: abf51fc1-4ab2-4fd4-907b-e9a7ec684205	Init Duration: 0.32 ms	Duration: 320.55 ms	Billed Duration: 321 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:11:07.469Z	9aa173a8-fc25-4e1a-9de3-065bcdefabb2	INFO	asdasdasdasd
+2022-12-25T15:11:07.473Z	9aa173a8-fc25-4e1a-9de3-065bcdefabb2	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1479',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981061,v1=f4d87526f7529d694a3f31e0100c6b84ba7a31b2098dfa23e0c9b10b4763a0fa,v0=971c1b31523c3473aae7a33a9c801b8d2a298e710d841ddb97fa57a7e9c5c825',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:11:07.473Z	9aa173a8-fc25-4e1a-9de3-065bcdefabb2	INFO	asdasdasdasd
+2022-12-25T15:11:07.475Z	9aa173a8-fc25-4e1a-9de3-065bcdefabb2	INFO	Unhandled event type payment_method.attached
+END RequestId: 9aa173a8-fc25-4e1a-9de3-065bcdefabb2
+REPORT RequestId: 9aa173a8-fc25-4e1a-9de3-065bcdefabb2	Init Duration: 0.10 ms	Duration: 293.39 ms	Billed Duration: 294 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:11:07.901Z	1516f0aa-7242-4131-ac47-a77bf4edf4a1	INFO	asdasdasdasd
+2022-12-25T15:11:07.906Z	1516f0aa-7242-4131-ac47-a77bf4edf4a1	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '895',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981062,v1=79299dc55cf892b865dff985591937b0dabc2250778e64a2d8c93658cfa34cbf,v0=0a2deabbb3ff81d01aa8ec081d4fd09e0acb4b5023b4126390253f04ae14b1eb',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:11:07.906Z	1516f0aa-7242-4131-ac47-a77bf4edf4a1	INFO	asdasdasdasd
+2022-12-25T15:11:07.907Z	1516f0aa-7242-4131-ac47-a77bf4edf4a1	INFO	Unhandled event type product.created
+END RequestId: 1516f0aa-7242-4131-ac47-a77bf4edf4a1
+REPORT RequestId: 1516f0aa-7242-4131-ac47-a77bf4edf4a1	Init Duration: 0.10 ms	Duration: 410.89 ms	Billed Duration: 411 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 3ee53f90-271b-4863-be6f-d985209dab8d Version: $LATEST
+2022-12-25T15:11:09.203Z	a31de554-aebf-4639-89b1-692247577238	INFO	asdasdasdasd
+2022-12-25T15:11:09.206Z	a31de554-aebf-4639-89b1-692247577238	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1082',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981062,v1=8dbde1a246e508ff3049528ba889b56d7993393bd3271c2f8f78ed1630c5d188,v0=908d461b07a8a15da5e2db2c432a2ed2ad0796c602077c33421a5f8471c16045',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:11:09.207Z	a31de554-aebf-4639-89b1-692247577238	INFO	asdasdasdasd
+2022-12-25T15:11:09.208Z	a31de554-aebf-4639-89b1-692247577238	INFO	Unhandled event type price.created
+END RequestId: a31de554-aebf-4639-89b1-692247577238
+REPORT RequestId: a31de554-aebf-4639-89b1-692247577238	Init Duration: 0.12 ms	Duration: 351.94 ms	Billed Duration: 352 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:11:09.368Z	3ee53f90-271b-4863-be6f-d985209dab8d	INFO	asdasdasdasd
+2022-12-25T15:11:09.371Z	3ee53f90-271b-4863-be6f-d985209dab8d	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '904',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981062,v1=4a54ea8fbc45f173e577ad0b8ee0ddf2b4756aeb1d3e0de84940c2e030d5d2eb,v0=fa80bf69183ade38d3de5181214cd0cc53e8217ca012a092635824ab87de7156',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:11:09.371Z	3ee53f90-271b-4863-be6f-d985209dab8d	INFO	asdasdasdasd
+2022-12-25T15:11:09.373Z	3ee53f90-271b-4863-be6f-d985209dab8d	INFO	Unhandled event type plan.created
+END RequestId: 3ee53f90-271b-4863-be6f-d985209dab8d
+REPORT RequestId: 3ee53f90-271b-4863-be6f-d985209dab8d	Init Duration: 1.47 ms	Duration: 371.43 ms	Billed Duration: 372 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:11:13.298Z	56f485e0-bee2-4504-9d8a-b5c7efb5d7f5	INFO	asdasdasdasd
+2022-12-25T15:11:13.302Z	56f485e0-bee2-4504-9d8a-b5c7efb5d7f5	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '3031',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981065,v1=2e010cf98c3ddef3d21d111f86794b5d8808007c633a6178cd5215727c73e1a1,v0=48552636a744a815fabe3323a670d808b4d1ca23ddda6d741230c361c51918f8',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:11:13.303Z	56f485e0-bee2-4504-9d8a-b5c7efb5d7f5	INFO	asdasdasdasd
+2022-12-25T15:11:13.304Z	56f485e0-bee2-4504-9d8a-b5c7efb5d7f5	INFO	Unhandled event type charge.succeeded
+END RequestId: 56f485e0-bee2-4504-9d8a-b5c7efb5d7f5
+REPORT RequestId: 56f485e0-bee2-4504-9d8a-b5c7efb5d7f5	Init Duration: 0.11 ms	Duration: 306.79 ms	Billed Duration: 307 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 1b4681af-682a-418c-8dfe-20c3130a62aa Version: $LATEST
+START RequestId: 89425783-caaa-49e9-8e25-3fc5142b76c4 Version: $LATEST
+START RequestId: fc935bf1-9085-4c34-988d-96baa60bcec7 Version: $LATEST
+START RequestId: d650cf7a-9f39-48e0-8225-1188c49470b1 Version: $LATEST
+2022-12-25T15:11:14.091Z	1b4681af-682a-418c-8dfe-20c3130a62aa	INFO	asdasdasdasd
+2022-12-25T15:11:14.096Z	1b4681af-682a-418c-8dfe-20c3130a62aa	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6269',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981065,v1=445494fec8e8eb89e1ceec5c9ba62fced1b225ef6d8532c7998a26e6b2a7acf0,v0=1d3ea99a035e5c7cc8df6208a1e16bce18e39fbd7293516bea2c549dffd82d01',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:11:14.096Z	1b4681af-682a-418c-8dfe-20c3130a62aa	INFO	asdasdasdasd
+2022-12-25T15:11:14.097Z	1b4681af-682a-418c-8dfe-20c3130a62aa	INFO	Unhandled event type invoice.paid
+END RequestId: 1b4681af-682a-418c-8dfe-20c3130a62aa
+REPORT RequestId: 1b4681af-682a-418c-8dfe-20c3130a62aa	Init Duration: 0.02 ms	Duration: 494.28 ms	Billed Duration: 495 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: aa64609b-86d2-449f-98ae-a93ff870d3d9 Version: $LATEST
+START RequestId: a1c74ab2-1937-4f78-b45b-d04ac30c9fe0 Version: $LATEST
+2022-12-25T15:11:14.333Z	89425783-caaa-49e9-8e25-3fc5142b76c4	INFO	asdasdasdasd
+2022-12-25T15:11:14.339Z	89425783-caaa-49e9-8e25-3fc5142b76c4	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '4796',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981065,v1=d6b4c19f88ec67fc0e19949ccf45c1cfb10246821827db84bada78440693b8d3,v0=92d4c81c1317e1cc25450f21a3b217554ee2910fe4efcb22c2484ee608844733',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:11:14.341Z	89425783-caaa-49e9-8e25-3fc5142b76c4	INFO	asdasdasdasd
+2022-12-25T15:11:14.342Z	89425783-caaa-49e9-8e25-3fc5142b76c4	INFO	Unhandled event type customer.subscription.created
+2022-12-25T15:11:14.313Z	fc935bf1-9085-4c34-988d-96baa60bcec7	INFO	asdasdasdasd
+END RequestId: 89425783-caaa-49e9-8e25-3fc5142b76c4
+REPORT RequestId: 89425783-caaa-49e9-8e25-3fc5142b76c4	Init Duration: 0.30 ms	Duration: 760.58 ms	Billed Duration: 761 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:11:14.373Z	fc935bf1-9085-4c34-988d-96baa60bcec7	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1154',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981065,v1=0f04082ea1844eadf775133a9d37455c31ca4adca1a9be06316341a41e00c3e5,v0=83f6ce2a8ad8a1616828db62faed65e397d77ca7851c6a39fa256674179f93a4',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:11:14.373Z	fc935bf1-9085-4c34-988d-96baa60bcec7	INFO	asdasdasdasd
+2022-12-25T15:11:14.375Z	fc935bf1-9085-4c34-988d-96baa60bcec7	INFO	Unhandled event type customer.updated
+END RequestId: fc935bf1-9085-4c34-988d-96baa60bcec7
+REPORT RequestId: fc935bf1-9085-4c34-988d-96baa60bcec7	Init Duration: 0.18 ms	Duration: 657.63 ms	Billed Duration: 658 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:11:14.729Z	aa64609b-86d2-449f-98ae-a93ff870d3d9	INFO	asdasdasdasd
+2022-12-25T15:11:14.733Z	aa64609b-86d2-449f-98ae-a93ff870d3d9	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6274',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981065,v1=021275f77238c29f4b5cd69200f9a8eb27a11de1aa895e0168aa3a8f23f73830,v0=5599fb212be6e3ccddc8073738965ea60569d1f95a6b4fa3dd025d4941f12d2c',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:11:14.733Z	aa64609b-86d2-449f-98ae-a93ff870d3d9	INFO	asdasdasdasd
+2022-12-25T15:11:14.735Z	aa64609b-86d2-449f-98ae-a93ff870d3d9	INFO	Unhandled event type invoice.finalized
+END RequestId: aa64609b-86d2-449f-98ae-a93ff870d3d9
+REPORT RequestId: aa64609b-86d2-449f-98ae-a93ff870d3d9	Init Duration: 0.16 ms	Duration: 561.82 ms	Billed Duration: 562 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:11:14.823Z	d650cf7a-9f39-48e0-8225-1188c49470b1	INFO	asdasdasdasd
+2022-12-25T15:11:14.836Z	d650cf7a-9f39-48e0-8225-1188c49470b1	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6272',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981065,v1=641b6c1093d9253a18c3f6c06688b1948509fcae85c41eb5fbc0868bb8b5dfa9,v0=c82ee7e3ad6c78642416179df9079215172dd94f511707066021c275c839e106',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:11:14.843Z	d650cf7a-9f39-48e0-8225-1188c49470b1	INFO	asdasdasdasd
+2022-12-25T15:11:14.845Z	d650cf7a-9f39-48e0-8225-1188c49470b1	INFO	Unhandled event type invoice.created
+END RequestId: d650cf7a-9f39-48e0-8225-1188c49470b1
+REPORT RequestId: d650cf7a-9f39-48e0-8225-1188c49470b1	Init Duration: 0.64 ms	Duration: 782.32 ms	Billed Duration: 783 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:11:14.922Z	a1c74ab2-1937-4f78-b45b-d04ac30c9fe0	INFO	asdasdasdasd
+2022-12-25T15:11:14.931Z	a1c74ab2-1937-4f78-b45b-d04ac30c9fe0	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6282',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981065,v1=7bfd25ad57223aaf4ff561bb05ef21711392a0d5f46679afef19ed4c88201bfd,v0=109c830d2a1f197ea34ec26eb66c83d77a65b8dbf8ed9e3275885539c30a13e7',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:11:14.931Z	a1c74ab2-1937-4f78-b45b-d04ac30c9fe0	INFO	asdasdasdasd
+2022-12-25T15:11:14.942Z	a1c74ab2-1937-4f78-b45b-d04ac30c9fe0	INFO	Unhandled event type invoice.payment_succeeded
+END RequestId: a1c74ab2-1937-4f78-b45b-d04ac30c9fe0
+REPORT RequestId: a1c74ab2-1937-4f78-b45b-d04ac30c9fe0	Init Duration: 5.25 ms	Duration: 695.95 ms	Billed Duration: 696 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:11:15.018Z	e58926a5-9949-4040-9df4-b915f8a6894f	INFO	asdasdasdasd
+2022-12-25T15:11:15.039Z	e58926a5-9949-4040-9df4-b915f8a6894f	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1953',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981066,v1=033fb6d9aa3112193254e4a7880b70cbad2034f9dad3815465a48054dfb0abbb,v0=b3895c7e39b84604761af90aa6521d19028f976f613e0125f50e268225c7a2f7',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:11:15.039Z	e58926a5-9949-4040-9df4-b915f8a6894f	INFO	asdasdasdasd
+2022-12-25T15:11:15.041Z	e58926a5-9949-4040-9df4-b915f8a6894f	INFO	Unhandled event type payment_intent.succeeded
+END RequestId: e58926a5-9949-4040-9df4-b915f8a6894f
+REPORT RequestId: e58926a5-9949-4040-9df4-b915f8a6894f	Init Duration: 2.07 ms	Duration: 733.94 ms	Billed Duration: 734 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:11:15.190Z	7a0916d0-3f73-4a86-9c98-615a5e9ea6dd	INFO	asdasdasdasd
+2022-12-25T15:11:15.194Z	7a0916d0-3f73-4a86-9c98-615a5e9ea6dd	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '4901',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981066,v1=388762d8334d527884df70ffbcbd53b6b1df5f090e28180ad6bf2fab41f39012,v0=198ab1b5158037c01caeca37b6d2fee89b0f8bc59db2db8b3103e7761da5f2d2',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:11:15.194Z	7a0916d0-3f73-4a86-9c98-615a5e9ea6dd	INFO	asdasdasdasd
+2022-12-25T15:11:15.195Z	7a0916d0-3f73-4a86-9c98-615a5e9ea6dd	INFO	Subscription updated: 
+2022-12-25T15:11:15.196Z	7a0916d0-3f73-4a86-9c98-615a5e9ea6dd	INFO	{
+  "id": "sub_1MIvqtKGvMxyE2EO8ceotUxt",
+  "object": "subscription",
+  "application": null,
+  "application_fee_percent": null,
+  "automatic_tax": {
+    "enabled": false
+  },
+  "billing_cycle_anchor": 1671981063,
+  "billing_thresholds": null,
+  "cancel_at": null,
+  "cancel_at_period_end": false,
+  "canceled_at": null,
+  "collection_method": "charge_automatically",
+  "created": 1671981063,
+  "currency": "usd",
+  "current_period_end": 1674659463,
+  "current_period_start": 1671981063,
+  "customer": "cus_N31uNBUWG4n5LE",
+  "days_until_due": null,
+  "default_payment_method": null,
+  "default_source": null,
+  "default_tax_rates": [],
+  "description": null,
+  "discount": null,
+  "ended_at": null,
+  "items": {
+    "object": "list",
+    "data": [
+      {
+        "id": "si_N31ux5B5EQYe0l",
+        "object": "subscription_item",
+        "billing_thresholds": null,
+        "created": 1671981063,
+        "metadata": {},
+        "plan": {
+          "id": "price_1MIvqsKGvMxyE2EO0zMmrcbi",
+          "object": "plan",
+          "active": true,
+          "aggregate_usage": null,
+          "amount": 1500,
+          "amount_decimal": "1500",
+          "billing_scheme": "per_unit",
+          "created": 1671981062,
+          "currency": "usd",
+          "interval": "month",
+          "interval_count": 1,
+          "livemode": false,
+          "metadata": {},
+          "nickname": null,
+          "product": "prod_N31uA1RzY5zXD5",
+          "tiers_mode": null,
+          "transform_usage": null,
+          "trial_period_days": null,
+          "usage_type": "licensed"
+        },
+        "price": {
+          "id": "price_1MIvqsKGvMxyE2EO0zMmrcbi",
+          "object": "price",
+          "active": true,
+          "billing_scheme": "per_unit",
+          "created": 1671981062,
+          "currency": "usd",
+          "custom_unit_amount": null,
+          "livemode": false,
+          "lookup_key": null,
+          "metadata": {},
+          "nickname": null,
+          "product": "prod_N31uA1RzY5zXD5",
+          "recurring": {
+            "aggregate_usage": null,
+            "interval": "month",
+            "interval_count": 1,
+            "trial_period_days": null,
+            "usage_type": "licensed"
+          },
+          "tax_behavior": "unspecified",
+          "tiers_mode": null,
+          "transform_quantity": null,
+          "type": "recurring",
+          "unit_amount": 1500,
+          "unit_amount_decimal": "1500"
+        },
+        "quantity": 1,
+        "subscription": "sub_1MIvqtKGvMxyE2EO8ceotUxt",
+        "tax_rates": []
+      }
+    ],
+    "has_more": false,
+    "total_count": 1,
+    "url": "/v1/subscription_items?subscription=sub_1MIvqtKGvMxyE2EO8ceotUxt"
+  },
+  "latest_invoice": "in_1MIvqtKGvMxyE2EOQj0f22Mm",
+  "livemode": false,
+  "metadata": {
+    "foo": "bar"
+  },
+  "next_pending_invoice_item_invoice": null,
+  "on_behalf_of": null,
+  "pause_collection": null,
+  "payment_settings": {
+    "payment_method_options": null,
+    "payment_method_types": null,
+    "save_default_payment_method": "off"
+  },
+  "pending_invoice_item_interval": null,
+  "pending_setup_intent": null,
+  "pending_update": null,
+  "plan": {
+    "id": "price_1MIvqsKGvMxyE2EO0zMmrcbi",
+    "object": "plan",
+    "active": true,
+    "aggregate_usage": null,
+    "amount": 1500,
+    "amount_decimal": "1500",
+    "billing_scheme": "per_unit",
+    "created": 1671981062,
+    "currency": "usd",
+    "interval": "month",
+    "interval_count": 1,
+    "livemode": false,
+    "metadata": {},
+    "nickname": null,
+    "product": "prod_N31uA1RzY5zXD5",
+    "tiers_mode": null,
+    "transform_usage": null,
+    "trial_period_days": null,
+    "usage_type": "licensed"
+  },
+  "quantity": 1,
+  "schedule": null,
+  "start_date": 1671981063,
+  "status": "active",
+  "test_clock": null,
+  "transfer_data": null,
+  "trial_end": null,
+  "trial_start": null
+}
+END RequestId: 7a0916d0-3f73-4a86-9c98-615a5e9ea6dd
+REPORT RequestId: 7a0916d0-3f73-4a86-9c98-615a5e9ea6dd	Init Duration: 0.30 ms	Duration: 763.86 ms	Billed Duration: 764 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:11:15.222Z	a0b9f630-a1e3-490f-b929-727e25eb78af	INFO	asdasdasdasd
+2022-12-25T15:11:15.226Z	a0b9f630-a1e3-490f-b929-727e25eb78af	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1912',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981066,v1=614f40a6cd15a228f9f528414a275c9f723744f50ee2bd9ac1e84a2085a0878a,v0=78eb1b1a3e030462c579c267b2d07f2d6b0accdb2723b901723bcda58eb6be98',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:11:15.226Z	a0b9f630-a1e3-490f-b929-727e25eb78af	INFO	asdasdasdasd
+2022-12-25T15:11:15.228Z	a0b9f630-a1e3-490f-b929-727e25eb78af	INFO	Unhandled event type payment_intent.created
+END RequestId: a0b9f630-a1e3-490f-b929-727e25eb78af
+REPORT RequestId: a0b9f630-a1e3-490f-b929-727e25eb78af	Init Duration: 5.28 ms	Duration: 903.12 ms	Billed Duration: 904 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: f04af7f6-e293-4c1a-9b4c-f6287d6d9330 Version: $LATEST
+START RequestId: cfa40135-a8cb-4288-8a32-828d3c26eec7 Version: $LATEST
+2022-12-25T15:20:37.384Z	f04af7f6-e293-4c1a-9b4c-f6287d6d9330	INFO	asdasdasdasd
+2022-12-25T15:20:37.394Z	f04af7f6-e293-4c1a-9b4c-f6287d6d9330	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1955',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981630,v1=470c62d4673c63303f384b7f1a52b6a93edf2947e13ebffb6e02f2322b1d45b3,v0=9bcebe39b07feb5a798cae4184d667fb67b171511872c44555cf818056f22220',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:20:37.394Z	f04af7f6-e293-4c1a-9b4c-f6287d6d9330	INFO	asdasdasdasd
+2022-12-25T15:20:37.395Z	f04af7f6-e293-4c1a-9b4c-f6287d6d9330	INFO	Unhandled event type payment_intent.succeeded
+END RequestId: f04af7f6-e293-4c1a-9b4c-f6287d6d9330
+REPORT RequestId: f04af7f6-e293-4c1a-9b4c-f6287d6d9330	Init Duration: 0.25 ms	Duration: 456.45 ms	Billed Duration: 457 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: f33971f1-984c-415a-b7bf-245f64fc8c92 Version: $LATEST
+2022-12-25T15:20:37.867Z	cfa40135-a8cb-4288-8a32-828d3c26eec7	INFO	asdasdasdasd
+2022-12-25T15:20:37.871Z	cfa40135-a8cb-4288-8a32-828d3c26eec7	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '3766',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981631,v1=c58f0159334ac3e24a819cc3819905cb3b2d5052a833636be5f86207b05d979a,v0=69375aa9d9ebea67b5ea0ecbe0d1249519b7789ac3d195b80bcddbf3957369d8',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:20:37.871Z	cfa40135-a8cb-4288-8a32-828d3c26eec7	INFO	asdasdasdasd
+2022-12-25T15:20:37.872Z	cfa40135-a8cb-4288-8a32-828d3c26eec7	INFO	Unhandled event type charge.succeeded
+END RequestId: cfa40135-a8cb-4288-8a32-828d3c26eec7
+REPORT RequestId: cfa40135-a8cb-4288-8a32-828d3c26eec7	Init Duration: 0.33 ms	Duration: 567.85 ms	Billed Duration: 568 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:20:37.919Z	f33971f1-984c-415a-b7bf-245f64fc8c92	INFO	asdasdasdasd
+2022-12-25T15:20:37.923Z	f33971f1-984c-415a-b7bf-245f64fc8c92	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1853',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981631,v1=418642761c3218fd36b0006ea37dbb4f5ae91a693ad2ea678b913807185e8381,v0=c1bc3a94a098987ce4288f735fca4afb949028c4ca1230f07cbbf051e1e9f9eb',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:20:37.923Z	f33971f1-984c-415a-b7bf-245f64fc8c92	INFO	asdasdasdasd
+2022-12-25T15:20:37.924Z	f33971f1-984c-415a-b7bf-245f64fc8c92	INFO	Unhandled event type payment_intent.created
+END RequestId: f33971f1-984c-415a-b7bf-245f64fc8c92
+REPORT RequestId: f33971f1-984c-415a-b7bf-245f64fc8c92	Init Duration: 1.52 ms	Duration: 331.23 ms	Billed Duration: 332 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: d9ebde9f-8360-4929-a3da-96466bccaa75 Version: $LATEST
+2022-12-25T15:20:38.432Z	4851dde0-879d-4c08-a769-cf6cc8919575	INFO	asdasdasdasd
+2022-12-25T15:20:38.453Z	4851dde0-879d-4c08-a769-cf6cc8919575	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6745',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981631,v1=2fd45888461a5c3ccaa248b8fa6662535fdc3e9de95a23e5501aab1f344cfdd8,v0=eee7ff6c313f97390aedb2a9e5bf7843312bfa2a0c2cb85af013dfe73bceb404',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:20:38.454Z	4851dde0-879d-4c08-a769-cf6cc8919575	INFO	asdasdasdasd
+2022-12-25T15:20:38.457Z	4851dde0-879d-4c08-a769-cf6cc8919575	INFO	Unhandled event type invoice.updated
+END RequestId: 4851dde0-879d-4c08-a769-cf6cc8919575
+REPORT RequestId: 4851dde0-879d-4c08-a769-cf6cc8919575	Init Duration: 0.20 ms	Duration: 472.59 ms	Billed Duration: 473 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:20:38.687Z	d9ebde9f-8360-4929-a3da-96466bccaa75	INFO	asdasdasdasd
+2022-12-25T15:20:38.695Z	d9ebde9f-8360-4929-a3da-96466bccaa75	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6230',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981631,v1=2d12b5f17eebbbb0bf209399d93708be0672f35d0e3cb5b79167c4bd5f9c14c7,v0=a9d18ef8622f77d006ad138045f4c589e7891765cd3cfdb67ca80281833f5ced',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:20:38.696Z	d9ebde9f-8360-4929-a3da-96466bccaa75	INFO	asdasdasdasd
+2022-12-25T15:20:38.700Z	d9ebde9f-8360-4929-a3da-96466bccaa75	INFO	Unhandled event type invoice.finalized
+END RequestId: d9ebde9f-8360-4929-a3da-96466bccaa75
+REPORT RequestId: d9ebde9f-8360-4929-a3da-96466bccaa75	Init Duration: 0.18 ms	Duration: 502.31 ms	Billed Duration: 503 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 1d251527-04af-4563-9644-4e7d36982510 Version: $LATEST
+2022-12-25T15:20:39.160Z	1d251527-04af-4563-9644-4e7d36982510	INFO	asdasdasdasd
+2022-12-25T15:20:39.164Z	1d251527-04af-4563-9644-4e7d36982510	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6225',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981631,v1=e45ce716c1e78b66c5ee258bbae3a8c3a9ec06a14ea140254bc13d00758bcf54,v0=d7098e6ef89cf63cea3ab1502cec3e046a377ac3c7d2f93dbf0eab910d44d962',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:20:39.165Z	1d251527-04af-4563-9644-4e7d36982510	INFO	asdasdasdasd
+2022-12-25T15:20:39.167Z	1d251527-04af-4563-9644-4e7d36982510	INFO	Unhandled event type invoice.paid
+END RequestId: 1d251527-04af-4563-9644-4e7d36982510
+REPORT RequestId: 1d251527-04af-4563-9644-4e7d36982510	Init Duration: 0.27 ms	Duration: 518.41 ms	Billed Duration: 519 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:20:39.192Z	ed59696b-25e3-443d-98ac-bbffc114c6bb	INFO	asdasdasdasd
+2022-12-25T15:20:39.199Z	ed59696b-25e3-443d-98ac-bbffc114c6bb	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6238',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981631,v1=293a0c2dea160a03ea0ea76302bbb60e8afaede14aa3a13118e034f332010dea,v0=145d043039d6b7cb8a1f75ae842315e3c476dd79c57b5254afd385626b1069d2',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:20:39.200Z	ed59696b-25e3-443d-98ac-bbffc114c6bb	INFO	asdasdasdasd
+2022-12-25T15:20:39.201Z	ed59696b-25e3-443d-98ac-bbffc114c6bb	INFO	Unhandled event type invoice.payment_succeeded
+END RequestId: ed59696b-25e3-443d-98ac-bbffc114c6bb
+REPORT RequestId: ed59696b-25e3-443d-98ac-bbffc114c6bb	Init Duration: 0.62 ms	Duration: 429.88 ms	Billed Duration: 430 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 3b5fc161-3ec4-4570-95d6-98128b417852 Version: $LATEST
+START RequestId: 8b51757e-edc6-43d1-a1b9-af266127264c Version: $LATEST
+2022-12-25T15:20:40.216Z	3b5fc161-3ec4-4570-95d6-98128b417852	INFO	asdasdasdasd
+2022-12-25T15:20:40.233Z	3b5fc161-3ec4-4570-95d6-98128b417852	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6745',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981633,v1=f0fde7bac0fbec47728a95d58ecff5eec0dc4e8b6f9e9d84848b8f8f0e617839,v0=41651e8ecd8430f8ac27164eb1376abe0cf4d17afd91a00b1611e09b31afa013',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:20:40.233Z	3b5fc161-3ec4-4570-95d6-98128b417852	INFO	asdasdasdasd
+2022-12-25T15:20:40.237Z	3b5fc161-3ec4-4570-95d6-98128b417852	INFO	Unhandled event type invoice.updated
+END RequestId: 3b5fc161-3ec4-4570-95d6-98128b417852
+REPORT RequestId: 3b5fc161-3ec4-4570-95d6-98128b417852	Init Duration: 0.31 ms	Duration: 336.18 ms	Billed Duration: 337 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 3a7f02e2-0a56-42a3-b0f5-ab9ef0766ee4 Version: $LATEST
+2022-12-25T15:20:40.301Z	1b5bf709-5242-49c3-9db5-9892501d3db2	INFO	asdasdasdasd
+2022-12-25T15:20:40.307Z	1b5bf709-5242-49c3-9db5-9892501d3db2	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1853',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981633,v1=2a1aee3c786eff2e41405ebe29bd77c3fb44a0dcfdf431c30411c8334ba14554,v0=700a0d434d2fc327bd6c974b527863b347edb4945f611404d47736f0b6cfbb35',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:20:40.307Z	1b5bf709-5242-49c3-9db5-9892501d3db2	INFO	asdasdasdasd
+2022-12-25T15:20:40.308Z	1b5bf709-5242-49c3-9db5-9892501d3db2	INFO	Unhandled event type payment_intent.created
+END RequestId: 1b5bf709-5242-49c3-9db5-9892501d3db2
+REPORT RequestId: 1b5bf709-5242-49c3-9db5-9892501d3db2	Init Duration: 1.22 ms	Duration: 409.45 ms	Billed Duration: 410 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:20:40.552Z	8b51757e-edc6-43d1-a1b9-af266127264c	INFO	asdasdasdasd
+2022-12-25T15:20:40.556Z	8b51757e-edc6-43d1-a1b9-af266127264c	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '3765',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981633,v1=1759d5b510ff916b2110155eed7d62f506afaf2f40ea93fca0aa60e01f2c913e,v0=ec6d9ea1688dae802ce74d2f49d2fe58d88670466bae574285003c7ef0a605a4',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:20:40.557Z	8b51757e-edc6-43d1-a1b9-af266127264c	INFO	asdasdasdasd
+2022-12-25T15:20:40.558Z	8b51757e-edc6-43d1-a1b9-af266127264c	INFO	Unhandled event type charge.succeeded
+END RequestId: 8b51757e-edc6-43d1-a1b9-af266127264c
+REPORT RequestId: 8b51757e-edc6-43d1-a1b9-af266127264c	Init Duration: 9.91 ms	Duration: 379.34 ms	Billed Duration: 380 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:20:40.710Z	3a7f02e2-0a56-42a3-b0f5-ab9ef0766ee4	INFO	asdasdasdasd
+2022-12-25T15:20:40.714Z	3a7f02e2-0a56-42a3-b0f5-ab9ef0766ee4	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1955',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981633,v1=09da75cd3f5a6e09a207db0f81659a6587a623a64fb640acef2cca42baf31572,v0=15d9342e948fb47a85584575740bab2ce224afaaa1d953c6f84f2a38c025e214',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:20:40.714Z	3a7f02e2-0a56-42a3-b0f5-ab9ef0766ee4	INFO	asdasdasdasd
+2022-12-25T15:20:40.716Z	3a7f02e2-0a56-42a3-b0f5-ab9ef0766ee4	INFO	Unhandled event type payment_intent.succeeded
+END RequestId: 3a7f02e2-0a56-42a3-b0f5-ab9ef0766ee4
+REPORT RequestId: 3a7f02e2-0a56-42a3-b0f5-ab9ef0766ee4	Init Duration: 0.09 ms	Duration: 443.57 ms	Billed Duration: 444 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 3842f826-da98-4304-beaa-1b3741a79802 Version: $LATEST
+2022-12-25T15:20:41.160Z	3842f826-da98-4304-beaa-1b3741a79802	INFO	asdasdasdasd
+2022-12-25T15:20:41.167Z	3842f826-da98-4304-beaa-1b3741a79802	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6225',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981634,v1=e701b7d7f83c0d0cb48dded388d5d5a664a7150488dbc9feace8a5c2a4348810,v0=9725e3ef9d58dac06f3e18ea7923ad9c33813c7fa24952441fce0450b2dd0ec7',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:20:41.167Z	3842f826-da98-4304-beaa-1b3741a79802	INFO	asdasdasdasd
+2022-12-25T15:20:41.168Z	3842f826-da98-4304-beaa-1b3741a79802	INFO	Unhandled event type invoice.paid
+END RequestId: 3842f826-da98-4304-beaa-1b3741a79802
+REPORT RequestId: 3842f826-da98-4304-beaa-1b3741a79802	Init Duration: 1.48 ms	Duration: 325.32 ms	Billed Duration: 326 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: e6906e30-d648-4b02-ae38-7c2fb807277f Version: $LATEST
+START RequestId: c80421fa-a0c1-4352-8d71-72cbbc64365b Version: $LATEST
+2022-12-25T15:20:41.653Z	e6906e30-d648-4b02-ae38-7c2fb807277f	INFO	asdasdasdasd
+2022-12-25T15:20:41.657Z	e6906e30-d648-4b02-ae38-7c2fb807277f	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6238',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981634,v1=28a0243e910cd00559d13fe32d05ca07c5c98a4c99e31d6723fc307fcf3c89a0,v0=a20839d0f746440453325a80650780c6cdce88e97055960f89eb261c4592b0fa',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:20:41.657Z	e6906e30-d648-4b02-ae38-7c2fb807277f	INFO	asdasdasdasd
+2022-12-25T15:20:41.659Z	e6906e30-d648-4b02-ae38-7c2fb807277f	INFO	Unhandled event type invoice.payment_succeeded
+END RequestId: e6906e30-d648-4b02-ae38-7c2fb807277f
+REPORT RequestId: e6906e30-d648-4b02-ae38-7c2fb807277f	Init Duration: 0.10 ms	Duration: 280.43 ms	Billed Duration: 281 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:20:41.801Z	c80421fa-a0c1-4352-8d71-72cbbc64365b	INFO	asdasdasdasd
+2022-12-25T15:20:41.805Z	c80421fa-a0c1-4352-8d71-72cbbc64365b	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6230',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981634,v1=cb908fcba20ff01881426ffbdde27c9640770cf3984dbe403c34d5f26e5a844b,v0=d71cee445dbd991e85f360f7b41bfd30c1eca76f5b772d51a05e724697721749',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:20:41.805Z	c80421fa-a0c1-4352-8d71-72cbbc64365b	INFO	asdasdasdasd
+2022-12-25T15:20:41.807Z	c80421fa-a0c1-4352-8d71-72cbbc64365b	INFO	Unhandled event type invoice.finalized
+END RequestId: c80421fa-a0c1-4352-8d71-72cbbc64365b
+REPORT RequestId: c80421fa-a0c1-4352-8d71-72cbbc64365b	Init Duration: 0.28 ms	Duration: 306.67 ms	Billed Duration: 307 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:22:54.011Z	c8b2eacd-5fa8-45a9-a952-db80ba6190d2	INFO	asdasdasdasd
+2022-12-25T15:22:54.035Z	c8b2eacd-5fa8-45a9-a952-db80ba6190d2	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1955',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981767,v1=75967312558ff072f71a5ebf67c97414e041a0ca464c8c5397d126d851bb00cc,v0=92a7c97a418a0d9c3ddd5f778d5e8374778636daa3de1b2ff125542492e5a63a',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:22:54.041Z	c8b2eacd-5fa8-45a9-a952-db80ba6190d2	INFO	asdasdasdasd
+2022-12-25T15:22:54.050Z	c8b2eacd-5fa8-45a9-a952-db80ba6190d2	INFO	Unhandled event type payment_intent.succeeded
+END RequestId: c8b2eacd-5fa8-45a9-a952-db80ba6190d2
+REPORT RequestId: c8b2eacd-5fa8-45a9-a952-db80ba6190d2	Init Duration: 0.30 ms	Duration: 464.20 ms	Billed Duration: 465 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:22:54.338Z	a7dfe5cf-1f56-4bcf-b5e4-cbf8ac0ebfa5	INFO	asdasdasdasd
+2022-12-25T15:22:54.342Z	a7dfe5cf-1f56-4bcf-b5e4-cbf8ac0ebfa5	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '3766',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981767,v1=b9b5f9f952fe5989a1952ddb2dc2a87e42a05d274f15bf44db67d7af1849ba8b,v0=e9c4be12b9cbfe2717977531618dbbc81f78fbab9803556085272fd9a0a0b5af',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:22:54.342Z	a7dfe5cf-1f56-4bcf-b5e4-cbf8ac0ebfa5	INFO	asdasdasdasd
+2022-12-25T15:22:54.344Z	a7dfe5cf-1f56-4bcf-b5e4-cbf8ac0ebfa5	INFO	Unhandled event type charge.succeeded
+END RequestId: a7dfe5cf-1f56-4bcf-b5e4-cbf8ac0ebfa5
+REPORT RequestId: a7dfe5cf-1f56-4bcf-b5e4-cbf8ac0ebfa5	Init Duration: 2.35 ms	Duration: 457.78 ms	Billed Duration: 458 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: e9e359b5-e103-4fdb-bbc1-4066c62d9458 Version: $LATEST
+START RequestId: fba9906c-918c-49d2-b9b8-f33c7bee1095 Version: $LATEST
+2022-12-25T15:22:55.114Z	e9e359b5-e103-4fdb-bbc1-4066c62d9458	INFO	asdasdasdasd
+2022-12-25T15:22:55.128Z	e9e359b5-e103-4fdb-bbc1-4066c62d9458	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1853',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981767,v1=44282069196f55437fef3420fdc058daed946e2d791b1ae936fd3d545d527018,v0=6e0ad84dec15593b371b469ed94813de806667973a23d813085b3e3a8650af1c',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:22:55.133Z	e9e359b5-e103-4fdb-bbc1-4066c62d9458	INFO	asdasdasdasd
+2022-12-25T15:22:55.134Z	e9e359b5-e103-4fdb-bbc1-4066c62d9458	INFO	Unhandled event type payment_intent.created
+END RequestId: e9e359b5-e103-4fdb-bbc1-4066c62d9458
+REPORT RequestId: e9e359b5-e103-4fdb-bbc1-4066c62d9458	Init Duration: 0.26 ms	Duration: 428.25 ms	Billed Duration: 429 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:22:55.481Z	fba9906c-918c-49d2-b9b8-f33c7bee1095	INFO	asdasdasdasd
+2022-12-25T15:22:55.485Z	fba9906c-918c-49d2-b9b8-f33c7bee1095	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6745',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981768,v1=d416084b1e69e5eeb45cbc8fa9d58cc72a68da87e8a9963fdd8936da52cb1047,v0=0ffb2304534757530a1038c2c5eaba52d0578f13471cd674b16983cd524887f5',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:22:55.493Z	fba9906c-918c-49d2-b9b8-f33c7bee1095	INFO	asdasdasdasd
+2022-12-25T15:22:55.495Z	fba9906c-918c-49d2-b9b8-f33c7bee1095	INFO	Unhandled event type invoice.updated
+END RequestId: fba9906c-918c-49d2-b9b8-f33c7bee1095
+REPORT RequestId: fba9906c-918c-49d2-b9b8-f33c7bee1095	Init Duration: 0.12 ms	Duration: 476.95 ms	Billed Duration: 477 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: f5c5736d-f6fe-4a84-bfcb-41b93c10fa59 Version: $LATEST
+2022-12-25T15:22:55.895Z	f5c5736d-f6fe-4a84-bfcb-41b93c10fa59	INFO	asdasdasdasd
+2022-12-25T15:22:55.901Z	f5c5736d-f6fe-4a84-bfcb-41b93c10fa59	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6230',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981768,v1=33b09e279cf67f1f8b51621050c3e72e8da4b626bcfd8573462901df2a59bc67,v0=3bd1848f95703f39db7427883666789444224d4d0751eebaee4f37299cb94177',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:22:55.901Z	f5c5736d-f6fe-4a84-bfcb-41b93c10fa59	INFO	asdasdasdasd
+2022-12-25T15:22:55.903Z	f5c5736d-f6fe-4a84-bfcb-41b93c10fa59	INFO	Unhandled event type invoice.finalized
+END RequestId: f5c5736d-f6fe-4a84-bfcb-41b93c10fa59
+REPORT RequestId: f5c5736d-f6fe-4a84-bfcb-41b93c10fa59	Init Duration: 0.17 ms	Duration: 353.21 ms	Billed Duration: 354 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: e5c3c1e9-5974-45cb-a9f7-697024def3f6 Version: $LATEST
+2022-12-25T15:22:56.364Z	e5c3c1e9-5974-45cb-a9f7-697024def3f6	INFO	asdasdasdasd
+2022-12-25T15:22:56.368Z	e5c3c1e9-5974-45cb-a9f7-697024def3f6	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6238',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981768,v1=11e4eb49f65d6557108c9f733c0d3bcaa087cf9026f5e651d0fc070eeb355783,v0=6cace20ab6108e710184330daf52a809f595d59b4298825966e9c1218a1a7cd3',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:22:56.368Z	e5c3c1e9-5974-45cb-a9f7-697024def3f6	INFO	asdasdasdasd
+2022-12-25T15:22:56.370Z	e5c3c1e9-5974-45cb-a9f7-697024def3f6	INFO	Unhandled event type invoice.payment_succeeded
+END RequestId: e5c3c1e9-5974-45cb-a9f7-697024def3f6
+REPORT RequestId: e5c3c1e9-5974-45cb-a9f7-697024def3f6	Init Duration: 10.30 ms	Duration: 310.66 ms	Billed Duration: 311 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: e36d72af-b0a3-41b2-9539-a46a5eaf4370 Version: $LATEST
+2022-12-25T15:22:56.912Z	e36d72af-b0a3-41b2-9539-a46a5eaf4370	INFO	asdasdasdasd
+2022-12-25T15:22:56.916Z	e36d72af-b0a3-41b2-9539-a46a5eaf4370	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6225',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981768,v1=57d0fa3e5aac8a13b67e16213843f9c2e19837f148d4e7e18a77d07a81aef338,v0=a69a24af8b0859cd21abbf8aa53e1173545421e8d17a57132958d66e52a126ae',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:22:56.916Z	e36d72af-b0a3-41b2-9539-a46a5eaf4370	INFO	asdasdasdasd
+2022-12-25T15:22:56.918Z	e36d72af-b0a3-41b2-9539-a46a5eaf4370	INFO	Unhandled event type invoice.paid
+END RequestId: e36d72af-b0a3-41b2-9539-a46a5eaf4370
+REPORT RequestId: e36d72af-b0a3-41b2-9539-a46a5eaf4370	Init Duration: 0.26 ms	Duration: 331.63 ms	Billed Duration: 332 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:22:58.916Z	995d2760-e91d-4deb-b15b-15d70b3d54c1	INFO	asdasdasdasd
+2022-12-25T15:22:58.925Z	995d2760-e91d-4deb-b15b-15d70b3d54c1	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1955',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981770,v1=887f53c73b0f941b2bbb53d019507223234fd8830d43855005b87457cd49ab17,v0=21821734fde7f50c930e38e4757eac6454815721edb96d8b58989f70c00ed26b',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:22:58.925Z	995d2760-e91d-4deb-b15b-15d70b3d54c1	INFO	asdasdasdasd
+2022-12-25T15:22:58.926Z	995d2760-e91d-4deb-b15b-15d70b3d54c1	INFO	Unhandled event type payment_intent.succeeded
+END RequestId: 995d2760-e91d-4deb-b15b-15d70b3d54c1
+REPORT RequestId: 995d2760-e91d-4deb-b15b-15d70b3d54c1	Init Duration: 0.26 ms	Duration: 401.11 ms	Billed Duration: 402 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: a6c6b95f-f7da-465b-a552-45a8e82a7566 Version: $LATEST
+START RequestId: fc0e923d-1315-4b01-97cf-572df2148e93 Version: $LATEST
+2022-12-25T15:22:59.706Z	a6c6b95f-f7da-465b-a552-45a8e82a7566	INFO	asdasdasdasd
+2022-12-25T15:22:59.731Z	a6c6b95f-f7da-465b-a552-45a8e82a7566	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '3765',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981770,v1=d254493e3a59d7d7576d8bb86284655c0bed0c1e0e2616716a197460bdf1458c,v0=acd5effde6f676140be96016bfb3c5f333e0784bcadeae5d03261db3c6c6899f',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:22:59.731Z	a6c6b95f-f7da-465b-a552-45a8e82a7566	INFO	asdasdasdasd
+2022-12-25T15:22:59.733Z	a6c6b95f-f7da-465b-a552-45a8e82a7566	INFO	Unhandled event type charge.succeeded
+END RequestId: a6c6b95f-f7da-465b-a552-45a8e82a7566
+REPORT RequestId: a6c6b95f-f7da-465b-a552-45a8e82a7566	Init Duration: 2.12 ms	Duration: 513.36 ms	Billed Duration: 514 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: e2cc6813-c493-4178-a4ca-89ad873fae67 Version: $LATEST
+2022-12-25T15:22:59.797Z	fc0e923d-1315-4b01-97cf-572df2148e93	INFO	asdasdasdasd
+2022-12-25T15:22:59.800Z	fc0e923d-1315-4b01-97cf-572df2148e93	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6745',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981771,v1=b31aad9cc6f91a8f10da9805af9b00af07d4a4df73d5ec25fd6fa403e97c0e2f,v0=e882efec8953e600229c9c3453ca3f34141e5f1904ac1b43f8c6571f5b46de29',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:22:59.801Z	fc0e923d-1315-4b01-97cf-572df2148e93	INFO	asdasdasdasd
+2022-12-25T15:22:59.802Z	fc0e923d-1315-4b01-97cf-572df2148e93	INFO	Unhandled event type invoice.updated
+END RequestId: fc0e923d-1315-4b01-97cf-572df2148e93
+REPORT RequestId: fc0e923d-1315-4b01-97cf-572df2148e93	Init Duration: 0.26 ms	Duration: 432.04 ms	Billed Duration: 433 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 94ca5cc8-90d4-4e28-81da-06427a41fa42 Version: $LATEST
+START RequestId: df37fcc7-238b-4514-b81e-099037719bc9 Version: $LATEST
+2022-12-25T15:23:00.267Z	0bec9ded-7864-4bae-8b66-75499e284afc	INFO	asdasdasdasd
+2022-12-25T15:23:00.271Z	0bec9ded-7864-4bae-8b66-75499e284afc	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6238',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981771,v1=b6dd6ba6c0a55240cc7420399b9c4519c23b443412d743e4340d79f7abcc547a,v0=1577fd041c884d6a4847fcb5da236bda30319843f6f44316f374f00874dfa99b',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:23:00.271Z	0bec9ded-7864-4bae-8b66-75499e284afc	INFO	asdasdasdasd
+2022-12-25T15:23:00.273Z	0bec9ded-7864-4bae-8b66-75499e284afc	INFO	Unhandled event type invoice.payment_succeeded
+2022-12-25T15:23:00.269Z	e2cc6813-c493-4178-a4ca-89ad873fae67	INFO	asdasdasdasd
+END RequestId: 0bec9ded-7864-4bae-8b66-75499e284afc
+REPORT RequestId: 0bec9ded-7864-4bae-8b66-75499e284afc	Init Duration: 0.10 ms	Duration: 429.12 ms	Billed Duration: 430 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:23:00.284Z	e2cc6813-c493-4178-a4ca-89ad873fae67	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1853',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981771,v1=9f5cc7d59cfcde5cd570bf87e8f1ea9d246355d6a0ea6bff9bf81fdcf35d7892,v0=88d2f62a2f87595df2681a3fa7f5a1e031f5e338540365c5078fe0ce1be58e27',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:23:00.284Z	e2cc6813-c493-4178-a4ca-89ad873fae67	INFO	asdasdasdasd
+2022-12-25T15:23:00.285Z	e2cc6813-c493-4178-a4ca-89ad873fae67	INFO	Unhandled event type payment_intent.created
+END RequestId: e2cc6813-c493-4178-a4ca-89ad873fae67
+REPORT RequestId: e2cc6813-c493-4178-a4ca-89ad873fae67	Init Duration: 6.78 ms	Duration: 498.56 ms	Billed Duration: 499 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:23:00.418Z	94ca5cc8-90d4-4e28-81da-06427a41fa42	INFO	asdasdasdasd
+2022-12-25T15:23:00.423Z	94ca5cc8-90d4-4e28-81da-06427a41fa42	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6225',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981771,v1=19a5830af0068b1a241f6df4ac5d889ad4e744072725c7d8404717158dd43852,v0=1abc86daac4d078cee8e6da393cb6d216e6080862e83e13ac09b5ba617aac441',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:23:00.423Z	94ca5cc8-90d4-4e28-81da-06427a41fa42	INFO	asdasdasdasd
+2022-12-25T15:23:00.425Z	94ca5cc8-90d4-4e28-81da-06427a41fa42	INFO	Unhandled event type invoice.paid
+END RequestId: 94ca5cc8-90d4-4e28-81da-06427a41fa42
+REPORT RequestId: 94ca5cc8-90d4-4e28-81da-06427a41fa42	Init Duration: 2.04 ms	Duration: 432.68 ms	Billed Duration: 433 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:23:00.551Z	df37fcc7-238b-4514-b81e-099037719bc9	INFO	asdasdasdasd
+2022-12-25T15:23:00.555Z	df37fcc7-238b-4514-b81e-099037719bc9	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6230',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981771,v1=458ca0d272438c9f96375436125e357e444242263a9eed6b8175ad48f6cb8419,v0=20f9bac7d02a4cff0211bfbad6f4bc843376e4b7d8945012a149d8541fedd45d',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:23:00.555Z	df37fcc7-238b-4514-b81e-099037719bc9	INFO	asdasdasdasd
+2022-12-25T15:23:00.557Z	df37fcc7-238b-4514-b81e-099037719bc9	INFO	Unhandled event type invoice.finalized
+END RequestId: df37fcc7-238b-4514-b81e-099037719bc9
+REPORT RequestId: df37fcc7-238b-4514-b81e-099037719bc9	Init Duration: 0.33 ms	Duration: 453.98 ms	Billed Duration: 454 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:25:28.815Z	99867c9c-4c7f-48e4-a12a-99e71a79a3bd	INFO	asdasdasdasd
+2022-12-25T15:25:28.819Z	99867c9c-4c7f-48e4-a12a-99e71a79a3bd	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1955',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981921,v1=25e0b0f43d6e7ee24c15db097a6436bf5ab4666cc694ac8d940df0b7ba2964bd,v0=9ec66417777369899473651f11bb63529bd03a97f4754b576347591ba611e0c2',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:25:28.819Z	99867c9c-4c7f-48e4-a12a-99e71a79a3bd	INFO	asdasdasdasd
+2022-12-25T15:25:28.821Z	99867c9c-4c7f-48e4-a12a-99e71a79a3bd	INFO	Unhandled event type payment_intent.succeeded
+END RequestId: 99867c9c-4c7f-48e4-a12a-99e71a79a3bd
+REPORT RequestId: 99867c9c-4c7f-48e4-a12a-99e71a79a3bd	Init Duration: 0.25 ms	Duration: 334.46 ms	Billed Duration: 335 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 47fb4154-5b02-4a6e-90d8-521f2d768bc0 Version: $LATEST
+2022-12-25T15:25:29.559Z	47fb4154-5b02-4a6e-90d8-521f2d768bc0	INFO	asdasdasdasd
+2022-12-25T15:25:29.562Z	47fb4154-5b02-4a6e-90d8-521f2d768bc0	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '3766',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981922,v1=915e4970bf6d98c3715a1fcbf5c7b8b710f9171a929ba3fc81a3461e0edb0b27,v0=c2a972dc9b653e3321e1006dadb3c634272fbbe7ce154a7a30939227d22f01e3',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:25:29.568Z	47fb4154-5b02-4a6e-90d8-521f2d768bc0	INFO	asdasdasdasd
+2022-12-25T15:25:29.570Z	47fb4154-5b02-4a6e-90d8-521f2d768bc0	INFO	Unhandled event type charge.succeeded
+END RequestId: 47fb4154-5b02-4a6e-90d8-521f2d768bc0
+REPORT RequestId: 47fb4154-5b02-4a6e-90d8-521f2d768bc0	Init Duration: 4.68 ms	Duration: 353.98 ms	Billed Duration: 354 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: bbf197eb-612c-48a8-adbe-890d6780b2e5 Version: $LATEST
+2022-12-25T15:25:29.932Z	52054f7c-23d8-4a8a-8637-e11ed49557a3	INFO	asdasdasdasd
+2022-12-25T15:25:29.936Z	52054f7c-23d8-4a8a-8637-e11ed49557a3	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6745',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981922,v1=5a80cedcc00184f561cb0c084c813fd2f01daa865dbc820f98f44363cb03799d,v0=2434eb78c246b0e4fabc5a2552b9f3814236d7af6cec001107abb508a77cbcd4',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:25:29.936Z	52054f7c-23d8-4a8a-8637-e11ed49557a3	INFO	asdasdasdasd
+2022-12-25T15:25:29.938Z	52054f7c-23d8-4a8a-8637-e11ed49557a3	INFO	Unhandled event type invoice.updated
+END RequestId: 52054f7c-23d8-4a8a-8637-e11ed49557a3
+REPORT RequestId: 52054f7c-23d8-4a8a-8637-e11ed49557a3	Init Duration: 0.62 ms	Duration: 347.49 ms	Billed Duration: 348 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:25:29.985Z	bbf197eb-612c-48a8-adbe-890d6780b2e5	INFO	asdasdasdasd
+2022-12-25T15:25:29.988Z	bbf197eb-612c-48a8-adbe-890d6780b2e5	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1853',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981922,v1=e1b2ad33893ce6fa9b1713e925a56774af415305ea3840af775e1cac1bd0e145,v0=34d16687087bbbff932c7dfd87d67dbb9d0a4b955ae856b7046dcf9b59765cae',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:25:29.990Z	bbf197eb-612c-48a8-adbe-890d6780b2e5	INFO	asdasdasdasd
+2022-12-25T15:25:29.992Z	bbf197eb-612c-48a8-adbe-890d6780b2e5	INFO	Unhandled event type payment_intent.created
+END RequestId: bbf197eb-612c-48a8-adbe-890d6780b2e5
+REPORT RequestId: bbf197eb-612c-48a8-adbe-890d6780b2e5	Init Duration: 0.37 ms	Duration: 298.91 ms	Billed Duration: 299 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: d10a1504-cca2-4f46-bd2d-e77d7ac7f8af Version: $LATEST
+START RequestId: bdca3671-f337-40b7-b033-e121e1b32838 Version: $LATEST
+2022-12-25T15:25:30.283Z	31dc89c9-29e1-4813-a4dd-4eb39f0e7594	INFO	asdasdasdasd
+2022-12-25T15:25:30.295Z	31dc89c9-29e1-4813-a4dd-4eb39f0e7594	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6238',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981922,v1=e6c6661c71c362a0ec79383f725a748e730cfda7ae4607e7bb3ce63d2a8ff9cd,v0=151e9887ec77a44ab5b70a7102d18f05fb09fa2da579cf2fdfd78cc13632be20',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:25:30.295Z	31dc89c9-29e1-4813-a4dd-4eb39f0e7594	INFO	asdasdasdasd
+2022-12-25T15:25:30.296Z	31dc89c9-29e1-4813-a4dd-4eb39f0e7594	INFO	Unhandled event type invoice.payment_succeeded
+END RequestId: 31dc89c9-29e1-4813-a4dd-4eb39f0e7594
+REPORT RequestId: 31dc89c9-29e1-4813-a4dd-4eb39f0e7594	Init Duration: 0.53 ms	Duration: 354.78 ms	Billed Duration: 355 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:25:30.398Z	d10a1504-cca2-4f46-bd2d-e77d7ac7f8af	INFO	asdasdasdasd
+2022-12-25T15:25:30.402Z	d10a1504-cca2-4f46-bd2d-e77d7ac7f8af	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6225',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981922,v1=05a63c801f9900bb5d005df4af8b6cc8df05ac0706ac5b0c9c6f147266241656,v0=0a75ad38fe5bd645ac9a760ea2cd81dbb2a7d1123e5f8c0807dd4b776e54bf31',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:25:30.402Z	d10a1504-cca2-4f46-bd2d-e77d7ac7f8af	INFO	asdasdasdasd
+2022-12-25T15:25:30.403Z	d10a1504-cca2-4f46-bd2d-e77d7ac7f8af	INFO	Unhandled event type invoice.paid
+END RequestId: d10a1504-cca2-4f46-bd2d-e77d7ac7f8af
+REPORT RequestId: d10a1504-cca2-4f46-bd2d-e77d7ac7f8af	Init Duration: 0.61 ms	Duration: 338.67 ms	Billed Duration: 339 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:25:30.513Z	bdca3671-f337-40b7-b033-e121e1b32838	INFO	asdasdasdasd
+2022-12-25T15:25:30.517Z	bdca3671-f337-40b7-b033-e121e1b32838	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6230',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671981922,v1=9cf4acc7d099f6b545f2e8b44627f70fe1da13aa954b419b81ba4ec842000368,v0=36b26f18e898fe993d1c9f638d4fd64f2cde07dd0a6f78352644f94f37100078',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:25:30.517Z	bdca3671-f337-40b7-b033-e121e1b32838	INFO	asdasdasdasd
+2022-12-25T15:25:30.519Z	bdca3671-f337-40b7-b033-e121e1b32838	INFO	Unhandled event type invoice.finalized
+END RequestId: bdca3671-f337-40b7-b033-e121e1b32838
+REPORT RequestId: bdca3671-f337-40b7-b033-e121e1b32838	Init Duration: 0.12 ms	Duration: 448.15 ms	Billed Duration: 449 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 29eb6748-a333-404c-b12a-4ba3e8c54381 Version: $LATEST
+START RequestId: 2f263d7b-8ae0-49b1-8683-5a3913b48e4e Version: $LATEST
+START RequestId: e5dafe13-63c5-4e34-a66e-a151acdcccf7 Version: $LATEST
+2022-12-25T15:28:30.073Z	24e074fe-893f-479b-bce1-d97e72179740	INFO	asdasdasdasd
+2022-12-25T15:28:30.080Z	24e074fe-893f-479b-bce1-d97e72179740	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1955',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982103,v1=53793a4157778062d760ae28e0c423806ae4b612c30e4218cb3f14a56aa70371,v0=a871bb13cd4af348824c25e8729c7f03020f5a53acd19761574334227f23ff46',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:28:30.080Z	24e074fe-893f-479b-bce1-d97e72179740	INFO	asdasdasdasd
+2022-12-25T15:28:30.081Z	24e074fe-893f-479b-bce1-d97e72179740	INFO	Unhandled event type payment_intent.succeeded
+END RequestId: 24e074fe-893f-479b-bce1-d97e72179740
+REPORT RequestId: 24e074fe-893f-479b-bce1-d97e72179740	Init Duration: 0.69 ms	Duration: 701.50 ms	Billed Duration: 702 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:28:30.142Z	29eb6748-a333-404c-b12a-4ba3e8c54381	INFO	asdasdasdasd
+2022-12-25T15:28:30.146Z	29eb6748-a333-404c-b12a-4ba3e8c54381	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '3766',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982103,v1=a7289aba6d37d16e6b476bde56a3d8aea528e0c5f60144373105e1939a9de67c,v0=d31a1fb2abfb7741310a06af083b4404561114ee7b1482430ee98bc3bc6e2c72',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:28:30.146Z	29eb6748-a333-404c-b12a-4ba3e8c54381	INFO	asdasdasdasd
+2022-12-25T15:28:30.148Z	29eb6748-a333-404c-b12a-4ba3e8c54381	INFO	Unhandled event type charge.succeeded
+END RequestId: 29eb6748-a333-404c-b12a-4ba3e8c54381
+REPORT RequestId: 29eb6748-a333-404c-b12a-4ba3e8c54381	Init Duration: 1.13 ms	Duration: 745.81 ms	Billed Duration: 746 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:28:30.271Z	e5dafe13-63c5-4e34-a66e-a151acdcccf7	INFO	asdasdasdasd
+2022-12-25T15:28:30.275Z	e5dafe13-63c5-4e34-a66e-a151acdcccf7	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6745',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982103,v1=2f534e5d1946ef0fb724363b11633e4c3aa323ea0dbcbc38de2fcce756403da1,v0=0c1b1cfcee136d588250cead018becb5276df35cefd213136489de2dca0c2ef8',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:28:30.275Z	e5dafe13-63c5-4e34-a66e-a151acdcccf7	INFO	asdasdasdasd
+2022-12-25T15:28:30.276Z	e5dafe13-63c5-4e34-a66e-a151acdcccf7	INFO	Unhandled event type invoice.updated
+END RequestId: e5dafe13-63c5-4e34-a66e-a151acdcccf7
+REPORT RequestId: e5dafe13-63c5-4e34-a66e-a151acdcccf7	Init Duration: 1.42 ms	Duration: 677.27 ms	Billed Duration: 678 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:28:30.298Z	2f263d7b-8ae0-49b1-8683-5a3913b48e4e	INFO	asdasdasdasd
+2022-12-25T15:28:30.303Z	2f263d7b-8ae0-49b1-8683-5a3913b48e4e	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1853',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982103,v1=4b215d74e4b9838f3359afe979fff48021e277ab9357e4ed54ac93f4c218426d,v0=cf234a646c7aecf8da8b55c66aa25c222d5a92efab668a63cad530fe6ef72df6',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:28:30.303Z	2f263d7b-8ae0-49b1-8683-5a3913b48e4e	INFO	asdasdasdasd
+2022-12-25T15:28:30.305Z	2f263d7b-8ae0-49b1-8683-5a3913b48e4e	INFO	Unhandled event type payment_intent.created
+END RequestId: 2f263d7b-8ae0-49b1-8683-5a3913b48e4e
+REPORT RequestId: 2f263d7b-8ae0-49b1-8683-5a3913b48e4e	Init Duration: 0.26 ms	Duration: 826.35 ms	Billed Duration: 827 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 28343c03-c6f3-4486-a230-8ae03e1c5fdf Version: $LATEST
+2022-12-25T15:28:31.387Z	28343c03-c6f3-4486-a230-8ae03e1c5fdf	INFO	asdasdasdasd
+2022-12-25T15:28:31.395Z	28343c03-c6f3-4486-a230-8ae03e1c5fdf	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6225',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982103,v1=ea5061a193ee63d7dd80cb0c07c48eb3b2f21080e8bf13351fea79d65d53e0b4,v0=8b55525fc23f7c9a9c760c5b85f677421160ffb7bda9b46d7cc1724f39d37e03',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:28:31.395Z	28343c03-c6f3-4486-a230-8ae03e1c5fdf	INFO	asdasdasdasd
+2022-12-25T15:28:31.401Z	28343c03-c6f3-4486-a230-8ae03e1c5fdf	INFO	Unhandled event type invoice.paid
+END RequestId: 28343c03-c6f3-4486-a230-8ae03e1c5fdf
+REPORT RequestId: 28343c03-c6f3-4486-a230-8ae03e1c5fdf	Init Duration: 0.43 ms	Duration: 321.72 ms	Billed Duration: 322 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 0bb538f4-6f05-4818-8957-ff8b578b0b3f Version: $LATEST
+START RequestId: aaaeaedd-bf10-4e43-9ce8-577189403c69 Version: $LATEST
+START RequestId: 961eaea0-7f31-4f04-af22-af3f8af8a854 Version: $LATEST
+2022-12-25T15:28:32.329Z	0bb538f4-6f05-4818-8957-ff8b578b0b3f	INFO	asdasdasdasd
+2022-12-25T15:28:32.337Z	0bb538f4-6f05-4818-8957-ff8b578b0b3f	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1955',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982103,v1=ef60d445a3fcb74ce218f205fabaa090a0bbf81e49a99adb6ea8a32534ad1a7a,v0=0f1b994c9de3a0e92a28b6a757d8c6307644782612f3586611bebda2c0dd6f79',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:28:32.337Z	0bb538f4-6f05-4818-8957-ff8b578b0b3f	INFO	asdasdasdasd
+2022-12-25T15:28:32.338Z	0bb538f4-6f05-4818-8957-ff8b578b0b3f	INFO	Unhandled event type payment_intent.succeeded
+END RequestId: 0bb538f4-6f05-4818-8957-ff8b578b0b3f
+REPORT RequestId: 0bb538f4-6f05-4818-8957-ff8b578b0b3f	Init Duration: 0.53 ms	Duration: 566.67 ms	Billed Duration: 567 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:28:32.304Z	aaaeaedd-bf10-4e43-9ce8-577189403c69	INFO	asdasdasdasd
+2022-12-25T15:28:32.351Z	aaaeaedd-bf10-4e43-9ce8-577189403c69	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6238',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982103,v1=3420f794ed16566018706e501c47dd4dc3849418b52de4a6a245e415d79d58ec,v0=7179a9e1ad51ae06d279a7960694dd09bf6c33fa91b43d09f960dae790022075',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:28:32.351Z	aaaeaedd-bf10-4e43-9ce8-577189403c69	INFO	asdasdasdasd
+2022-12-25T15:28:32.353Z	aaaeaedd-bf10-4e43-9ce8-577189403c69	INFO	Unhandled event type invoice.payment_succeeded
+END RequestId: aaaeaedd-bf10-4e43-9ce8-577189403c69
+REPORT RequestId: aaaeaedd-bf10-4e43-9ce8-577189403c69	Init Duration: 2.25 ms	Duration: 553.79 ms	Billed Duration: 554 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:28:32.706Z	961eaea0-7f31-4f04-af22-af3f8af8a854	INFO	asdasdasdasd
+2022-12-25T15:28:32.725Z	961eaea0-7f31-4f04-af22-af3f8af8a854	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '3766',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982103,v1=8817afed976a1114d31dff6c354c3f0decfcecb43eb73507044d5a13dd3be30a,v0=0b190bbc72b723e8f48a1db1a912edd63b5c88bdddb11fa1392b5c31dffd6b7e',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:28:32.725Z	961eaea0-7f31-4f04-af22-af3f8af8a854	INFO	asdasdasdasd
+2022-12-25T15:28:32.726Z	961eaea0-7f31-4f04-af22-af3f8af8a854	INFO	Unhandled event type charge.succeeded
+START RequestId: 69ef8d6e-b225-4ffc-bb3e-3279fe487672 Version: $LATEST
+END RequestId: 961eaea0-7f31-4f04-af22-af3f8af8a854
+REPORT RequestId: 961eaea0-7f31-4f04-af22-af3f8af8a854	Init Duration: 0.26 ms	Duration: 676.50 ms	Billed Duration: 677 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: f20eff8b-b88e-47f4-a1c9-1da415cc158e Version: $LATEST
+2022-12-25T15:28:33.017Z	69ef8d6e-b225-4ffc-bb3e-3279fe487672	INFO	asdasdasdasd
+2022-12-25T15:28:33.059Z	69ef8d6e-b225-4ffc-bb3e-3279fe487672	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1853',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982104,v1=4979503e5d25f492210a9985023b9a534d27a6e82311a7e20c16a3c750347222,v0=175abdb84d89c21fa402b51bac568a8425fdcabdbd9f8ef7fbcdf4df4564e3da',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:28:33.059Z	69ef8d6e-b225-4ffc-bb3e-3279fe487672	INFO	asdasdasdasd
+2022-12-25T15:28:33.060Z	69ef8d6e-b225-4ffc-bb3e-3279fe487672	INFO	Unhandled event type payment_intent.created
+END RequestId: 69ef8d6e-b225-4ffc-bb3e-3279fe487672
+REPORT RequestId: 69ef8d6e-b225-4ffc-bb3e-3279fe487672	Init Duration: 1.31 ms	Duration: 347.64 ms	Billed Duration: 348 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: cccc1c26-48a2-4826-88f1-25f62ef43ed1 Version: $LATEST
+2022-12-25T15:28:33.201Z	21285f57-3ff2-41b9-b4c5-b2f589ce1d91	INFO	asdasdasdasd
+2022-12-25T15:28:33.214Z	21285f57-3ff2-41b9-b4c5-b2f589ce1d91	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6225',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982104,v1=1e034bee7b99d93aa4dffd4ee64a45d9790a3014fce161251f66c04ccaba9538,v0=3cca7ea75e5959d8cf8fa2200d8a435baf5c917ae0c550e9b22f03adb6df43ef',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:28:33.214Z	21285f57-3ff2-41b9-b4c5-b2f589ce1d91	INFO	asdasdasdasd
+2022-12-25T15:28:33.216Z	21285f57-3ff2-41b9-b4c5-b2f589ce1d91	INFO	Unhandled event type invoice.paid
+END RequestId: 21285f57-3ff2-41b9-b4c5-b2f589ce1d91
+REPORT RequestId: 21285f57-3ff2-41b9-b4c5-b2f589ce1d91	Init Duration: 0.28 ms	Duration: 400.30 ms	Billed Duration: 401 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:28:33.338Z	d475af8f-ff9a-44cb-9484-67a9d157a452	INFO	asdasdasdasd
+2022-12-25T15:28:33.342Z	f20eff8b-b88e-47f4-a1c9-1da415cc158e	INFO	asdasdasdasd
+2022-12-25T15:28:33.346Z	f20eff8b-b88e-47f4-a1c9-1da415cc158e	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6230',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982103,v1=681374fb0b416d31b322ce47427f7de35367feb74c5221ec3ad3510b2927fd04,v0=f03d628a4d96e4f1465caa2fe82368eeb1d2e3dbe92cd7f680fc24af82141e81',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:28:33.346Z	f20eff8b-b88e-47f4-a1c9-1da415cc158e	INFO	asdasdasdasd
+2022-12-25T15:28:33.348Z	f20eff8b-b88e-47f4-a1c9-1da415cc158e	INFO	Unhandled event type invoice.finalized
+END RequestId: f20eff8b-b88e-47f4-a1c9-1da415cc158e
+REPORT RequestId: f20eff8b-b88e-47f4-a1c9-1da415cc158e	Init Duration: 0.10 ms	Duration: 455.57 ms	Billed Duration: 456 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:28:33.346Z	d475af8f-ff9a-44cb-9484-67a9d157a452	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6745',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982104,v1=64ce19b26777d6adceba761c625fa57b32a08e394d917f2f874f768cb415c9a9,v0=a9777de43c0beb2a14f2d10bdf7fd8d9745949017a2f4d7345956791a5fe5b30',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:28:33.351Z	d475af8f-ff9a-44cb-9484-67a9d157a452	INFO	asdasdasdasd
+2022-12-25T15:28:33.353Z	d475af8f-ff9a-44cb-9484-67a9d157a452	INFO	Unhandled event type invoice.updated
+END RequestId: d475af8f-ff9a-44cb-9484-67a9d157a452
+REPORT RequestId: d475af8f-ff9a-44cb-9484-67a9d157a452	Init Duration: 0.22 ms	Duration: 463.87 ms	Billed Duration: 464 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 059c083f-949e-4fd0-b3ae-504b36133023 Version: $LATEST
+2022-12-25T15:28:33.534Z	cccc1c26-48a2-4826-88f1-25f62ef43ed1	INFO	asdasdasdasd
+2022-12-25T15:28:33.538Z	cccc1c26-48a2-4826-88f1-25f62ef43ed1	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6230',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982104,v1=b266d6ea9b11ea7c879d1e8f9a9c54a827d47d6b3a77682ad581efd97e7958e8,v0=cbe76ea7c779504cb6ff00e82b5a1ab8d139a80aff2f26e9ee19d85811a9e4a4',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:28:33.538Z	cccc1c26-48a2-4826-88f1-25f62ef43ed1	INFO	asdasdasdasd
+2022-12-25T15:28:33.539Z	cccc1c26-48a2-4826-88f1-25f62ef43ed1	INFO	Unhandled event type invoice.finalized
+END RequestId: cccc1c26-48a2-4826-88f1-25f62ef43ed1
+REPORT RequestId: cccc1c26-48a2-4826-88f1-25f62ef43ed1	Init Duration: 0.25 ms	Duration: 402.19 ms	Billed Duration: 403 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:28:33.661Z	059c083f-949e-4fd0-b3ae-504b36133023	INFO	asdasdasdasd
+2022-12-25T15:28:33.664Z	059c083f-949e-4fd0-b3ae-504b36133023	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6238',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982104,v1=fb766af3d48ec3de44708929604eb1cd163e4e77b2ca4d4a62fd0a0e84b05768,v0=6f115fa4dd993d57289088c174dfcf8856d87dfbfdb04d1e5fa56b5ae0454269',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:28:33.664Z	059c083f-949e-4fd0-b3ae-504b36133023	INFO	asdasdasdasd
+2022-12-25T15:28:33.666Z	059c083f-949e-4fd0-b3ae-504b36133023	INFO	Unhandled event type invoice.payment_succeeded
+END RequestId: 059c083f-949e-4fd0-b3ae-504b36133023
+REPORT RequestId: 059c083f-949e-4fd0-b3ae-504b36133023	Init Duration: 4.95 ms	Duration: 278.54 ms	Billed Duration: 279 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 81d1bb4f-8e9f-44ab-a15a-48de7d46e9fa Version: $LATEST
+2022-12-25T15:28:34.377Z	81d1bb4f-8e9f-44ab-a15a-48de7d46e9fa	INFO	asdasdasdasd
+2022-12-25T15:28:34.381Z	81d1bb4f-8e9f-44ab-a15a-48de7d46e9fa	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1955',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982106,v1=7058175663a1b9abfb584247b51c0210c6a73880783ee55515a5b9f81ce48cb1,v0=3d5c5599c7869bfaf4a6bf5632192b4dfb5a41aebc2222186e49d3d94b53baf2',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:28:34.381Z	81d1bb4f-8e9f-44ab-a15a-48de7d46e9fa	INFO	asdasdasdasd
+2022-12-25T15:28:34.382Z	81d1bb4f-8e9f-44ab-a15a-48de7d46e9fa	INFO	Unhandled event type payment_intent.succeeded
+END RequestId: 81d1bb4f-8e9f-44ab-a15a-48de7d46e9fa
+REPORT RequestId: 81d1bb4f-8e9f-44ab-a15a-48de7d46e9fa	Init Duration: 0.56 ms	Duration: 319.86 ms	Billed Duration: 320 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 6761d41b-87c9-489c-8970-28fa82e3889b Version: $LATEST
+START RequestId: 01c4588a-7264-40a0-9a11-93ba4e6bacad Version: $LATEST
+START RequestId: 90b6b046-517e-4d92-bce6-fd42c05b1da1 Version: $LATEST
+START RequestId: bfe65711-9ace-49ec-b8ae-f9bc9c91fbe1 Version: $LATEST
+2022-12-25T15:28:35.312Z	6761d41b-87c9-489c-8970-28fa82e3889b	INFO	asdasdasdasd
+2022-12-25T15:28:35.316Z	6761d41b-87c9-489c-8970-28fa82e3889b	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '3766',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982106,v1=c615909a07adf9be94b101e3b8cc580b30779fe6a6d01c4a8c12db0e26eaf3d7,v0=75445902963c3ba76a49f3db71237db4219d57244f7107eede42cd76f8ef4583',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:28:35.316Z	6761d41b-87c9-489c-8970-28fa82e3889b	INFO	asdasdasdasd
+2022-12-25T15:28:35.318Z	6761d41b-87c9-489c-8970-28fa82e3889b	INFO	Unhandled event type charge.succeeded
+END RequestId: 6761d41b-87c9-489c-8970-28fa82e3889b
+REPORT RequestId: 6761d41b-87c9-489c-8970-28fa82e3889b	Init Duration: 0.14 ms	Duration: 299.50 ms	Billed Duration: 300 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:28:35.499Z	8e4ea706-2f51-4566-998b-3fce0b48415c	INFO	asdasdasdasd
+2022-12-25T15:28:35.503Z	8e4ea706-2f51-4566-998b-3fce0b48415c	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6230',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982107,v1=a074d623c8d42e486129b8150a51fc16812eaf40eabf6512cab5a8e9756614f1,v0=6cf6a66773fb7d530c2fd22216db89736ea190562e5ee61ef285946988c4d76e',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:28:35.503Z	8e4ea706-2f51-4566-998b-3fce0b48415c	INFO	asdasdasdasd
+2022-12-25T15:28:35.505Z	8e4ea706-2f51-4566-998b-3fce0b48415c	INFO	Unhandled event type invoice.finalized
+END RequestId: 8e4ea706-2f51-4566-998b-3fce0b48415c
+REPORT RequestId: 8e4ea706-2f51-4566-998b-3fce0b48415c	Init Duration: 0.25 ms	Duration: 290.78 ms	Billed Duration: 291 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:28:35.519Z	01c4588a-7264-40a0-9a11-93ba4e6bacad	INFO	asdasdasdasd
+2022-12-25T15:28:35.523Z	01c4588a-7264-40a0-9a11-93ba4e6bacad	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6745',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982107,v1=3d6e20bf225d5d6508df505409cdce68e0147c48c6fb245827f20b0ca864dc00,v0=d00ec98b5b116e0a5a8be78bc3fec778b1fb76b9c3bada5b023d5c5c67ed579b',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:28:35.523Z	01c4588a-7264-40a0-9a11-93ba4e6bacad	INFO	asdasdasdasd
+2022-12-25T15:28:35.519Z	90b6b046-517e-4d92-bce6-fd42c05b1da1	INFO	asdasdasdasd
+2022-12-25T15:28:35.525Z	01c4588a-7264-40a0-9a11-93ba4e6bacad	INFO	Unhandled event type invoice.updated
+END RequestId: 01c4588a-7264-40a0-9a11-93ba4e6bacad
+REPORT RequestId: 01c4588a-7264-40a0-9a11-93ba4e6bacad	Init Duration: 0.35 ms	Duration: 349.50 ms	Billed Duration: 350 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:28:35.526Z	90b6b046-517e-4d92-bce6-fd42c05b1da1	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1853',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982106,v1=3ae02227c857c234be32b55c7c4d4ab34d178e068fc03ac1f196fecdeb4efdee,v0=e6658a00e2c22bcf74ab27f1e3a28ffe6d7687c0359b5feb53a1240e8010643d',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:28:35.527Z	90b6b046-517e-4d92-bce6-fd42c05b1da1	INFO	asdasdasdasd
+2022-12-25T15:28:35.528Z	90b6b046-517e-4d92-bce6-fd42c05b1da1	INFO	Unhandled event type payment_intent.created
+END RequestId: 90b6b046-517e-4d92-bce6-fd42c05b1da1
+REPORT RequestId: 90b6b046-517e-4d92-bce6-fd42c05b1da1	Init Duration: 0.17 ms	Duration: 339.85 ms	Billed Duration: 340 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:28:35.627Z	fa194614-c34c-48eb-8989-ff71b40533e1	INFO	asdasdasdasd
+2022-12-25T15:28:35.634Z	fa194614-c34c-48eb-8989-ff71b40533e1	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6225',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982107,v1=2d98d49ae7377dcc36a59ad92f52fdda76ce514e0f4de89acb39e912d1f35bcf,v0=65d589809ad0b118a8713f459894bfa24fbb0cfd2c696ac057c875ed50d8c1ec',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:28:35.634Z	fa194614-c34c-48eb-8989-ff71b40533e1	INFO	asdasdasdasd
+2022-12-25T15:28:35.638Z	fa194614-c34c-48eb-8989-ff71b40533e1	INFO	Unhandled event type invoice.paid
+END RequestId: fa194614-c34c-48eb-8989-ff71b40533e1
+REPORT RequestId: fa194614-c34c-48eb-8989-ff71b40533e1	Init Duration: 0.20 ms	Duration: 297.96 ms	Billed Duration: 298 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:28:35.731Z	bfe65711-9ace-49ec-b8ae-f9bc9c91fbe1	INFO	asdasdasdasd
+2022-12-25T15:28:35.734Z	bfe65711-9ace-49ec-b8ae-f9bc9c91fbe1	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6238',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982107,v1=966a5e012bfd71111e29157e0317612b04474c1d69589bc01e25ac45fab3ae50,v0=9af7386fc62e9b466937b469334df460617121a85cb2f106fdf344a57152c459',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:28:35.734Z	bfe65711-9ace-49ec-b8ae-f9bc9c91fbe1	INFO	asdasdasdasd
+2022-12-25T15:28:35.736Z	bfe65711-9ace-49ec-b8ae-f9bc9c91fbe1	INFO	Unhandled event type invoice.payment_succeeded
+END RequestId: bfe65711-9ace-49ec-b8ae-f9bc9c91fbe1
+REPORT RequestId: bfe65711-9ace-49ec-b8ae-f9bc9c91fbe1	Init Duration: 0.27 ms	Duration: 459.88 ms	Billed Duration: 460 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: db619bea-c6b8-41ae-ac40-07b9fe00a979 Version: $LATEST
+START RequestId: 65e31e51-b38e-459c-a71a-9fa250b22545 Version: $LATEST
+2022-12-25T15:36:28.243Z	db619bea-c6b8-41ae-ac40-07b9fe00a979	INFO	asdasdasdasd
+2022-12-25T15:36:28.256Z	db619bea-c6b8-41ae-ac40-07b9fe00a979	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1955',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982582,v1=32d0483c87fa7ca3a8d47e759120cfb00e6615934a88fd5618abba10f50ffef1,v0=925336939218413232c264b23b09ad7c3ef393c49ebc8bffa444fe877f64a565',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:28.256Z	db619bea-c6b8-41ae-ac40-07b9fe00a979	INFO	asdasdasdasd
+2022-12-25T15:36:28.257Z	db619bea-c6b8-41ae-ac40-07b9fe00a979	INFO	Unhandled event type payment_intent.succeeded
+END RequestId: db619bea-c6b8-41ae-ac40-07b9fe00a979
+REPORT RequestId: db619bea-c6b8-41ae-ac40-07b9fe00a979	Init Duration: 1.06 ms	Duration: 377.42 ms	Billed Duration: 378 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:36:28.540Z	65e31e51-b38e-459c-a71a-9fa250b22545	INFO	asdasdasdasd
+2022-12-25T15:36:28.546Z	65e31e51-b38e-459c-a71a-9fa250b22545	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '3765',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982582,v1=d92676cab7f0b85135b455975f114b1ac2acde25f36ad4afe94c30deb8df2156,v0=cbd1f22f96c18eb169fe182985771a72b1aca6c5e6249625b9f3443f81d1687e',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:28.546Z	65e31e51-b38e-459c-a71a-9fa250b22545	INFO	asdasdasdasd
+2022-12-25T15:36:28.548Z	65e31e51-b38e-459c-a71a-9fa250b22545	INFO	Unhandled event type charge.succeeded
+END RequestId: 65e31e51-b38e-459c-a71a-9fa250b22545
+REPORT RequestId: 65e31e51-b38e-459c-a71a-9fa250b22545	Init Duration: 3.63 ms	Duration: 419.64 ms	Billed Duration: 420 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 4dc3932a-7c76-4ed2-864b-1ce977aa708a Version: $LATEST
+2022-12-25T15:36:28.723Z	3f478097-e7be-4932-83a4-b81d9a06ead8	INFO	asdasdasdasd
+2022-12-25T15:36:28.739Z	3f478097-e7be-4932-83a4-b81d9a06ead8	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1853',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982582,v1=907cafdc2d1f3a5fc93ae3f8e256c631d4fbf7477dec875f989d42bf82b730ba,v0=d12eca5de2221cbf4f0fb2721c4c8adfd05fae455804bcffaf2f4f83ef9a7f0d',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:28.739Z	3f478097-e7be-4932-83a4-b81d9a06ead8	INFO	asdasdasdasd
+2022-12-25T15:36:28.741Z	3f478097-e7be-4932-83a4-b81d9a06ead8	INFO	Unhandled event type payment_intent.created
+END RequestId: 3f478097-e7be-4932-83a4-b81d9a06ead8
+REPORT RequestId: 3f478097-e7be-4932-83a4-b81d9a06ead8	Init Duration: 1.98 ms	Duration: 446.80 ms	Billed Duration: 447 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:36:28.983Z	4dc3932a-7c76-4ed2-864b-1ce977aa708a	INFO	asdasdasdasd
+2022-12-25T15:36:28.987Z	4dc3932a-7c76-4ed2-864b-1ce977aa708a	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6745',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982582,v1=50ae1f4a0a081b297510640061d44208f94159d3698a62b4b6b0d969201d4a8f,v0=171b66d1368f238044181512536640538874f5663fe0319058ce32c62ddd7926',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:28.987Z	4dc3932a-7c76-4ed2-864b-1ce977aa708a	INFO	asdasdasdasd
+2022-12-25T15:36:28.988Z	4dc3932a-7c76-4ed2-864b-1ce977aa708a	INFO	Unhandled event type invoice.updated
+END RequestId: 4dc3932a-7c76-4ed2-864b-1ce977aa708a
+REPORT RequestId: 4dc3932a-7c76-4ed2-864b-1ce977aa708a	Init Duration: 11.56 ms	Duration: 357.90 ms	Billed Duration: 358 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: a168f82e-757c-4235-a069-06872224b7a8 Version: $LATEST
+START RequestId: e009b20e-26c0-4e09-877a-5989551172a5 Version: $LATEST
+START RequestId: a2edb6ba-2a81-4542-b877-dbf947812373 Version: $LATEST
+2022-12-25T15:36:29.645Z	a168f82e-757c-4235-a069-06872224b7a8	INFO	asdasdasdasd
+2022-12-25T15:36:29.649Z	a168f82e-757c-4235-a069-06872224b7a8	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6238',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982583,v1=eafa8778eb0a1b1a908db7bd35df70357ec5c239b14fd463648cb414acab19f4,v0=185d628a7c9248d7d45806e094b8cdc0771c52be0dffa63cea191351b2d2e211',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:29.649Z	a168f82e-757c-4235-a069-06872224b7a8	INFO	asdasdasdasd
+2022-12-25T15:36:29.650Z	a168f82e-757c-4235-a069-06872224b7a8	INFO	Unhandled event type invoice.payment_succeeded
+END RequestId: a168f82e-757c-4235-a069-06872224b7a8
+REPORT RequestId: a168f82e-757c-4235-a069-06872224b7a8	Init Duration: 0.05 ms	Duration: 234.32 ms	Billed Duration: 235 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:36:29.657Z	e009b20e-26c0-4e09-877a-5989551172a5	INFO	asdasdasdasd
+2022-12-25T15:36:29.661Z	e009b20e-26c0-4e09-877a-5989551172a5	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6225',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982582,v1=1d6f668a906ab0ae64eac7a60e2162fa61cda14dd7695c798c9910be3cdbcf8f,v0=51465e223898c8288dfc0bf4a641d131538d4123a6e01de8388477662961e443',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:29.661Z	e009b20e-26c0-4e09-877a-5989551172a5	INFO	asdasdasdasd
+2022-12-25T15:36:29.663Z	e009b20e-26c0-4e09-877a-5989551172a5	INFO	Unhandled event type invoice.paid
+END RequestId: e009b20e-26c0-4e09-877a-5989551172a5
+REPORT RequestId: e009b20e-26c0-4e09-877a-5989551172a5	Init Duration: 0.15 ms	Duration: 240.47 ms	Billed Duration: 241 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:36:29.721Z	a2edb6ba-2a81-4542-b877-dbf947812373	INFO	asdasdasdasd
+2022-12-25T15:36:29.725Z	a2edb6ba-2a81-4542-b877-dbf947812373	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6230',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982583,v1=fded4e78dcee8bab01ffa510b4b28a4a8e3dc435047fac8f978b6b644857281c,v0=43a4f9a4aec87f860fa64f5369bed4176cde4e8818dc67e47e846a98af9179fb',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:29.725Z	a2edb6ba-2a81-4542-b877-dbf947812373	INFO	asdasdasdasd
+2022-12-25T15:36:29.727Z	a2edb6ba-2a81-4542-b877-dbf947812373	INFO	Unhandled event type invoice.finalized
+END RequestId: a2edb6ba-2a81-4542-b877-dbf947812373
+REPORT RequestId: a2edb6ba-2a81-4542-b877-dbf947812373	Init Duration: 0.12 ms	Duration: 213.38 ms	Billed Duration: 214 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 5d91e3db-d63a-4950-92f0-523b498eba07 Version: $LATEST
+2022-12-25T15:36:37.672Z	5d91e3db-d63a-4950-92f0-523b498eba07	INFO	asdasdasdasd
+2022-12-25T15:36:37.677Z	5d91e3db-d63a-4950-92f0-523b498eba07	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1955',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982591,v1=abedf3c53b628f9c949f551a896113f97750452873cecab3b7c09c00ec94e835,v0=33f3af2e7177aba110bf8484f6b7f24b73f473c728f613b5a91a727fca4f3d28',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:37.677Z	5d91e3db-d63a-4950-92f0-523b498eba07	INFO	asdasdasdasd
+2022-12-25T15:36:37.679Z	5d91e3db-d63a-4950-92f0-523b498eba07	INFO	Unhandled event type payment_intent.succeeded
+END RequestId: 5d91e3db-d63a-4950-92f0-523b498eba07
+REPORT RequestId: 5d91e3db-d63a-4950-92f0-523b498eba07	Init Duration: 0.11 ms	Duration: 265.21 ms	Billed Duration: 266 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:36:37.735Z	0cdc6242-8558-42c4-a1d9-3cd01579b010	INFO	asdasdasdasd
+2022-12-25T15:36:37.739Z	0cdc6242-8558-42c4-a1d9-3cd01579b010	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '3766',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982591,v1=58a7efa88bca5555dfefa2f0bf2dc9c394a6bae561bbdd6cba5b5770e8b2fec5,v0=53a0dfbc27decc2db97b9d76a5a29d4811caaf694d9ad266f05a01f33c3fafff',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:37.739Z	0cdc6242-8558-42c4-a1d9-3cd01579b010	INFO	asdasdasdasd
+2022-12-25T15:36:37.740Z	0cdc6242-8558-42c4-a1d9-3cd01579b010	INFO	Unhandled event type charge.succeeded
+END RequestId: 0cdc6242-8558-42c4-a1d9-3cd01579b010
+REPORT RequestId: 0cdc6242-8558-42c4-a1d9-3cd01579b010	Init Duration: 0.48 ms	Duration: 264.42 ms	Billed Duration: 265 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:36:38.914Z	f6cf900d-078c-459e-b21a-4d27992b80b1	INFO	asdasdasdasd
+2022-12-25T15:36:38.918Z	f6cf900d-078c-459e-b21a-4d27992b80b1	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1853',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982592,v1=bcf5ed98ff740f027393b94eed4f7aa9eb66532d7da634a16642feaed99034be,v0=5fc2af28be7b9451af8daba1d0d6ab0487590e1e367896bd273e67c212efe52b',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:38.919Z	f6cf900d-078c-459e-b21a-4d27992b80b1	INFO	asdasdasdasd
+2022-12-25T15:36:38.921Z	f6cf900d-078c-459e-b21a-4d27992b80b1	INFO	Unhandled event type payment_intent.created
+END RequestId: f6cf900d-078c-459e-b21a-4d27992b80b1
+REPORT RequestId: f6cf900d-078c-459e-b21a-4d27992b80b1	Init Duration: 1.03 ms	Duration: 387.98 ms	Billed Duration: 388 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:36:39.042Z	04e9f894-9c37-4ad7-a68e-5f9a40d95f11	INFO	asdasdasdasd
+2022-12-25T15:36:39.057Z	04e9f894-9c37-4ad7-a68e-5f9a40d95f11	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1955',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982592,v1=9cafc71d4b0c55f5b278ac92d08b9498fcce7d198bf30640057d0e5e294e727d,v0=254d24fa4ad26203df6e3860de3c7dc867ccaf320031166411576b3d39219f62',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:39.057Z	04e9f894-9c37-4ad7-a68e-5f9a40d95f11	INFO	asdasdasdasd
+2022-12-25T15:36:39.069Z	04e9f894-9c37-4ad7-a68e-5f9a40d95f11	INFO	Unhandled event type payment_intent.succeeded
+END RequestId: 04e9f894-9c37-4ad7-a68e-5f9a40d95f11
+REPORT RequestId: 04e9f894-9c37-4ad7-a68e-5f9a40d95f11	Init Duration: 0.12 ms	Duration: 501.16 ms	Billed Duration: 502 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 88a17e9a-49a8-4828-9d4e-56cb32e39dd1 Version: $LATEST
+2022-12-25T15:36:40.155Z	88a17e9a-49a8-4828-9d4e-56cb32e39dd1	INFO	asdasdasdasd
+2022-12-25T15:36:40.159Z	88a17e9a-49a8-4828-9d4e-56cb32e39dd1	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6745',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982592,v1=cbd012f06e18980c056718f8e67f0d0165b3f83530ebbd5122b0fd3711ca8324,v0=ec7117d416b027ee250e5bbf9eedc115c1ee79f5888bda690afb1ca3278c406c',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:40.159Z	88a17e9a-49a8-4828-9d4e-56cb32e39dd1	INFO	asdasdasdasd
+2022-12-25T15:36:40.161Z	88a17e9a-49a8-4828-9d4e-56cb32e39dd1	INFO	Unhandled event type invoice.updated
+END RequestId: 88a17e9a-49a8-4828-9d4e-56cb32e39dd1
+REPORT RequestId: 88a17e9a-49a8-4828-9d4e-56cb32e39dd1	Init Duration: 0.16 ms	Duration: 399.87 ms	Billed Duration: 400 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 70c5106c-9cb0-413c-9390-141b759e9a9d Version: $LATEST
+2022-12-25T15:36:40.788Z	70c5106c-9cb0-413c-9390-141b759e9a9d	INFO	asdasdasdasd
+2022-12-25T15:36:40.792Z	70c5106c-9cb0-413c-9390-141b759e9a9d	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6225',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982592,v1=5204c3c2b9cef90c624e49f600e6184d2b9b93a4fc4a19b4b9241c6e20b60aa2,v0=c5ca4ab09c70e2eead94f5fb4252d3da879eba4a20eb8c87fe9be9d5f9ad874d',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:40.793Z	70c5106c-9cb0-413c-9390-141b759e9a9d	INFO	asdasdasdasd
+2022-12-25T15:36:40.794Z	70c5106c-9cb0-413c-9390-141b759e9a9d	INFO	Unhandled event type invoice.paid
+2022-12-25T15:36:40.782Z	22366911-e447-4690-a973-9d08c2bc408b	INFO	asdasdasdasd
+2022-12-25T15:36:40.800Z	22366911-e447-4690-a973-9d08c2bc408b	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '3766',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982592,v1=f02acc2d320ccf6eb17d39425ff5410a02a12d2fe734063afccb672c45420f6e,v0=f4b855193226936406cf928174f8290626d9750c6602aa81812f507843f84850',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:40.800Z	22366911-e447-4690-a973-9d08c2bc408b	INFO	asdasdasdasd
+END RequestId: 70c5106c-9cb0-413c-9390-141b759e9a9d
+REPORT RequestId: 70c5106c-9cb0-413c-9390-141b759e9a9d	Init Duration: 0.10 ms	Duration: 547.67 ms	Billed Duration: 548 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:36:40.802Z	22366911-e447-4690-a973-9d08c2bc408b	INFO	Unhandled event type charge.succeeded
+END RequestId: 22366911-e447-4690-a973-9d08c2bc408b
+REPORT RequestId: 22366911-e447-4690-a973-9d08c2bc408b	Init Duration: 0.58 ms	Duration: 506.95 ms	Billed Duration: 507 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: b90d0ad7-8558-4077-be32-ce4334bafae0 Version: $LATEST
+START RequestId: cb5fc896-e1ed-455c-855a-79bc630022f3 Version: $LATEST
+2022-12-25T15:36:41.632Z	cb5fc896-e1ed-455c-855a-79bc630022f3	INFO	asdasdasdasd
+2022-12-25T15:36:41.640Z	cb5fc896-e1ed-455c-855a-79bc630022f3	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1853',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982592,v1=4d22325c01ae3a17be276bb30cb3af7b1c14516780fe9f1da86cd9c1efe92e45,v0=16fb543c3a6a7163a7686fd5a2698b29599be16707badde9f1bed5ddb9cd59ba',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:41.640Z	cb5fc896-e1ed-455c-855a-79bc630022f3	INFO	asdasdasdasd
+2022-12-25T15:36:41.643Z	cb5fc896-e1ed-455c-855a-79bc630022f3	INFO	Unhandled event type payment_intent.created
+END RequestId: cb5fc896-e1ed-455c-855a-79bc630022f3
+REPORT RequestId: cb5fc896-e1ed-455c-855a-79bc630022f3	Init Duration: 0.20 ms	Duration: 450.38 ms	Billed Duration: 451 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:36:41.634Z	b90d0ad7-8558-4077-be32-ce4334bafae0	INFO	asdasdasdasd
+2022-12-25T15:36:41.647Z	b90d0ad7-8558-4077-be32-ce4334bafae0	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6238',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982592,v1=ef3ab47049ec73e51e96c879014388ed4e82907d0901f0899e46b5f99a2d0507,v0=7b1edf778d9525261fd8dec3ecca78cbcb712fa8b52ef27223d390779aed7a7e',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:41.647Z	b90d0ad7-8558-4077-be32-ce4334bafae0	INFO	asdasdasdasd
+2022-12-25T15:36:41.649Z	b90d0ad7-8558-4077-be32-ce4334bafae0	INFO	Unhandled event type invoice.payment_succeeded
+END RequestId: b90d0ad7-8558-4077-be32-ce4334bafae0
+REPORT RequestId: b90d0ad7-8558-4077-be32-ce4334bafae0	Init Duration: 0.78 ms	Duration: 491.65 ms	Billed Duration: 492 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 5bfa91cd-9af4-419e-a9c1-b3748dfac73c Version: $LATEST
+2022-12-25T15:36:41.989Z	6db7fef2-5999-4f71-8c1c-c737ec912573	INFO	asdasdasdasd
+2022-12-25T15:36:42.004Z	6db7fef2-5999-4f71-8c1c-c737ec912573	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6225',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982592,v1=e9851c2e27dd843595403c9ce5f90f91c67a91d6447a16ce9dfef2102d3ca5e0,v0=341c596c1a22648b4508c16d632f4705981bf4c10b8d388b156cf7fb4acd2d1b',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:42.004Z	6db7fef2-5999-4f71-8c1c-c737ec912573	INFO	asdasdasdasd
+2022-12-25T15:36:42.006Z	6db7fef2-5999-4f71-8c1c-c737ec912573	INFO	Unhandled event type invoice.paid
+END RequestId: 6db7fef2-5999-4f71-8c1c-c737ec912573
+REPORT RequestId: 6db7fef2-5999-4f71-8c1c-c737ec912573	Init Duration: 0.19 ms	Duration: 527.64 ms	Billed Duration: 528 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 7888b28f-9501-4f78-845f-2df196daa650 Version: $LATEST
+2022-12-25T15:36:42.466Z	5bfa91cd-9af4-419e-a9c1-b3748dfac73c	INFO	asdasdasdasd
+2022-12-25T15:36:42.470Z	5bfa91cd-9af4-419e-a9c1-b3748dfac73c	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6745',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982592,v1=65dbe933d7de83c728fcd54f89101ca912e43fe14d4c25997fa391e249d9032d,v0=7d26d00e23f65a39072f012d743ed972a20aa8114cac6e454399654f8d55f348',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:42.470Z	5bfa91cd-9af4-419e-a9c1-b3748dfac73c	INFO	asdasdasdasd
+2022-12-25T15:36:42.471Z	5bfa91cd-9af4-419e-a9c1-b3748dfac73c	INFO	Unhandled event type invoice.updated
+END RequestId: 5bfa91cd-9af4-419e-a9c1-b3748dfac73c
+REPORT RequestId: 5bfa91cd-9af4-419e-a9c1-b3748dfac73c	Init Duration: 0.27 ms	Duration: 556.72 ms	Billed Duration: 557 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:36:42.495Z	7888b28f-9501-4f78-845f-2df196daa650	INFO	asdasdasdasd
+2022-12-25T15:36:42.498Z	7888b28f-9501-4f78-845f-2df196daa650	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6230',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982592,v1=a48fe65516e3ef55141d41e1d4de8f4ac302b862f98431a87c8222bbe70000de,v0=6553ffca3c9846d2d4ea14c9911e8497c3ebd553e43d4217f9180afead2b6272',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:42.499Z	7888b28f-9501-4f78-845f-2df196daa650	INFO	asdasdasdasd
+2022-12-25T15:36:42.500Z	7888b28f-9501-4f78-845f-2df196daa650	INFO	Unhandled event type invoice.finalized
+END RequestId: 7888b28f-9501-4f78-845f-2df196daa650
+REPORT RequestId: 7888b28f-9501-4f78-845f-2df196daa650	Init Duration: 0.15 ms	Duration: 522.41 ms	Billed Duration: 523 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 9af96a7a-753e-4c8c-99f7-ed932fcc8b1d Version: $LATEST
+2022-12-25T15:36:42.777Z	f33f739a-61f9-4044-aea8-08dc1108a519	INFO	asdasdasdasd
+2022-12-25T15:36:42.781Z	f33f739a-61f9-4044-aea8-08dc1108a519	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6238',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982592,v1=1980c1bc70da4be8b7e9d44c1b7758c6aece009c21f800f5ac029dcf23b9bc6c,v0=d4e97afbcfe540634b426b863401be0b77836ef03c5a55ba0e3922229ca424e7',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:42.781Z	f33f739a-61f9-4044-aea8-08dc1108a519	INFO	asdasdasdasd
+2022-12-25T15:36:42.783Z	f33f739a-61f9-4044-aea8-08dc1108a519	INFO	Unhandled event type invoice.payment_succeeded
+END RequestId: f33f739a-61f9-4044-aea8-08dc1108a519
+REPORT RequestId: f33f739a-61f9-4044-aea8-08dc1108a519	Init Duration: 1.73 ms	Duration: 318.70 ms	Billed Duration: 319 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: ecbda0cf-83f6-423a-9946-048ea2389bed Version: $LATEST
+2022-12-25T15:36:42.935Z	9af96a7a-753e-4c8c-99f7-ed932fcc8b1d	INFO	asdasdasdasd
+2022-12-25T15:36:42.939Z	9af96a7a-753e-4c8c-99f7-ed932fcc8b1d	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '3766',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982594,v1=b5af745f772c4905aac2a5086bd4368801797feb14941a6a1da5843ebbd9d2f5,v0=04a2117aba5cf0279d85f3aca2ac6109828d4642ce71ccaf989d639b6376ab09',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:42.939Z	9af96a7a-753e-4c8c-99f7-ed932fcc8b1d	INFO	asdasdasdasd
+2022-12-25T15:36:42.941Z	9af96a7a-753e-4c8c-99f7-ed932fcc8b1d	INFO	Unhandled event type charge.succeeded
+END RequestId: 9af96a7a-753e-4c8c-99f7-ed932fcc8b1d
+REPORT RequestId: 9af96a7a-753e-4c8c-99f7-ed932fcc8b1d	Init Duration: 1.85 ms	Duration: 405.52 ms	Billed Duration: 406 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:36:43.061Z	ecbda0cf-83f6-423a-9946-048ea2389bed	INFO	asdasdasdasd
+2022-12-25T15:36:43.064Z	ecbda0cf-83f6-423a-9946-048ea2389bed	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6230',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982592,v1=62abe8c8b438661410d7f9bbbd78fa6fce475a7adedc60998330416bc6a6662d,v0=1fd29014e19c2629e77c754f1890605fdcc758fb003f85063fb99c1406c30568',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:43.064Z	ecbda0cf-83f6-423a-9946-048ea2389bed	INFO	asdasdasdasd
+2022-12-25T15:36:43.066Z	ecbda0cf-83f6-423a-9946-048ea2389bed	INFO	Unhandled event type invoice.finalized
+END RequestId: ecbda0cf-83f6-423a-9946-048ea2389bed
+REPORT RequestId: ecbda0cf-83f6-423a-9946-048ea2389bed	Init Duration: 1.88 ms	Duration: 242.51 ms	Billed Duration: 243 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: cec0cef5-feec-4aa6-a366-cc5df54701eb Version: $LATEST
+2022-12-25T15:36:43.506Z	9f769c5d-75dc-4b3a-94f8-412e5c47b0e1	INFO	asdasdasdasd
+2022-12-25T15:36:43.510Z	9f769c5d-75dc-4b3a-94f8-412e5c47b0e1	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1955',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982594,v1=7cbc7ccca99ccdc74ff7947cf12e7fca9ba74c95b13340895190b2044f5b211c,v0=20d53e64698fb78217e90701dcd91c98f25fc6ad935da34ac1d2f009e013562c',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:43.510Z	9f769c5d-75dc-4b3a-94f8-412e5c47b0e1	INFO	asdasdasdasd
+2022-12-25T15:36:43.511Z	9f769c5d-75dc-4b3a-94f8-412e5c47b0e1	INFO	Unhandled event type payment_intent.succeeded
+END RequestId: 9f769c5d-75dc-4b3a-94f8-412e5c47b0e1
+REPORT RequestId: 9f769c5d-75dc-4b3a-94f8-412e5c47b0e1	Init Duration: 0.29 ms	Duration: 326.18 ms	Billed Duration: 327 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 90274d08-5ee2-43cd-9f4a-29023a4a9433 Version: $LATEST
+2022-12-25T15:36:43.672Z	cec0cef5-feec-4aa6-a366-cc5df54701eb	INFO	asdasdasdasd
+2022-12-25T15:36:43.678Z	cec0cef5-feec-4aa6-a366-cc5df54701eb	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6230',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982595,v1=da74db15a1050aeca53548e7e0a831805d0840e24a11877c26530a6ce1d8eca2,v0=5180f4178c8cfe3c06318ae4f17a71259d33e263098ac4eb50c61044621bc0f7',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:43.678Z	cec0cef5-feec-4aa6-a366-cc5df54701eb	INFO	asdasdasdasd
+2022-12-25T15:36:43.680Z	cec0cef5-feec-4aa6-a366-cc5df54701eb	INFO	Unhandled event type invoice.finalized
+END RequestId: cec0cef5-feec-4aa6-a366-cc5df54701eb
+REPORT RequestId: cec0cef5-feec-4aa6-a366-cc5df54701eb	Init Duration: 0.10 ms	Duration: 375.98 ms	Billed Duration: 376 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: a9192401-c2c5-4769-b531-540625a639de Version: $LATEST
+2022-12-25T15:36:43.939Z	90274d08-5ee2-43cd-9f4a-29023a4a9433	INFO	asdasdasdasd
+2022-12-25T15:36:43.942Z	90274d08-5ee2-43cd-9f4a-29023a4a9433	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6238',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982595,v1=bfd638179a516ab4b7441fa52d3e59548d53d3b427a0903202074dca5f08d871,v0=1e6b92c53704bf05736600d61af3ded9f6fb8f1ec6b96db662d70405746e6dbc',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:43.942Z	90274d08-5ee2-43cd-9f4a-29023a4a9433	INFO	asdasdasdasd
+2022-12-25T15:36:43.944Z	90274d08-5ee2-43cd-9f4a-29023a4a9433	INFO	Unhandled event type invoice.payment_succeeded
+END RequestId: 90274d08-5ee2-43cd-9f4a-29023a4a9433
+REPORT RequestId: 90274d08-5ee2-43cd-9f4a-29023a4a9433	Init Duration: 0.09 ms	Duration: 347.46 ms	Billed Duration: 348 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 0696be25-70ea-4881-8f0d-eba2abad8d78 Version: $LATEST
+START RequestId: 7e26e799-434c-4a8a-84e8-514b3beeb126 Version: $LATEST
+2022-12-25T15:36:44.099Z	a9192401-c2c5-4769-b531-540625a639de	INFO	asdasdasdasd
+2022-12-25T15:36:44.105Z	a9192401-c2c5-4769-b531-540625a639de	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1853',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982594,v1=c8c4294473e8f56e1b90187376422d90778b58ce69a2d40e57ff51b2fc16fac7,v0=952183e79addb4ee2db40a7e80529f39ac1992cfae8a2659043aebbcb1327de7',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:44.105Z	a9192401-c2c5-4769-b531-540625a639de	INFO	asdasdasdasd
+2022-12-25T15:36:44.107Z	a9192401-c2c5-4769-b531-540625a639de	INFO	Unhandled event type payment_intent.created
+END RequestId: a9192401-c2c5-4769-b531-540625a639de
+REPORT RequestId: a9192401-c2c5-4769-b531-540625a639de	Init Duration: 0.26 ms	Duration: 379.06 ms	Billed Duration: 380 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:36:44.276Z	0696be25-70ea-4881-8f0d-eba2abad8d78	INFO	asdasdasdasd
+2022-12-25T15:36:44.279Z	0696be25-70ea-4881-8f0d-eba2abad8d78	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6745',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982594,v1=c7bf0e4f72ff536f7f9a8f303f49b9199f339c2ef9626ed50ff91bb8103db878,v0=05e73ec455ee63d67872b019e1413d0c125b1f7dff489edb2614501aec10360b',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:44.280Z	0696be25-70ea-4881-8f0d-eba2abad8d78	INFO	asdasdasdasd
+2022-12-25T15:36:44.281Z	0696be25-70ea-4881-8f0d-eba2abad8d78	INFO	Unhandled event type invoice.updated
+END RequestId: 0696be25-70ea-4881-8f0d-eba2abad8d78
+REPORT RequestId: 0696be25-70ea-4881-8f0d-eba2abad8d78	Init Duration: 0.08 ms	Duration: 293.52 ms	Billed Duration: 294 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T15:36:44.374Z	7e26e799-434c-4a8a-84e8-514b3beeb126	INFO	asdasdasdasd
+2022-12-25T15:36:44.378Z	7e26e799-434c-4a8a-84e8-514b3beeb126	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6225',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671982595,v1=eca30e7994880aaf558de2240361a86685810720f82a0a9e67d402138c64519c,v0=f2c48698be14ebaf72d6a0102938f034588d5d75e23302de72fbd5c24c8fbe24',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T15:36:44.378Z	7e26e799-434c-4a8a-84e8-514b3beeb126	INFO	asdasdasdasd
+2022-12-25T15:36:44.379Z	7e26e799-434c-4a8a-84e8-514b3beeb126	INFO	Unhandled event type invoice.paid
+END RequestId: 7e26e799-434c-4a8a-84e8-514b3beeb126
+REPORT RequestId: 7e26e799-434c-4a8a-84e8-514b3beeb126	Init Duration: 5.61 ms	Duration: 322.52 ms	Billed Duration: 323 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 8dd9d7aa-66ed-40b3-b040-dfa0793eda7a Version: $LATEST
+2022-12-25T16:07:01.652Z	8dd9d7aa-66ed-40b3-b040-dfa0793eda7a	INFO	asdasdasdasd
+2022-12-25T16:07:01.658Z	8dd9d7aa-66ed-40b3-b040-dfa0793eda7a	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1955',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671984415,v1=1326c863b6ea3679ad978063ccdd7d63907aef63465248ef1eded21f41d766f4,v0=c0a5c98c802f973c2c9b3403bca56bd52a202c31073a0a48b7042c5d4c0fab18',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T16:07:01.659Z	8dd9d7aa-66ed-40b3-b040-dfa0793eda7a	INFO	asdasdasdasd
+2022-12-25T16:07:01.661Z	8dd9d7aa-66ed-40b3-b040-dfa0793eda7a	INFO	Unhandled event type payment_intent.succeeded
+END RequestId: 8dd9d7aa-66ed-40b3-b040-dfa0793eda7a
+REPORT RequestId: 8dd9d7aa-66ed-40b3-b040-dfa0793eda7a	Init Duration: 0.12 ms	Duration: 628.31 ms	Billed Duration: 629 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T16:07:01.874Z	4236d2d9-4330-46f0-bee6-f7ed8e316420	INFO	asdasdasdasd
+2022-12-25T16:07:01.879Z	4236d2d9-4330-46f0-bee6-f7ed8e316420	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '3765',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671984415,v1=cac3bba2b1a2631381fdb15d65fd3652f068a8175b33ad8f96f9b52ba8c08972,v0=7d3fb71329d61c53d15cab0cadea87bc4b4bf04b9fe7347a9505d93501ac771e',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T16:07:01.879Z	4236d2d9-4330-46f0-bee6-f7ed8e316420	INFO	asdasdasdasd
+2022-12-25T16:07:01.883Z	4236d2d9-4330-46f0-bee6-f7ed8e316420	INFO	Unhandled event type charge.succeeded
+END RequestId: 4236d2d9-4330-46f0-bee6-f7ed8e316420
+REPORT RequestId: 4236d2d9-4330-46f0-bee6-f7ed8e316420	Init Duration: 0.28 ms	Duration: 432.54 ms	Billed Duration: 433 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 215fa2a0-dd50-45c8-a26b-054a9bf268a0 Version: $LATEST
+2022-12-25T16:07:02.624Z	215fa2a0-dd50-45c8-a26b-054a9bf268a0	INFO	asdasdasdasd
+2022-12-25T16:07:02.645Z	215fa2a0-dd50-45c8-a26b-054a9bf268a0	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1853',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671984415,v1=9fa56bbb61d1d32e9e377ead5579f1252b8db1a2ffddbee879b10a64a758fcce,v0=706ecb8ab95aa4ef8cd135dc2b8e14a3f5bcbad17637d1b46e755c3e7cb841c6',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T16:07:02.645Z	215fa2a0-dd50-45c8-a26b-054a9bf268a0	INFO	asdasdasdasd
+2022-12-25T16:07:02.647Z	215fa2a0-dd50-45c8-a26b-054a9bf268a0	INFO	Unhandled event type payment_intent.created
+END RequestId: 215fa2a0-dd50-45c8-a26b-054a9bf268a0
+REPORT RequestId: 215fa2a0-dd50-45c8-a26b-054a9bf268a0	Init Duration: 6.53 ms	Duration: 477.67 ms	Billed Duration: 478 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: e8e3196f-ff7a-4674-894c-5a878ec45783 Version: $LATEST
+2022-12-25T16:07:03.067Z	e8e3196f-ff7a-4674-894c-5a878ec45783	INFO	asdasdasdasd
+2022-12-25T16:07:03.071Z	e8e3196f-ff7a-4674-894c-5a878ec45783	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6745',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671984415,v1=819650ae2ab7b2f73c9812e06d1a1bd238ee0398526f3bce6423256674f4d0bf,v0=d227f25c72375dcd613898b5102299e35bf3e04b54b4474499a58aeb02f4c775',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T16:07:03.071Z	e8e3196f-ff7a-4674-894c-5a878ec45783	INFO	asdasdasdasd
+2022-12-25T16:07:03.074Z	e8e3196f-ff7a-4674-894c-5a878ec45783	INFO	Unhandled event type invoice.updated
+END RequestId: e8e3196f-ff7a-4674-894c-5a878ec45783
+REPORT RequestId: e8e3196f-ff7a-4674-894c-5a878ec45783	Init Duration: 0.18 ms	Duration: 353.00 ms	Billed Duration: 353 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T16:07:03.192Z	ff590503-c8c2-4ff9-9e82-5aacc531e978	INFO	asdasdasdasd
+2022-12-25T16:07:03.197Z	ff590503-c8c2-4ff9-9e82-5aacc531e978	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6225',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671984416,v1=bffd5b80a6b605e3125344fb57ac07b37af7210834e5c338714439bca8bd4742,v0=6ac268253159e8ac90537d6486bc9360e2b1d00b02751221f9bd9b6fbb75dede',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T16:07:03.197Z	ff590503-c8c2-4ff9-9e82-5aacc531e978	INFO	asdasdasdasd
+2022-12-25T16:07:03.199Z	ff590503-c8c2-4ff9-9e82-5aacc531e978	INFO	Unhandled event type invoice.paid
+END RequestId: ff590503-c8c2-4ff9-9e82-5aacc531e978
+REPORT RequestId: ff590503-c8c2-4ff9-9e82-5aacc531e978	Init Duration: 0.13 ms	Duration: 313.06 ms	Billed Duration: 314 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: d6043d6a-9e54-40b6-abe9-fa0e8429addd Version: $LATEST
+2022-12-25T16:07:03.411Z	a060af5c-ed1d-4a99-9a3f-cd49a80fbce5	INFO	asdasdasdasd
+2022-12-25T16:07:03.419Z	a060af5c-ed1d-4a99-9a3f-cd49a80fbce5	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6238',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671984416,v1=d26091589d9a1e3e06ba07a2e1d4d27a70be67b5767639032686d474c6b91e45,v0=44e41b71227045e7877baa7992ccd90afce032cea3c938fb64439b7c8f0369ce',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T16:07:03.419Z	a060af5c-ed1d-4a99-9a3f-cd49a80fbce5	INFO	asdasdasdasd
+2022-12-25T16:07:03.420Z	a060af5c-ed1d-4a99-9a3f-cd49a80fbce5	INFO	Unhandled event type invoice.payment_succeeded
+END RequestId: a060af5c-ed1d-4a99-9a3f-cd49a80fbce5
+REPORT RequestId: a060af5c-ed1d-4a99-9a3f-cd49a80fbce5	Init Duration: 0.82 ms	Duration: 306.37 ms	Billed Duration: 307 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T16:07:03.574Z	d6043d6a-9e54-40b6-abe9-fa0e8429addd	INFO	asdasdasdasd
+2022-12-25T16:07:03.578Z	d6043d6a-9e54-40b6-abe9-fa0e8429addd	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6230',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671984416,v1=596ada25909a34825af65174049b0e6c11882f10806ab0a045caf4f41bf111aa,v0=9a20982eed173dcfb4ef062ad19c7c69e533a939f67e5f27459992042cc4eb14',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T16:07:03.578Z	d6043d6a-9e54-40b6-abe9-fa0e8429addd	INFO	asdasdasdasd
+2022-12-25T16:07:03.580Z	d6043d6a-9e54-40b6-abe9-fa0e8429addd	INFO	Unhandled event type invoice.finalized
+END RequestId: d6043d6a-9e54-40b6-abe9-fa0e8429addd
+REPORT RequestId: d6043d6a-9e54-40b6-abe9-fa0e8429addd	Init Duration: 0.16 ms	Duration: 365.85 ms	Billed Duration: 366 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: 0086f76f-c4c5-4b73-8c99-716b315f6b55 Version: $LATEST
+2022-12-25T16:08:54.602Z	0086f76f-c4c5-4b73-8c99-716b315f6b55	INFO	asdasdasdasd
+2022-12-25T16:08:54.610Z	0086f76f-c4c5-4b73-8c99-716b315f6b55	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1955',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671984528,v1=229263c30f0b57c4b95f155ee3953cfcf0b8c019c1f4c1434a3d2c555e92dda0,v0=e2792a305af6d3355ef28c21300b30431f3d34f8a73a6243781e4393555c6625',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T16:08:54.610Z	0086f76f-c4c5-4b73-8c99-716b315f6b55	INFO	asdasdasdasd
+2022-12-25T16:08:54.612Z	0086f76f-c4c5-4b73-8c99-716b315f6b55	INFO	Unhandled event type payment_intent.succeeded
+END RequestId: 0086f76f-c4c5-4b73-8c99-716b315f6b55
+REPORT RequestId: 0086f76f-c4c5-4b73-8c99-716b315f6b55	Init Duration: 0.25 ms	Duration: 420.51 ms	Billed Duration: 421 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T16:08:54.919Z	5e8f381b-976b-4091-a05e-1bd3c669d0a2	INFO	asdasdasdasd
+2022-12-25T16:08:54.928Z	5e8f381b-976b-4091-a05e-1bd3c669d0a2	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '3766',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671984528,v1=ea1a987912692355bff2df0870d169ce019e102ddd7447085b08320ee257baac,v0=dfd72be00ed006198e2a18fa6285e1b09196243bc33deab81c35240ab1d5ae6c',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T16:08:54.928Z	5e8f381b-976b-4091-a05e-1bd3c669d0a2	INFO	asdasdasdasd
+2022-12-25T16:08:54.930Z	5e8f381b-976b-4091-a05e-1bd3c669d0a2	INFO	Unhandled event type charge.succeeded
+END RequestId: 5e8f381b-976b-4091-a05e-1bd3c669d0a2
+REPORT RequestId: 5e8f381b-976b-4091-a05e-1bd3c669d0a2	Init Duration: 3.15 ms	Duration: 470.15 ms	Billed Duration: 471 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: e6d2ed4a-c852-4a03-9874-93c2142e2faf Version: $LATEST
+2022-12-25T16:08:55.235Z	e6d2ed4a-c852-4a03-9874-93c2142e2faf	INFO	asdasdasdasd
+2022-12-25T16:08:55.239Z	e6d2ed4a-c852-4a03-9874-93c2142e2faf	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '1853',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671984528,v1=7224f83da2806246bb1116acf5904a7d9a11fcb631388cd3716650e5d4b0ba05,v0=82fd409f5308f07a9d7e4ff70adf24e319cad53c22d2c8c7eff7cc42a61140fd',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T16:08:55.239Z	e6d2ed4a-c852-4a03-9874-93c2142e2faf	INFO	asdasdasdasd
+2022-12-25T16:08:55.240Z	e6d2ed4a-c852-4a03-9874-93c2142e2faf	INFO	Unhandled event type payment_intent.created
+END RequestId: e6d2ed4a-c852-4a03-9874-93c2142e2faf
+REPORT RequestId: e6d2ed4a-c852-4a03-9874-93c2142e2faf	Init Duration: 0.24 ms	Duration: 309.18 ms	Billed Duration: 310 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+START RequestId: e77b4051-66e9-40e4-a410-4c6366d35227 Version: $LATEST
+START RequestId: a130d9f5-e311-45d2-97c0-b69e174e7854 Version: $LATEST
+2022-12-25T16:08:55.515Z	e77b4051-66e9-40e4-a410-4c6366d35227	INFO	asdasdasdasd
+2022-12-25T16:08:55.519Z	e77b4051-66e9-40e4-a410-4c6366d35227	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6225',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671984529,v1=00ec62fc6c918a6e24e1157b1edcdcb30915f51c708808772fc9666d18ec9be5,v0=3609c897bb0e416f03148ab618f5f5b49ce84003b15cace665e672af40c489b5',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T16:08:55.519Z	e77b4051-66e9-40e4-a410-4c6366d35227	INFO	asdasdasdasd
+2022-12-25T16:08:55.520Z	e77b4051-66e9-40e4-a410-4c6366d35227	INFO	Unhandled event type invoice.paid
+END RequestId: e77b4051-66e9-40e4-a410-4c6366d35227
+REPORT RequestId: e77b4051-66e9-40e4-a410-4c6366d35227	Init Duration: 0.27 ms	Duration: 292.96 ms	Billed Duration: 293 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T16:08:55.731Z	a130d9f5-e311-45d2-97c0-b69e174e7854	INFO	asdasdasdasd
+2022-12-25T16:08:55.735Z	a130d9f5-e311-45d2-97c0-b69e174e7854	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6745',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671984529,v1=a9cd695ca7d98ea372d749437a50e6ef07cc2c3169bdcf93f3e0fe0a2aaf3d2e,v0=391e8817ccefa56fd7b26638bc804b363d42660e13168e76cd8896c12e84d349',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T16:08:55.736Z	a130d9f5-e311-45d2-97c0-b69e174e7854	INFO	asdasdasdasd
+2022-12-25T16:08:55.737Z	a130d9f5-e311-45d2-97c0-b69e174e7854	INFO	Unhandled event type invoice.updated
+END RequestId: a130d9f5-e311-45d2-97c0-b69e174e7854
+REPORT RequestId: a130d9f5-e311-45d2-97c0-b69e174e7854	Init Duration: 3.82 ms	Duration: 334.93 ms	Billed Duration: 335 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T16:08:55.854Z	e656997a-51af-4dac-8b99-f2bd49230c31	INFO	asdasdasdasd
+2022-12-25T16:08:55.858Z	e656997a-51af-4dac-8b99-f2bd49230c31	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6238',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671984529,v1=d52adafa119d21e2582bacac7383e173be7814724d10391497a34b8bea881290,v0=d69c233094ceb653827ceacc5aa32b7df62cced09c4a7e130f16dfa98a2a6a78',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T16:08:55.858Z	e656997a-51af-4dac-8b99-f2bd49230c31	INFO	asdasdasdasd
+2022-12-25T16:08:55.860Z	e656997a-51af-4dac-8b99-f2bd49230c31	INFO	Unhandled event type invoice.payment_succeeded
+END RequestId: e656997a-51af-4dac-8b99-f2bd49230c31
+REPORT RequestId: e656997a-51af-4dac-8b99-f2bd49230c31	Init Duration: 0.31 ms	Duration: 292.32 ms	Billed Duration: 293 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	
+2022-12-25T16:08:55.877Z	1d2e79cf-78bb-4497-a892-f5b8153d8725	INFO	asdasdasdasd
+2022-12-25T16:08:55.881Z	1d2e79cf-78bb-4497-a892-f5b8153d8725	INFO	{
+  headers: {
+    Host: 'localhost:3000',
+    'User-Agent': 'Stripe/1.0 (+https://stripe.com/docs/webhooks)',
+    'Content-Length': '6230',
+    Accept: '*/*; q=0.5, application/xml',
+    'Cache-Control': 'no-cache',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Stripe-Signature': 't=1671984529,v1=140387e0b195113a25651e6ca408033e10accf935fdb643d44c36da2d349e91a,v0=3094bd46df78740cc892722c3994fedde619897828fde042d6ebc1bf4de1d6e7',
+    'Accept-Encoding': 'gzip',
+    'X-Forwarded-Proto': 'http',
+    'X-Forwarded-Port': '3000'
+  }
+}
+2022-12-25T16:08:55.881Z	1d2e79cf-78bb-4497-a892-f5b8153d8725	INFO	asdasdasdasd
+2022-12-25T16:08:55.883Z	1d2e79cf-78bb-4497-a892-f5b8153d8725	INFO	Unhandled event type invoice.finalized
+END RequestId: 1d2e79cf-78bb-4497-a892-f5b8153d8725
+REPORT RequestId: 1d2e79cf-78bb-4497-a892-f5b8153d8725	Init Duration: 0.25 ms	Duration: 306.86 ms	Billed Duration: 307 ms	Memory Size: 128 MB	Max Memory Used: 128 MB	

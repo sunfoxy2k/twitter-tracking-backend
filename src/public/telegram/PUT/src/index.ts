@@ -1,15 +1,15 @@
 import { MainFunction, responseWrapper } from "/opt/nodejs/response";
 import { Context, APIGatewayEvent } from 'aws-lambda';
-import { createStripeCheckoutSession } from '/opt/nodejs/stripe'
+import { putTelegramChatId } from '/opt/nodejs/database';
 const main: MainFunction = async (event, context, authenticatedUser) => {
-    // get api gateway body
     const appEmail = authenticatedUser.email
+    const { telegramChatId } = JSON.parse(event.body)
 
-    // create stripe checkout session
-    const session = await createStripeCheckoutSession(appEmail)
+    await putTelegramChatId(appEmail, telegramChatId)
 
     return {
-        url: session.url
+        code: 'SUCCESS',
+        message: 'Put telegramChatId success'
     }
 }
 

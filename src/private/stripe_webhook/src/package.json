@@ -1,9 +1,10 @@
 {
-    "name": "user",
+    "name": "healthcheck",
     "description": "IN_DEVELOPMENT",
     "version": "0.0.1",
     "private": true,
     "dependencies": {
+        "stripe": "^11.5.0"
     },
     "devDependencies": {
         "aws-sdk": "^2.799.0"

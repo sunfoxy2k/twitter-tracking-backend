@@ -1,28 +1,30 @@
 import { TwitterUserItem } from "./twitter-utils";
 export interface VictimInput {
-    app_username: string;
-    victim_id: string;
-    victim_username: string;
-    track_count: number;
-    profile_picture_url?: string;
-    created_time?: Date;
-    update_time?: Date;
+    appEmail: string;
+    victimId: string;
+    victimUsername: string;
+    trackCount: number;
+    profilePictureUrl?: string;
+    createdTime?: Date;
+    updateTime?: Date;
 }
 
 export interface UserInput {
-    app_username: string;
-    telegram_chat_id: string;
-    subscribe_start?: Date;
-    subscribe_end?: Date;
-    track_count: number;
+    appEmail: string;
+    telegramChatId?: string;
+    subscribeStart?: Date;
+    subscribeEnd?: Date;
+    trackCount?: number;
+    subscriptionStartTime?: Date;
+    subscriptionEndTime?: Date;
 }
 
 export interface FollowingInput {
-    app_username: string;
-    victim_id: string;
-    following_username: string;
-    picture_profile_url: string;
-    update_time?: Date;
+    appEmail: string;
+    victimId: string;
+    followingUsername: string;
+    profilePictureUrl: string;
+    updateTime?: Date;
 }
 
 export abstract class Entity {
@@ -42,230 +44,230 @@ export abstract class Entity {
 }
 
 export class Victim extends Entity {
-    public app_username: string;
-    public victim_id: string;
-    public victim_username: string;
-    public track_count: number; 
-    public profile_picture_url: string;
-    public victim_type: string;
-    public created_time: Date;
-    public update_time: Date;
+    public appEmail: string;
+    public victimId: string;
+    public victimUsername: string;
+    public trackCount: number; 
+    public profilePictureUrl: string;
+    public victimType: string;
+    public createdTime: Date;
+    public updateTime: Date;
 
     constructor(input: VictimInput) {
         super();
-        this.app_username = input.app_username;
-        this.victim_id = input.victim_id;
-        this.victim_username = input.victim_username;
-        this.track_count = input.track_count;
-        this.profile_picture_url = input.profile_picture_url;
-        this.created_time = input.created_time || new Date();
-        this.update_time = input.update_time || new Date();
+        this.appEmail = input.appEmail;
+        this.victimId = input.victimId;
+        this.victimUsername = input.victimUsername;
+        this.trackCount = input.trackCount;
+        this.profilePictureUrl = input.profilePictureUrl;
+        this.createdTime = input.createdTime || new Date();
+        this.updateTime = input.updateTime || new Date();
 
-        this.victim_type = 'twitter'
+        this.victimType = 'twitter'
     }
     toORM() {
         return {
-            PK: `USER@${this.app_username}`,
-            SK: `CREATED_TIME@${this.created_time.valueOf()}#TWITTER_VICTIM@${this.victim_id}`,
-            trackCount: this.track_count,
-            profilePictureUrl: this.profile_picture_url,
-            victimUsername: this.victim_username,
-            victimType: this.victim_type,
-            updateTime: this.update_time.valueOf(),
+            PK: `USER@${this.appEmail}`,
+            SK: `CREATED_TIME@${this.createdTime.valueOf()}#TWITTER_VICTIM@${this.victimId}`,
+            trackCount: this.trackCount,
+            profilePictureUrl: this.profilePictureUrl,
+            victimUsername: this.victimUsername,
+            victimType: this.victimType,
+            updateTime: this.updateTime.valueOf(),
         }
     }
 
     toAPI() {
         return {
-            // userName: this.app_username,
-            userName: this.victim_username,
-            totalFollowing: this.track_count,
-            pictureProfileUrl: this.profile_picture_url,
-            createTime: this.created_time.valueOf(),
-            updateTime: this.update_time.valueOf(),
+            // email: this.appEmail,
+            userName: this.victimUsername,
+            totalFollowing: this.trackCount,
+            pictureProfileUrl: this.profilePictureUrl,
+            createTime: this.createdTime.valueOf(),
+            updateTime: this.updateTime.valueOf(),
             id: this.toQueryKey().SK,
-            // victim_type: this.victim_type,
+            // victimType: this.victimType,
         }
     }
 
     static fromORM(orm: any): Victim {
-        const app_username = orm.PK.replace('USER@', '')
+        const appEmail = orm.PK.replace('USER@', '')
         let [
-            created_time,
-            victim_id,
+            createdTime,
+            victimId,
         ] = orm.SK.split('#')
-        created_time = created_time.replace('CREATED_TIME@', '')
-        created_time = Number(created_time)
-        created_time = new Date(created_time)
-        victim_id = victim_id.replace('TWITTER_VICTIM@', '')
-        const profile_picture_url = orm.profilePictureUrl
-        // const victim_type = orm.victimType
-        const victim_username = orm.victimUsername
-        const track_count = orm.trackCount || 0
-        const update_time = orm.updateTime
+        createdTime = createdTime.replace('CREATED_TIME@', '')
+        createdTime = Number(createdTime)
+        createdTime = new Date(createdTime)
+        victimId = victimId.replace('TWITTER_VICTIM@', '')
+        const profilePictureUrl = orm.profilePictureUrl
+        // const victimType = orm.victimType
+        const victimUsername = orm.victimUsername
+        const trackCount = orm.trackCount || 0
+        const updateTime = orm.updateTime
 
         return new Victim({
-            app_username,
-            victim_id,
-            victim_username,
-            track_count,
-            profile_picture_url,
-            created_time,
-            update_time,
+            appEmail,
+            victimId,
+            victimUsername,
+            trackCount,
+            profilePictureUrl,
+            createdTime,
+            updateTime,
         })
     }
 
-    static fromTwitterAPI(app_username: string, api: TwitterUserItem): Victim {
-        const victim_id = api.rest_id
-        const victim_username = api.legacy.screen_name
-        const track_count = api.legacy.friends_count || 0
-        const profile_picture_url = api.legacy.profile_image_url_https
-        const created_time = new Date()
+    static fromTwitterAPI(appEmail: string, api: TwitterUserItem): Victim {
+        const victimId = api.rest_id
+        const victimUsername = api.legacy.screen_name
+        const trackCount = api.legacy.friends_count || 0
+        const profilePictureUrl = api.legacy.profile_image_url_https
+        const createdTime = new Date()
         return new Victim({
-            app_username,
-            victim_id,
-            victim_username,
-            track_count,
-            profile_picture_url,
-            created_time,
+            appEmail,
+            victimId,
+            victimUsername,
+            trackCount,
+            profilePictureUrl,
+            createdTime,
         })
     }
 
     toQueryKey() {
         return {
-            PK: `USER@${this.app_username}`,
-            SK: `CREATED_TIME@${this.created_time.valueOf()}#TWITTER_VICTIM@${this.victim_id}`,
+            PK: `USER@${this.appEmail}`,
+            SK: `CREATED_TIME@${this.createdTime.valueOf()}#TWITTER_VICTIM@${this.victimId}`,
         }
     }
 }
 
 export class User {
-    app_username: string;
-    telegram_chat_id: string;
-    subscribe_start: Date;
-    subscribe_end: Date;
-    track_count: number;
+    appEmail: string;
+    telegramChatId: string;
+    trackCount: number;
+    subscriptionStartTime: Date;
+    subscriptionEndTime: Date;
     constructor(input: UserInput) {
-        this.app_username = input.app_username;
-        this.telegram_chat_id = input.telegram_chat_id;
-        // this.subscribe_start = input.subscribe_start || new Date();
-        // this.subscribe_end = input.subscribe_end || new Date();
-        this.track_count = input.track_count || 0;
+        this.appEmail = input.appEmail;
+        this.telegramChatId = input.telegramChatId || null;
+        this.subscriptionStartTime = input.subscriptionStartTime || new Date();
+        this.subscriptionEndTime = input.subscriptionEndTime || new Date();
+        this.trackCount = input.trackCount || 0;
     }
 
     toORM() {
         return {
-            PK: `USER@${this.app_username}`,
+            PK: `USER@${this.appEmail}`,
             SK: `METADATA`,
-            telegramChatId: this.telegram_chat_id,
-            trackCount: this.track_count || 0,
-            // subscribeStart: this.subscribe_start,
-            // subscribeEnd: this.subscribe_end,
+            telegramChatId: this.telegramChatId,
+            trackCount: this.trackCount || 0,
+            subscriptionStartTime: this.subscriptionStartTime,
+            subscriptionEndTime: this.subscriptionEndTime,
         }
     }
 
     toAPI() {
         return {
-            app_username: this.app_username,
-            telegramChatId: this.telegram_chat_id,
-            trackCount: this.track_count,
-            // subscribeStart: this.subscribe_start,
-            // subscribeEnd: this.subscribe_end,
+            appEmail: this.appEmail,
+            telegramChatId: this.telegramChatId,
+            trackCount: this.trackCount,
+            subscriptionStartTime: this.subscriptionStartTime,
+            subscriptionEndTime: this.subscriptionEndTime,
         }
     }
 
     static fromORM(orm): User {
-        const app_username = orm.PK.replace('USER@', '')
-        const telegram_chat_id = orm.telegramChatId
-        const track_count = orm.trackCount
+        const appEmail = orm.PK.replace('USER@', '')
+        const telegramChatId = orm.telegramChatId
+        const trackCount = orm.trackCount
         return new User({
-            app_username,
-            telegram_chat_id,
-            track_count,
+            appEmail,
+            telegramChatId,
+            trackCount,
         })
     }
 
     toQueryKey() {
         return {
-            PK: `USER@${this.app_username}`,
+            PK: `USER@${this.appEmail}`,
             SK: `METADATA`,
         }
     }
 }
 
 export class Following {
-    public app_username: string;
-    public victim_id: string;
-    public following_username: string;
-    public picture_profile_url: string;
-    public update_time: Date;
+    public appEmail: string;
+    public victimId: string;
+    public followingUsername: string;
+    public profilePictureUrl: string;
+    public updateTime: Date;
     constructor(input: FollowingInput) {
-        this.app_username = input.app_username;
-        this.victim_id = input.victim_id;
-        this.following_username = input.following_username;
-        this.picture_profile_url = input.picture_profile_url;
-        this.update_time = input.update_time || new Date();
+        this.appEmail = input.appEmail;
+        this.victimId = input.victimId;
+        this.followingUsername = input.followingUsername;
+        this.profilePictureUrl = input.profilePictureUrl;
+        this.updateTime = input.updateTime || new Date();
     }
 
-    static fromTwitterAPI(app_username: string, victim_id: string, api: TwitterUserItem) {
-        const following_username = api.legacy.screen_name
-        const picture_profile_url = api.legacy.profile_image_url_https
+    static fromTwitterAPI(appEmail: string, victimId: string, api: TwitterUserItem) {
+        const followingUsername = api.legacy.screen_name
+        const profilePictureUrl = api.legacy.profile_image_url_https
         return new Following({
-            app_username,
-            victim_id,
-            following_username,
-            picture_profile_url,
+            appEmail,
+            victimId,
+            followingUsername,
+            profilePictureUrl,
         })
     }
 
     toORM() {
         return {
-            PK: `TWITTER_VICTIM@${this.victim_id}#USER@${this.app_username}`,
-            SK: `UPDATE_TIME@${this.update_time.valueOf()}#TWITTER_FOLLOWING@${this.following_username}`,
-            pictureProfileUrl: this.picture_profile_url,
+            PK: `TWITTER_VICTIM@${this.victimId}#USER@${this.appEmail}`,
+            SK: `UPDATE_TIME@${this.updateTime.valueOf()}#TWITTER_FOLLOWING@${this.followingUsername}`,
+            pictureProfileUrl: this.profilePictureUrl,
         }
     }
 
     toAPI() {
         return {
-            userName: this.following_username,
-            pictureProfileUrl: this.picture_profile_url,
-            updateTime: this.update_time.valueOf(),
-            profileUrl: `https://twitter.com/${this.following_username}`,
+            userName: this.followingUsername,
+            pictureProfileUrl: this.profilePictureUrl,
+            updateTime: this.updateTime.valueOf(),
+            profileUrl: `https://twitter.com/${this.followingUsername}`,
             id: this.toQueryKey().SK,
         }
     }
 
     toQueryKey() {
         return {
-            PK: `TWITTER_VICTIM@${this.victim_id}#USER@${this.app_username}`,
-            SK: `UPDATE_TIME@${this.update_time.valueOf()}#TWITTER_FOLLOWING@${this.following_username}`,
+            PK: `TWITTER_VICTIM@${this.victimId}#USER@${this.appEmail}`,
+            SK: `UPDATE_TIME@${this.updateTime.valueOf()}#TWITTER_FOLLOWING@${this.followingUsername}`,
         }
     }
 
     static fromORM(orm) {
         let [
-            victim_id,
-            app_username,
+            victimId,
+            appEmail,
         ] = orm.PK.split('#')
-        victim_id = victim_id.replace('TWITTER_VICTIM@', '')
-        app_username = app_username.replace('USER@', '')
+        victimId = victimId.replace('TWITTER_VICTIM@', '')
+        appEmail = appEmail.replace('USER@', '')
         let [
-            update_time,
-            following_username,
+            updateTime,
+            followingUsername,
         ] = orm.SK.split('#')
-        update_time = update_time.replace('UPDATE_TIME@', '')
-        update_time = Number(update_time)
+        updateTime = updateTime.replace('UPDATE_TIME@', '')
+        updateTime = Number(updateTime)
 
-        following_username = following_username.replace('TWITTER_FOLLOWING@', '')
-        const picture_profile_url = orm.pictureProfileUrl
+        followingUsername = followingUsername.replace('TWITTER_FOLLOWING@', '')
+        const profilePictureUrl = orm.pictureProfileUrl
 
         return new Following({
-            app_username,
-            victim_id,
-            following_username,
-            picture_profile_url,
-            update_time,
+            appEmail,
+            victimId,
+            followingUsername,
+            profilePictureUrl,
+            updateTime,
         })
     }
 }

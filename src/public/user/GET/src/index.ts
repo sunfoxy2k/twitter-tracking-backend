@@ -1,14 +1,13 @@
-import { MainFunction, response_wrapper } from "/opt/nodejs/response";
-import { get_user_by_username } from "/opt/nodejs/database";
-import { Context, APIGatewayEvent } from 'aws-lambda';
+import { MainFunction, responseWrapper } from "/opt/nodejs/response";
+import { getUserByUsername } from "/opt/nodejs/database";
 
-const main: MainFunction = async (event, context, authenticated_user) => {
+const main: MainFunction = async (event, context, authenticatedUser) => {
     // get api gateway body
-    const app_username = authenticated_user.username
-    const user = await get_user_by_username(app_username)
+    const appEmail = authenticatedUser.username
+    const user = await getUserByUsername(appEmail)
     return user.toAPI()
 }
 
-exports.handler = async (event: APIGatewayEvent, context: Context) => {
-    return await response_wrapper({ main, event, context })
+exports.handler = async (event, context) => {
+    return await responseWrapper({ main, event, context })
 }

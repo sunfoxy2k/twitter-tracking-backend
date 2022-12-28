@@ -1,27 +1,27 @@
-import { MainFunction, response_wrapper } from "/opt/nodejs/response";
+import { MainFunction, responseWrapper } from "/opt/nodejs/response";
 import * as database from "/opt/nodejs/database";
 import { Context, APIGatewayEvent } from 'aws-lambda';
 import axios from "axios";
 
 const API_URL = 'https://o764uw297g.execute-api.eu-west-3.amazonaws.com/DEV'
 
-const main: MainFunction = async (event, context, authenticated_user) => {
-    const app_username = authenticated_user.username
+const main: MainFunction = async (event, context, authenticatedUser) => {
+    const appEmail = authenticatedUser.username
 
     const { id } = event.queryStringParameters
     let [
         created_time,
-        victim_id,
+        victimId,
     ] = id.split('#')
-    if (created_time === undefined || victim_id === undefined) {
+    if (created_time === undefined || victimId === undefined) {
         return {
             statusCode: 400,
             code: 'INVALID_ID',
             message: `Invalid id ${id}`
         }
     }
-    victim_id = victim_id.replace('TWITTER_VICTIM@', '')
-    const victim = await database.get_item_with_key(`USER@${app_username}`, id)
+    victimId = victimId.replace('TWITTER_VICTIM@', '')
+    const victim = await database.getItemWithKey(`USER@${appEmail}`, id)
     if (!victim) {
         return {
             statusCode: 404,
@@ -30,14 +30,14 @@ const main: MainFunction = async (event, context, authenticated_user) => {
         }
     }
     await Promise.all([
-        database.delete_item_by_key(`USER@${app_username}`, id),
-        database.variant_user_track_count(app_username, -1),
+        database.deleteItemByKey(`USER@${appEmail}`, id),
+        database.variantUserTrackCount(appEmail, -1),
     ])
 
     await axios.delete(`${API_URL}/private/victim`, {
         data: {
-            app_username,
-            victim_id: id,
+            appEmail,
+            victimId: id,
         }
     })
 
@@ -48,5 +48,5 @@ const main: MainFunction = async (event, context, authenticated_user) => {
 }
 
 exports.handler = async (event: APIGatewayEvent, context: Context) => {
-    return await response_wrapper({ main, event, context })
+    return await responseWrapper({ main, event, context })
 }

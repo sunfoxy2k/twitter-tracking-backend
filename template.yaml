@@ -154,7 +154,23 @@ Resources:
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref TrackingUserTable
-
+  
+  PostAppUserApi:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dist/public/user/POST/src
+      Runtime: nodejs16.x
+      Timeout: 10
+      Events:
+        GetChannelApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /api/user
+            Method: post
+            ApiId: !Ref ApiGatewayApi
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TrackingUserTable
 ##################################################################################
   ListVictimsApi:
     Type: AWS::Serverless::Function
@@ -173,6 +189,41 @@ Resources:
         - DynamoDBCrudPolicy:
             TableName: !Ref TrackingUserTable
 
+  PostVictimUserApi:
+    Type: AWS::Serverless::Function
+    Properties:
+      MemorySize: 256
+      CodeUri: dist/public/victim/POST/src
+      Runtime: nodejs16.x
+      Timeout: 600
+      Events:
+        GetChannelApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /api/victim
+            Method: post
+            ApiId: !Ref ApiGatewayApi
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TrackingUserTable
+
+  DeleteVictimUserApi:
+    Type: AWS::Serverless::Function
+    Properties:
+      MemorySize: 256
+      CodeUri: dist/public/victim/DELETE/src
+      Runtime: nodejs16.x
+      Timeout: 600
+      Events:
+        GetChannelApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /api/victim
+            Method: delete
+            ApiId: !Ref ApiGatewayApi
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TrackingUserTable
 ##################################################################################
   ListFollowingsApi:
     Type: AWS::Serverless::Function
@@ -192,38 +243,38 @@ Resources:
             TableName: !Ref TrackingUserTable
 
 ##################################################################################
-  PostVictimUserApi:
+
+##################################################################################
+
+  CreatePaymentSession:
     Type: AWS::Serverless::Function
     Properties:
-      MemorySize: 256
-      CodeUri: dist/public/victim/POST/src
+      CodeUri: dist/public/payment/create_session/src
       Runtime: nodejs16.x
-      Timeout: 600
+      Timeout: 10
       Events:
         GetChannelApiEvent:
           Type: HttpApi
           Properties:
-            Path: /api/victim
+            Path: /api/subscription/create
             Method: post
             ApiId: !Ref ApiGatewayApi
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref TrackingUserTable
 
-##################################################################################
-  DeleteVictimUserApi:
+  CancelPayment:
     Type: AWS::Serverless::Function
     Properties:
-      MemorySize: 256
-      CodeUri: dist/public/victim/DELETE/src
+      CodeUri: dist/public/payment/cancel_at_end/src
       Runtime: nodejs16.x
-      Timeout: 600
+      Timeout: 10
       Events:
         GetChannelApiEvent:
           Type: HttpApi
           Properties:
-            Path: /api/victim
-            Method: delete
+            Path: /api/subscription/cancel
+            Method: post
             ApiId: !Ref ApiGatewayApi
       Policies:
         - DynamoDBCrudPolicy:
@@ -252,6 +303,23 @@ Resources:
           Type: HttpApi
           Properties:
             Path: /private/telegram/webhook
+            Method: post
+            ApiId: !Ref ApiGatewayApi
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TrackingUserTable
+    
+  StripeWebhook:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dist/private/stripe_webhook/src
+      Runtime: nodejs16.x
+      Timeout: 10
+      Events:
+        GetChannelApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /private/stripe/webhook
             Method: post
             ApiId: !Ref ApiGatewayApi
       Policies:
@@ -288,6 +356,23 @@ Resources:
           Properties:
             Path: /private/victim
             Method: delete
+            ApiId: !Ref ApiGatewayApi
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TrackingUserTable
+##################################################################################
+  PutTelegramChatId:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dist/public/telegram/PUT/src
+      Runtime: nodejs16.x
+      Timeout: 200
+      Events:
+        GetChannelApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /api/telegram/chat_id
+            Method: put
             ApiId: !Ref ApiGatewayApi
       Policies:
         - DynamoDBCrudPolicy:
