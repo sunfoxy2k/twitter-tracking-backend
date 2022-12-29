@@ -16,6 +16,9 @@ export const getUserByUsername = async (appEmail: string): Promise<User> => {
             }
         }).promise()
 
+        if (!result.Item) {
+            return null
+        }
         return User.fromORM(result.Item)
     } catch (error) {
         return null
