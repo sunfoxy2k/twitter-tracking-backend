@@ -171,6 +171,24 @@ Resources:
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref TrackingUserTable
+
+
+  LoginAppUserApi:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dist/public/user/login/src
+      Runtime: nodejs16.x
+      Timeout: 10
+      Events:
+        GetChannelApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /api/user/login
+            Method: post
+            ApiId: !Ref ApiGatewayApi
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref TrackingUserTable
 ##################################################################################
   ListVictimsApi:
     Type: AWS::Serverless::Function
