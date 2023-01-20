@@ -1,4 +1,4 @@
-import { Following } from "./entity"
+import { Following } from "./entity/Following"
 
 const axios = require('axios')
 

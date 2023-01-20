@@ -22,8 +22,8 @@ export class User extends Entity {
         super();
         this.appUsername = input.appUsername;
         this.telegramChatId = input.telegramChatId || null;
-        this.subscriptionStartTime = input.subscriptionStartTime || new Date();
-        this.subscriptionEndTime = input.subscriptionEndTime || new Date();
+        this.subscriptionStartTime = input.subscriptionStartTime || null;
+        this.subscriptionEndTime = input.subscriptionEndTime || null;
         this.trackCount = input.trackCount || 0;
         this.appEmail = input.appEmail;
     }

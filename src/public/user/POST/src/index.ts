@@ -5,6 +5,7 @@ import { User } from '/opt/nodejs/entity/User';
 
 const main: MainFunction = async (event, context, authenticatedUser) => {
     // get api gateway body
+    console.log('event.body: ', event.body)
     const body = JSON.parse(event.body)
     const appEmail = body.appEmail
     const appUsername = authenticatedUser.username
