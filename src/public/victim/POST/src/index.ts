@@ -1,9 +1,11 @@
 import { MainFunction, responseWrapper } from "/opt/nodejs/response";
-import * as database from "/opt/nodejs/database";
 import { Context, APIGatewayEvent } from 'aws-lambda';
-import { Victim } from "/opt/nodejs/entity";
+import { Victim } from "/opt/nodejs/entity/Victim";
 import * as twitter_utils from "/opt/nodejs/twitter-utils";
 import axios from "axios";
+import { getUserByUsername, variantUserTrackCount } from "/opt/nodejs/database/user";
+import { listVictimsByAppUsername } from "/opt/nodejs/database/victim";
+import { putEntity } from "/opt/nodejs/database/utils";
 
 const MAX_VICTIMS = 50
 const API_URL = 'https://o764uw297g.execute-api.eu-west-3.amazonaws.com/DEV'
@@ -16,7 +18,7 @@ const main: MainFunction = async (event, context, authenticatedUser) => {
         user,
         response_victim,
     ] = await Promise.all([
-        database.getUserByUsername(authenticatedUser.username),
+        getUserByUsername(authenticatedUser.username),
         twitter_utils.getTwitterUserByScreenname(id),
     ])
 
@@ -39,7 +41,7 @@ const main: MainFunction = async (event, context, authenticatedUser) => {
     }
     const new_victim = Victim.fromTwitterAPI(user.appUsername, response_victim.data.user.result);
     // check if victim already exists
-    const victims = await database.listVictimsByAppEmail(user.appUsername);
+    const victims = await listVictimsByAppUsername(user.appUsername);
     const existing_victim = victims.Items.find(v => v.victimId === new_victim.victimId);
     if (existing_victim) {
         return {
@@ -51,8 +53,8 @@ const main: MainFunction = async (event, context, authenticatedUser) => {
 
     
     await Promise.all([
-        database.variantUserTrackCount(user.appUsername, 1),
-        database.putEntity(new_victim),
+        variantUserTrackCount(user.appUsername, 1),
+        putEntity(new_victim),
     ])
     await axios.post(`${API_URL}/private/victim`, {
         appUsername: new_victim.appUsername,

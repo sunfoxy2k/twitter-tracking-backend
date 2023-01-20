@@ -1,6 +1,6 @@
 import { MainFunction, responseWrapper } from "/opt/nodejs/response";
 import { Context, APIGatewayEvent } from 'aws-lambda';
-import { cancelStripeSubscriptionAtEnd } from '../../../../common/stripe';
+import { cancelStripeSubscriptionAtEnd } from '/opt/nodejs/stripe';
 const main: MainFunction = async (event, context, authenticatedUser) => {
     // get api gateway body
     const appUsername = authenticatedUser.username

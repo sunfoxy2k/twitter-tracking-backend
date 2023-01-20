@@ -1,7 +1,7 @@
 import { responseWrapper } from "/opt/nodejs/response";
-import { scanVictimsWithCursor } from '/opt/nodejs/database';
+import { scanVictimsWithCursor } from '/opt/nodejs/database/victim';
 import { TwitterSchedulerClient } from "./TwitterSchedulerClient";
-import { Victim } from "/opt/nodejs/entity";
+import { Victim } from "/opt/nodejs/entity/Victim";
 
 const main = async () => {
     let cursor: any = 'dummy'

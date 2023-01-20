@@ -3,7 +3,7 @@ import { MainFunction, responseWrapper } from "/opt/nodejs/response";
 import { Context, APIGatewayEvent } from 'aws-lambda';
 import { stripeClient } from '/opt/nodejs/stripe';
 import Stripe from "stripe";
-import { updateSubscription } from '/opt/nodejs/database';
+import { updateSubscription } from '/opt/nodejs/database/user';
 const ENDPOINT_SECRET = 'whsec_HF9PFfiHb1Tff3WjXV4rDPq82wumO5Ec'
 
 const main: MainFunction = async (event, context) => {

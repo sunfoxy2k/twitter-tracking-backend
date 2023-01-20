@@ -1,6 +1,7 @@
 import { MainFunction, responseWrapper } from "/opt/nodejs/response";
-import { getUserByUsername, putEntity } from "/opt/nodejs/database";
-import { User } from '/opt/nodejs/entity';
+import { getUserByUsername } from "/opt/nodejs/database/user";
+import { putEntity } from "/opt/nodejs/database/utils";
+import { User } from '/opt/nodejs/entity/User';
 
 const main: MainFunction = async (event, context, authenticatedUser) => {
     // get api gateway body

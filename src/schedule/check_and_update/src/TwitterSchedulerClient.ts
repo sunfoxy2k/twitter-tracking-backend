@@ -1,15 +1,20 @@
-import { User, Victim } from "/opt/nodejs/entity"
-import * as database from "/opt/nodejs/database"
+import { User } from "/opt/nodejs/entity/User"
+import { Victim } from "/opt/nodejs/entity/Victim"
 import * as twitter from "/opt/nodejs/twitter-utils"
-import * as entity from "/opt/nodejs/entity"
 import { send_message } from "./telegram"
+import { getUserByUsername } from "/opt/nodejs/database/user"
+import { putEntity } from "/opt/nodejs/database/utils"
+import { batchUpdateFollowing, listFollowingsByVictimByUser } from "/opt/nodejs/database/following"
+import { Following } from '../../../common/entity/Following';
+
+
 export class TwitterSchedulerClient {
     public processingVictims: Victim[] = []
     public users: { [key: string]: User } = {}
     async syncUpdateFollowing() {
         for (let victim of this.processingVictims) {
             if (this.users[victim.appUsername] === undefined) {
-                this.users[victim.appUsername] = await database.getUserByUsername(victim.appUsername)
+                this.users[victim.appUsername] = await getUserByUsername(victim.appUsername)
             }
             const {
                 currentFollowings,
@@ -27,20 +32,20 @@ export class TwitterSchedulerClient {
                 }
             }
             Promise.all([
-                database.putEntity(victim),
-                database.batchUpdateFollowing(Object.values(responseFollowings), Object.values(currentFollowings)),
+                putEntity(victim),
+                batchUpdateFollowing(Object.values(responseFollowings), Object.values(currentFollowings)),
                 send_message(this.users[victim.appUsername], victim, responseFollowings, currentFollowings),
             ])
         }
     }
 
-    async getFollowingsById(victim: entity.Victim) {
+    async getFollowingsById(victim: Victim) {
         try {
             const [
                 currentFollowings,
                 responseFollowings,
             ] = await Promise.all([
-                database.listFollowingsByVictimByUser(victim.appUsername, victim.victimId),
+                listFollowingsByVictimByUser(victim.appUsername, victim.victimId),
                 this.getResponseFollowingsById(victim),
             ])
 
@@ -53,9 +58,9 @@ export class TwitterSchedulerClient {
         }
     }
 
-    async getResponseFollowingsById(victim: Victim): Promise<{ [key: string]: entity.Following }> {
+    async getResponseFollowingsById(victim: Victim): Promise<{ [key: string]: Following }> {
         let cursor = '-1'
-        let followings: { [key: string]: entity.Following } = {}
+        let followings: { [key: string]: Following } = {}
         try {
             while (cursor.startsWith('0|') === false) {
                 let responseFollowings = await twitter.getFollowingApi(victim.victimId, cursor)
@@ -72,8 +77,8 @@ export class TwitterSchedulerClient {
     }
 
     parseFollowingsFromApiEntries(appUsername: string, victimId: string, responseFollowings)
-        : { followings: { [key: string]: entity.Following }, cursorTop: string, cursorBottom: string } {
-        const followings: { [key: string]: entity.Following } = {}
+        : { followings: { [key: string]: Following }, cursorTop: string, cursorBottom: string } {
+        const followings: { [key: string]: Following } = {}
         const cursorTop = responseFollowings[responseFollowings.length - 1].content.value as twitter.CursorTop['content']['value']
         responseFollowings.pop()
         const cursorBottom = responseFollowings[responseFollowings.length - 1].content.value as twitter.CursorBottom['content']['value']
@@ -83,7 +88,7 @@ export class TwitterSchedulerClient {
             const result = following.content.itemContent.user_results.result
             if (result.__typename !== 'UserUnavailable') {
                 followings[result.legacy.screen_name] =
-                    entity.Following.fromTwitterAPI(appUsername, victimId, result)
+                    Following.fromTwitterAPI(appUsername, victimId, result)
             }
         })
         return {

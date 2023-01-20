@@ -1,8 +1,8 @@
 import { MainFunction, responseWrapper } from "/opt/nodejs/response";
-import * as database from "/opt/nodejs/database";
 import { Context, APIGatewayEvent } from 'aws-lambda';
 import axios from "axios";
-
+import { getItemWithKey, deleteItemByKey } from "/opt/nodejs/database/utils";
+import { variantUserTrackCount } from "/opt/nodejs/database/user";
 const API_URL = 'https://o764uw297g.execute-api.eu-west-3.amazonaws.com/DEV'
 
 const main: MainFunction = async (event, context, authenticatedUser) => {
@@ -21,7 +21,7 @@ const main: MainFunction = async (event, context, authenticatedUser) => {
         }
     }
     victimId = victimId.replace('TWITTER_VICTIM@', '')
-    const victim = await database.getItemWithKey(`USER@${appUsername}`, id)
+    const victim = await getItemWithKey(`USER@${appUsername}`, id)
     if (!victim) {
         return {
             statusCode: 404,
@@ -30,8 +30,8 @@ const main: MainFunction = async (event, context, authenticatedUser) => {
         }
     }
     await Promise.all([
-        database.deleteItemByKey(`USER@${appUsername}`, id),
-        database.variantUserTrackCount(appUsername, -1),
+        deleteItemByKey(`USER@${appUsername}`, id),
+        variantUserTrackCount(appUsername, -1),
     ])
 
     await axios.delete(`${API_URL}/private/victim`, {

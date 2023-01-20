@@ -1,11 +1,11 @@
 import { MainFunction, responseWrapper } from "/opt/nodejs/response";
-import { listVictimsByAppEmail } from "/opt/nodejs/database";
+import { listVictimsByAppUsername } from "/opt/nodejs/database/victim";
 import { Context, APIGatewayEvent } from 'aws-lambda';
-import { Victim } from "/opt/nodejs/entity";
+import { Victim } from "/opt/nodejs/entity/Victim";
 
 const main: MainFunction = async (event, context, authenticatedUser) => {
 
-    const app_user = await listVictimsByAppEmail(authenticatedUser.username);
+    const app_user = await listVictimsByAppUsername(authenticatedUser.username);
     const response = {
         "allIds": [],
         "byId": {}

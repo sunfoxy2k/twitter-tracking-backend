@@ -1,5 +1,5 @@
 import { MainFunction, responseWrapper } from "/opt/nodejs/response";
-import { listAllFollowingsByVictim } from "/opt/nodejs/database";
+import { listAllFollowingsByVictim } from "/opt/nodejs/database/following";
 import { Context, APIGatewayEvent } from 'aws-lambda';
 
 const main: MainFunction = async (event, context, authenticatedUser) => {

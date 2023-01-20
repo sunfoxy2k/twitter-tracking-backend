@@ -1,5 +1,7 @@
 import axios from 'axios';
-import { User, Following, Victim } from '/opt/nodejs/entity';
+import { User } from '/opt/nodejs/entity/User';
+import { Victim } from '/opt/nodejs/entity/Victim';
+import { Following } from '/opt/nodejs/entity/Following';
 
 export const send_message = async (user: User, victim: Victim, newFollowings: { [key: string]: Following }, deletedFollowings: { [key: string]: Following }) => {
     try {

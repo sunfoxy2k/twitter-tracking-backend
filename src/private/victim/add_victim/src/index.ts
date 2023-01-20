@@ -1,8 +1,9 @@
 import { MainFunction, responseWrapper } from "/opt/nodejs/response";
-import { batchUpdateFollowing, updateVictimTrackCount } from "/opt/nodejs/database";
+import { batchUpdateFollowing } from "/opt/nodejs/database/following";
+import { updateVictimTrackCount } from "/opt/nodejs/database/victim";
 import { Context, APIGatewayEvent } from 'aws-lambda';
 import { getAllFollowingApi } from "/opt/nodejs/twitter-utils";
-import { Victim } from "/opt/nodejs/entity";
+import { Victim } from "/opt/nodejs/entity/Victim";
 const main: MainFunction = async (event) => {
 
     const {

@@ -1,5 +1,5 @@
 import { responseWrapper } from "/opt/nodejs/response";
-import { client } from "/opt/nodejs/database";
+import { client } from "/opt/nodejs/databaseClient";
 import { Context, APIGatewayEvent } from 'aws-lambda';
 
 const main = async (event: APIGatewayEvent, context: Context) => {

@@ -2,8 +2,7 @@ import { MainFunction, responseWrapper } from "/opt/nodejs/response";
 import { Context, APIGatewayEvent } from 'aws-lambda';
 import { createStripeCheckoutSession } from '/opt/nodejs/stripe'
 const main: MainFunction = async (event, context, authenticatedUser) => {
-    // get api gateway body
-    const appUsername = authenticatedUser.username
+    const appUsername = authenticatedUser.email
     const { plan } = JSON.parse(event.body)
 
     const basicPriceId = 'price_1MIu2TKGvMxyE2EOXC6pMMLE'
