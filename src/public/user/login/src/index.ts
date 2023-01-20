@@ -4,11 +4,11 @@ import { User } from '/opt/nodejs/entity';
 
 const main: MainFunction = async (event, context, authenticatedUser) => {
     // get api gateway body
-    const appEmail = authenticatedUser.email
-    let user = await getUserByUsername(appEmail)
+    const appUsername = authenticatedUser.username
+    let user = await getUserByUsername(appUsername)
     if (!user) {
         user = new User({
-            appEmail,
+            appUsername,
         })
     
         await putEntity(user)

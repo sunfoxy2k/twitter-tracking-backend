@@ -2,10 +2,10 @@ import { MainFunction, responseWrapper } from "/opt/nodejs/response";
 import { Context, APIGatewayEvent } from 'aws-lambda';
 import { putTelegramChatId } from '/opt/nodejs/database';
 const main: MainFunction = async (event, context, authenticatedUser) => {
-    const appEmail = authenticatedUser.email
+    const appUsername = authenticatedUser.username
     const { telegramChatId } = JSON.parse(event.body)
 
-    await putTelegramChatId(appEmail, telegramChatId)
+    await putTelegramChatId(appUsername, telegramChatId)
 
     return {
         code: 'SUCCESS',

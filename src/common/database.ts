@@ -6,12 +6,12 @@ const TABLE_NAME = process.env.TABLE_NAME
 const VICTIM_GSI = 'trackingIndex'
 const MAX_WRITE_REQUESTS = 25
 
-export const getUserByUsername = async (appEmail: string): Promise<User> => {
+export const getUserByUsername = async (appUsername: string): Promise<User> => {
     try {
         const result = await client.get({
             TableName: TABLE_NAME,
             Key: {
-                PK: `USER@${appEmail}`,
+                PK: `USER@${appUsername}`,
                 SK: `METADATA`
             }
         }).promise()
@@ -20,6 +20,28 @@ export const getUserByUsername = async (appEmail: string): Promise<User> => {
             return null
         }
         return User.fromORM(result.Item)
+    } catch (error) {
+        console.log(error);
+        return null
+    }
+}
+
+export const getUserByEmail = async (email: string): Promise<User> => {
+    try {
+        const result = await client.query({
+            TableName: TABLE_NAME,
+            IndexName: 'emailIndex',
+            KeyConditionExpression: 'email = :email',
+            ExpressionAttributeValues: {
+                ':email': email
+            }
+        }).promise()
+
+        if (!result.Items || result.Items.length === 0) {
+            return null
+        }
+
+        return User.fromORM(result.Items[0])
     } catch (error) {
         return null
     }
@@ -145,13 +167,13 @@ export const scanVictimsWithCursor = async (cursor: string | DocumentClient.Quer
     }
 }
 
-export const listAllFollowingsByVictim = async (appEmail: string, victimId: string)
+export const listAllFollowingsByVictim = async (appUsername: string, victimId: string)
     : Promise<Following[]> => {
     const params: DocumentClient.QueryInput = {
         TableName: TABLE_NAME,
         KeyConditionExpression: `PK = :pk`,
         ExpressionAttributeValues: {
-            ':pk': `TWITTER_VICTIM@${victimId}#USER@${appEmail}`,
+            ':pk': `TWITTER_VICTIM@${victimId}#USER@${appUsername}`,
         }
     }
 
@@ -169,13 +191,13 @@ export const listAllFollowingsByVictim = async (appEmail: string, victimId: stri
     return data
 }
 
-export const listVictimsByAppEmail = async (appEmail: string, victimType = 'twitter') => {
+export const listVictimsByAppEmail = async (appUsername: string, victimType = 'twitter') => {
     try {
         let params = {
             TableName: TABLE_NAME,
             KeyConditionExpression: `PK = :pk and begins_with(SK, :sk)`,
             ExpressionAttributeValues: {
-                ':pk': `USER@${appEmail}`,
+                ':pk': `USER@${appUsername}`,
                 ':sk': `CREATED_TIME@`,
             }
         }
@@ -190,14 +212,14 @@ export const listVictimsByAppEmail = async (appEmail: string, victimType = 'twit
     }
 }
 
-export const listFollowingsByVictimByUser = async (appEmail: string, victimId: string)
+export const listFollowingsByVictimByUser = async (appUsername: string, victimId: string)
 : Promise<{[key: string]: Following}> => {
     try {
         let params: DocumentClient.QueryInput = {
             TableName: TABLE_NAME,
             KeyConditionExpression: `PK = :pk`,
             ExpressionAttributeValues: {
-                ':pk': `TWITTER_VICTIM@${victimId}#USER@${appEmail}`,
+                ':pk': `TWITTER_VICTIM@${victimId}#USER@${appUsername}`,
             }
         }
         const result = await client.query(params).promise()
@@ -245,13 +267,13 @@ export const deleteItemByKey = async (pk: string, sk: string) => {
     }
 }
 
-export const variantUserTrackCount = async (appEmail: string, variant_trackCount: number) => {
+export const variantUserTrackCount = async (appUsername: string, variant_trackCount: number) => {
     try {
         // set track count and update last updated time
         const params: DocumentClient.UpdateItemInput = {
             TableName: TABLE_NAME,
             Key: {
-                PK: `USER@${appEmail}`,
+                PK: `USER@${appUsername}`,
                 SK: `METADATA`,
             },
             UpdateExpression: 'SET trackCount = trackCount + :variant_trackCount, updateTime = :update_time',
@@ -282,12 +304,12 @@ export const getItemWithKey = async (pk: string, sk: string) => {
     }
 }
 
-export const updateSubscription = async (appEmail: string, startTime: number, endTime: number) => {
+export const updateSubscription = async (appUsername: string, startTime: number, endTime: number) => {
     try {
         const params: DocumentClient.UpdateItemInput = {
             TableName: TABLE_NAME,
             Key: {
-                PK: `USER@${appEmail}`,
+                PK: `USER@${appUsername}`,
                 SK: `METADATA`,
             },
             UpdateExpression: 'SET subscriptionStartTime = :startTime, subscriptionEndTime = :endTime, updateTime = :updateTime',
@@ -298,7 +320,7 @@ export const updateSubscription = async (appEmail: string, startTime: number, en
             }
         }
         console.log('update database subscription')
-        console.log({ appEmail })
+        console.log({ appUsername })
         console.log({ startTime })
         console.log({ endTime })
         console.log('update database subscription')
@@ -308,12 +330,12 @@ export const updateSubscription = async (appEmail: string, startTime: number, en
     }
 }
 
-export const putTelegramChatId = async (appEmail: string, telegramChatId: string) => {
+export const putTelegramChatId = async (appUsername: string, telegramChatId: string) => {
     try {
         const params: DocumentClient.UpdateItemInput = {
             TableName: TABLE_NAME,
             Key: {
-                PK: `USER@${appEmail}`,
+                PK: `USER@${appUsername}`,
                 SK: `METADATA`,
             },
             UpdateExpression: 'SET telegramChatId = :telegramChatId, updateTime = :updateTime',

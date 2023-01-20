@@ -8,7 +8,7 @@ export const stripeClient = new Stripe(STRIPE_SK, {
     apiVersion: '2022-11-15',
 })
 
-export const createStripeCheckoutSession = async (appEmail: string, priceId: string) => {
+export const createStripeCheckoutSession = async (appUsername: string, priceId: string) => {
     try {
         const session = await stripeClient.checkout.sessions.create({
             payment_method_types: ['card'],
@@ -18,7 +18,7 @@ export const createStripeCheckoutSession = async (appEmail: string, priceId: str
                 price: priceId,
                 quantity: 1,
             }],
-            customer_email: appEmail,
+            customer_email: appUsername,
             mode: 'subscription',
         })
 
@@ -30,11 +30,11 @@ export const createStripeCheckoutSession = async (appEmail: string, priceId: str
     }
 }
 
-export const cancelStripeSubscriptionAtEnd = async (appEmail: string) => {
+export const cancelStripeSubscriptionAtEnd = async (appUsername: string) => {
     try {
         // Cancel all subscriptions for a customer immediately by email
         const customers = await stripeClient.customers.list({
-            email: appEmail,
+            email: appUsername,
         })
         const customer = customers.data[0]
         const subscriptions = await stripeClient.subscriptions.list({

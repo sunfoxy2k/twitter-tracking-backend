@@ -1,6 +1,6 @@
 import { TwitterUserItem } from "./twitter-utils";
 export interface VictimInput {
-    appEmail: string;
+    appUsername: string;
     victimId: string;
     victimUsername: string;
     trackCount: number;
@@ -10,6 +10,7 @@ export interface VictimInput {
 }
 
 export interface UserInput {
+    appUsername: string;
     appEmail: string;
     telegramChatId?: string;
     subscribeStart?: Date;
@@ -20,7 +21,7 @@ export interface UserInput {
 }
 
 export interface FollowingInput {
-    appEmail: string;
+    appUsername: string;
     victimId: string;
     followingUsername: string;
     profilePictureUrl: string;
@@ -44,7 +45,7 @@ export abstract class Entity {
 }
 
 export class Victim extends Entity {
-    public appEmail: string;
+    public appUsername: string;
     public victimId: string;
     public victimUsername: string;
     public trackCount: number; 
@@ -55,7 +56,7 @@ export class Victim extends Entity {
 
     constructor(input: VictimInput) {
         super();
-        this.appEmail = input.appEmail;
+        this.appUsername = input.appUsername;
         this.victimId = input.victimId;
         this.victimUsername = input.victimUsername;
         this.trackCount = input.trackCount;
@@ -67,7 +68,7 @@ export class Victim extends Entity {
     }
     toORM() {
         return {
-            PK: `USER@${this.appEmail}`,
+            PK: `USER@${this.appUsername}`,
             SK: `CREATED_TIME@${this.createdTime.valueOf()}#TWITTER_VICTIM@${this.victimId}`,
             trackCount: this.trackCount,
             profilePictureUrl: this.profilePictureUrl,
@@ -79,7 +80,6 @@ export class Victim extends Entity {
 
     toAPI() {
         return {
-            // email: this.appEmail,
             userName: this.victimUsername,
             totalFollowing: this.trackCount,
             pictureProfileUrl: this.profilePictureUrl,
@@ -91,7 +91,7 @@ export class Victim extends Entity {
     }
 
     static fromORM(orm: any): Victim {
-        const appEmail = orm.PK.replace('USER@', '')
+        const appUsername = orm.PK.replace('USER@', '')
         let [
             createdTime,
             victimId,
@@ -107,7 +107,7 @@ export class Victim extends Entity {
         const updateTime = orm.updateTime
 
         return new Victim({
-            appEmail,
+            appUsername,
             victimId,
             victimUsername,
             trackCount,
@@ -117,14 +117,14 @@ export class Victim extends Entity {
         })
     }
 
-    static fromTwitterAPI(appEmail: string, api: TwitterUserItem): Victim {
+    static fromTwitterAPI(appUsername: string, api: TwitterUserItem): Victim {
         const victimId = api.rest_id
         const victimUsername = api.legacy.screen_name
         const trackCount = api.legacy.friends_count || 0
         const profilePictureUrl = api.legacy.profile_image_url_https
         const createdTime = new Date()
         return new Victim({
-            appEmail,
+            appUsername,
             victimId,
             victimUsername,
             trackCount,
@@ -135,39 +135,43 @@ export class Victim extends Entity {
 
     toQueryKey() {
         return {
-            PK: `USER@${this.appEmail}`,
+            PK: `USER@${this.appUsername}`,
             SK: `CREATED_TIME@${this.createdTime.valueOf()}#TWITTER_VICTIM@${this.victimId}`,
         }
     }
 }
 
 export class User {
-    appEmail: string;
+    appUsername: string;
     telegramChatId: string;
     trackCount: number;
     subscriptionStartTime: Date;
     subscriptionEndTime: Date;
+    appEmail: string;
     constructor(input: UserInput) {
-        this.appEmail = input.appEmail;
+        this.appUsername = input.appUsername;
         this.telegramChatId = input.telegramChatId || null;
         this.subscriptionStartTime = input.subscriptionStartTime || new Date();
         this.subscriptionEndTime = input.subscriptionEndTime || new Date();
         this.trackCount = input.trackCount || 0;
+        this.appEmail = input.appEmail;
     }
 
     toORM() {
         return {
-            PK: `USER@${this.appEmail}`,
+            PK: `USER@${this.appUsername}`,
             SK: `METADATA`,
             telegramChatId: this.telegramChatId,
             trackCount: this.trackCount || 0,
             subscriptionStartTime: this.subscriptionStartTime,
             subscriptionEndTime: this.subscriptionEndTime,
+            appEmail: this.appEmail,
         }
     }
 
     toAPI() {
         return {
+            appUsername: this.appUsername,
             appEmail: this.appEmail,
             telegramChatId: this.telegramChatId,
             trackCount: this.trackCount,
@@ -177,43 +181,46 @@ export class User {
     }
 
     static fromORM(orm): User {
-        const appEmail = orm.PK.replace('USER@', '')
+        const appUsername = orm.PK.replace('USER@', '')
         const telegramChatId = orm.telegramChatId
         const trackCount = orm.trackCount
+        const appEmail = orm.appEmail
+        
         return new User({
-            appEmail,
+            appUsername,
             telegramChatId,
             trackCount,
+            appEmail,
         })
     }
 
     toQueryKey() {
         return {
-            PK: `USER@${this.appEmail}`,
+            PK: `USER@${this.appUsername}`,
             SK: `METADATA`,
         }
     }
 }
 
 export class Following {
-    public appEmail: string;
+    public appUsername: string;
     public victimId: string;
     public followingUsername: string;
     public profilePictureUrl: string;
     public updateTime: Date;
     constructor(input: FollowingInput) {
-        this.appEmail = input.appEmail;
+        this.appUsername = input.appUsername;
         this.victimId = input.victimId;
         this.followingUsername = input.followingUsername;
         this.profilePictureUrl = input.profilePictureUrl;
         this.updateTime = input.updateTime || new Date();
     }
 
-    static fromTwitterAPI(appEmail: string, victimId: string, api: TwitterUserItem) {
+    static fromTwitterAPI(appUsername: string, victimId: string, api: TwitterUserItem) {
         const followingUsername = api.legacy.screen_name
         const profilePictureUrl = api.legacy.profile_image_url_https
         return new Following({
-            appEmail,
+            appUsername,
             victimId,
             followingUsername,
             profilePictureUrl,
@@ -222,7 +229,7 @@ export class Following {
 
     toORM() {
         return {
-            PK: `TWITTER_VICTIM@${this.victimId}#USER@${this.appEmail}`,
+            PK: `TWITTER_VICTIM@${this.victimId}#USER@${this.appUsername}`,
             SK: `UPDATE_TIME@${this.updateTime.valueOf()}#TWITTER_FOLLOWING@${this.followingUsername}`,
             pictureProfileUrl: this.profilePictureUrl,
         }
@@ -240,7 +247,7 @@ export class Following {
 
     toQueryKey() {
         return {
-            PK: `TWITTER_VICTIM@${this.victimId}#USER@${this.appEmail}`,
+            PK: `TWITTER_VICTIM@${this.victimId}#USER@${this.appUsername}`,
             SK: `UPDATE_TIME@${this.updateTime.valueOf()}#TWITTER_FOLLOWING@${this.followingUsername}`,
         }
     }
@@ -248,10 +255,10 @@ export class Following {
     static fromORM(orm) {
         let [
             victimId,
-            appEmail,
+            appUsername,
         ] = orm.PK.split('#')
         victimId = victimId.replace('TWITTER_VICTIM@', '')
-        appEmail = appEmail.replace('USER@', '')
+        appUsername = appUsername.replace('USER@', '')
         let [
             updateTime,
             followingUsername,
@@ -263,7 +270,7 @@ export class Following {
         const profilePictureUrl = orm.pictureProfileUrl
 
         return new Following({
-            appEmail,
+            appUsername,
             victimId,
             followingUsername,
             profilePictureUrl,

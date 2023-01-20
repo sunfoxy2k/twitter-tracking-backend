@@ -6,15 +6,15 @@ import { Victim } from "/opt/nodejs/entity";
 const main: MainFunction = async (event) => {
 
     const {
-        appEmail,
+        appUsername,
         victimId,
         createdTime,
         victimUsername,
     } = JSON.parse(event.body);
 
-    const newFollowings = await getAllFollowingApi(appEmail, victimId)
+    const newFollowings = await getAllFollowingApi(appUsername, victimId)
     const victim = new Victim({
-        appEmail,
+        appUsername,
         victimId,
         createdTime: new Date(Number(createdTime)),
         trackCount: newFollowings.length,

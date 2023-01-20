@@ -184,7 +184,7 @@ export const getFollowingApi = async (victimId: string, cursor: string) => {
     return responseFollowings.data.data.user.result.timeline.timeline.instructions.find(e => e.type === 'TimelineAddEntries').entries
 }
 
-export const getAllFollowingApi = async (appEmail: string, victimId: string): Promise<Following[]> => {
+export const getAllFollowingApi = async (appUsername: string, victimId: string): Promise<Following[]> => {
     let cursor: string | CursorBottom = '-1'
     let all_followings: Following[] = []
     while (cursor.startsWith('0|') === false) {
@@ -196,7 +196,7 @@ export const getAllFollowingApi = async (appEmail: string, victimId: string): Pr
         for (let edge of edges) {
             const result = edge.content.itemContent.user_results.result
             if (result.__typename !== 'UserUnavailable') {
-                all_followings.push(Following.fromTwitterAPI(appEmail, victimId, result))
+                all_followings.push(Following.fromTwitterAPI(appUsername, victimId, result))
             }
         }
     }

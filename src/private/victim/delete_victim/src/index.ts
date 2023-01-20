@@ -4,16 +4,16 @@ import { Context, APIGatewayEvent } from 'aws-lambda';
 const main: MainFunction = async (event) => {
 
     const {
-        appEmail,
+        appUsername,
         victimId,
     } = JSON.parse(event.body);
     
-    const deleteFollowings = await database.listAllFollowingsByVictim(appEmail, victimId);
+    const deleteFollowings = await database.listAllFollowingsByVictim(appUsername, victimId);
 
 
     await Promise.all([
         database.batchUpdateFollowing([], deleteFollowings),
-        database.variantUserTrackCount(appEmail, -1),
+        database.variantUserTrackCount(appUsername, -1),
     ])
     return {
         code: 'SUCCESS',

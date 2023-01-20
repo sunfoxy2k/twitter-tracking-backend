@@ -1,29 +1,23 @@
 import { MainFunction, responseWrapper } from "/opt/nodejs/response";
+import { getUserByUsername, putEntity } from "/opt/nodejs/database";
 import { User } from '/opt/nodejs/entity';
-import { putEntity } from '/opt/nodejs/database';
-import { getUserByUsername } from '../../../../common/database';
 
 const main: MainFunction = async (event, context, authenticatedUser) => {
     // get api gateway body
-    const appEmail = authenticatedUser.email
-    const user = await getUserByUsername(appEmail)
-    if (user) {
-        return {
-            statusCode: 400,
-            code: 'USER_EXIST',
-            message: 'User already exist'
-        }
+    const body = JSON.parse(event.body)
+    const appEmail = body.appEmail
+    const appUsername = authenticatedUser.username
+    let user = await getUserByUsername(appUsername)
+    if (!user) {
+        user = new User({
+            appUsername,
+            appEmail,
+        })
+    
+        await putEntity(user)
     }
-    const newUser = new User({
-        appEmail,
-    })
 
-    await putEntity(newUser)
-
-    return {
-        code: 'SUCCESS',
-        message: 'Add user to db success'
-    }
+    return user.toAPI()
 }
 
 exports.handler = async (event, context) => {

@@ -37,9 +37,9 @@ const main: MainFunction = async (event, context, authenticatedUser) => {
             message: `Twitter user ${id} not found`
         }
     }
-    const new_victim = Victim.fromTwitterAPI(user.appEmail, response_victim.data.user.result);
+    const new_victim = Victim.fromTwitterAPI(user.appUsername, response_victim.data.user.result);
     // check if victim already exists
-    const victims = await database.listVictimsByAppEmail(user.appEmail);
+    const victims = await database.listVictimsByAppEmail(user.appUsername);
     const existing_victim = victims.Items.find(v => v.victimId === new_victim.victimId);
     if (existing_victim) {
         return {
@@ -51,11 +51,11 @@ const main: MainFunction = async (event, context, authenticatedUser) => {
 
     
     await Promise.all([
-        database.variantUserTrackCount(user.appEmail, 1),
+        database.variantUserTrackCount(user.appUsername, 1),
         database.putEntity(new_victim),
     ])
     await axios.post(`${API_URL}/private/victim`, {
-        appEmail: new_victim.appEmail,
+        appUsername: new_victim.appUsername,
         victimId: new_victim.victimId,
         created_time: new_victim.createdTime.valueOf(),
         victimUsername: new_victim.victimUsername,

@@ -13,7 +13,7 @@ export const send_message = async (user: User, victim: Victim, newFollowings: { 
             deletedFollowingsStr += `- @${value.followingUsername}\n`
         }
         console.log('====================================');
-        console.log('user', user.appEmail)
+        console.log('user', user.appUsername)
         console.log('victim', victim.victimUsername)
         console.log('newFollowingsStr', newFollowingsStr);
         console.log('deletedFollowingsStr', deletedFollowingsStr);

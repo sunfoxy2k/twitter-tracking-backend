@@ -4,7 +4,7 @@ import { Context, APIGatewayEvent } from 'aws-lambda';
 
 const main: MainFunction = async (event, context, authenticatedUser) => {
     
-    const appEmail = authenticatedUser.username
+    const appUsername = authenticatedUser.username
     const { id } = event.queryStringParameters;
     
     let [ createdTime, victimId ] = id.split('#')
@@ -17,7 +17,7 @@ const main: MainFunction = async (event, context, authenticatedUser) => {
     }
     victimId = victimId.replace('TWITTER_VICTIM@', '')
 
-    const followings = await listAllFollowingsByVictim(appEmail, victimId);
+    const followings = await listAllFollowingsByVictim(appUsername, victimId);
     const response = {
         "allIds": [],
         "byId": {}

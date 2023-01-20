@@ -6,7 +6,7 @@ import axios from "axios";
 const API_URL = 'https://o764uw297g.execute-api.eu-west-3.amazonaws.com/DEV'
 
 const main: MainFunction = async (event, context, authenticatedUser) => {
-    const appEmail = authenticatedUser.username
+    const appUsername = authenticatedUser.username
 
     const { id } = event.queryStringParameters
     let [
@@ -21,7 +21,7 @@ const main: MainFunction = async (event, context, authenticatedUser) => {
         }
     }
     victimId = victimId.replace('TWITTER_VICTIM@', '')
-    const victim = await database.getItemWithKey(`USER@${appEmail}`, id)
+    const victim = await database.getItemWithKey(`USER@${appUsername}`, id)
     if (!victim) {
         return {
             statusCode: 404,
@@ -30,13 +30,13 @@ const main: MainFunction = async (event, context, authenticatedUser) => {
         }
     }
     await Promise.all([
-        database.deleteItemByKey(`USER@${appEmail}`, id),
-        database.variantUserTrackCount(appEmail, -1),
+        database.deleteItemByKey(`USER@${appUsername}`, id),
+        database.variantUserTrackCount(appUsername, -1),
     ])
 
     await axios.delete(`${API_URL}/private/victim`, {
         data: {
-            appEmail,
+            appUsername,
             victimId: id,
         }
     })

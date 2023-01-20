@@ -3,7 +3,7 @@ import { Context, APIGatewayEvent } from 'aws-lambda';
 import { createStripeCheckoutSession } from '/opt/nodejs/stripe'
 const main: MainFunction = async (event, context, authenticatedUser) => {
     // get api gateway body
-    const appEmail = authenticatedUser.email
+    const appUsername = authenticatedUser.username
     const { plan } = JSON.parse(event.body)
 
     const basicPriceId = 'price_1MIu2TKGvMxyE2EOXC6pMMLE'
@@ -26,7 +26,7 @@ const main: MainFunction = async (event, context, authenticatedUser) => {
         }
     }
     // create stripe checkout session
-    const session = await createStripeCheckoutSession(appEmail, priceId)
+    const session = await createStripeCheckoutSession(appUsername, priceId)
 
     return {
         url: session.url

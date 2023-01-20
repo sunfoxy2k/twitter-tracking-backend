@@ -3,8 +3,8 @@ import { getUserByUsername } from "/opt/nodejs/database";
 
 const main: MainFunction = async (event, context, authenticatedUser) => {
     // get api gateway body
-    const appEmail = authenticatedUser.username
-    const user = await getUserByUsername(appEmail)
+    const appUsername = authenticatedUser.username
+    const user = await getUserByUsername(appUsername)
     return user.toAPI()
 }
 

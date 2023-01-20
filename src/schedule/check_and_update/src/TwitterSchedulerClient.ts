@@ -8,8 +8,8 @@ export class TwitterSchedulerClient {
     public users: { [key: string]: User } = {}
     async syncUpdateFollowing() {
         for (let victim of this.processingVictims) {
-            if (this.users[victim.appEmail] === undefined) {
-                this.users[victim.appEmail] = await database.getUserByUsername(victim.appEmail)
+            if (this.users[victim.appUsername] === undefined) {
+                this.users[victim.appUsername] = await database.getUserByUsername(victim.appUsername)
             }
             const {
                 currentFollowings,
@@ -29,7 +29,7 @@ export class TwitterSchedulerClient {
             Promise.all([
                 database.putEntity(victim),
                 database.batchUpdateFollowing(Object.values(responseFollowings), Object.values(currentFollowings)),
-                send_message(this.users[victim.appEmail], victim, responseFollowings, currentFollowings),
+                send_message(this.users[victim.appUsername], victim, responseFollowings, currentFollowings),
             ])
         }
     }
@@ -40,7 +40,7 @@ export class TwitterSchedulerClient {
                 currentFollowings,
                 responseFollowings,
             ] = await Promise.all([
-                database.listFollowingsByVictimByUser(victim.appEmail, victim.victimId),
+                database.listFollowingsByVictimByUser(victim.appUsername, victim.victimId),
                 this.getResponseFollowingsById(victim),
             ])
 
@@ -59,7 +59,7 @@ export class TwitterSchedulerClient {
         try {
             while (cursor.startsWith('0|') === false) {
                 let responseFollowings = await twitter.getFollowingApi(victim.victimId, cursor)
-                let parseResponseFollowings = this.parseFollowingsFromApiEntries(victim.appEmail, victim.victimId, responseFollowings)
+                let parseResponseFollowings = this.parseFollowingsFromApiEntries(victim.appUsername, victim.victimId, responseFollowings)
 
                 followings = { ...followings, ...parseResponseFollowings.followings }
                 cursor = parseResponseFollowings.cursorBottom
@@ -71,7 +71,7 @@ export class TwitterSchedulerClient {
         }
     }
 
-    parseFollowingsFromApiEntries(appEmail: string, victimId: string, responseFollowings)
+    parseFollowingsFromApiEntries(appUsername: string, victimId: string, responseFollowings)
         : { followings: { [key: string]: entity.Following }, cursorTop: string, cursorBottom: string } {
         const followings: { [key: string]: entity.Following } = {}
         const cursorTop = responseFollowings[responseFollowings.length - 1].content.value as twitter.CursorTop['content']['value']
@@ -83,7 +83,7 @@ export class TwitterSchedulerClient {
             const result = following.content.itemContent.user_results.result
             if (result.__typename !== 'UserUnavailable') {
                 followings[result.legacy.screen_name] =
-                    entity.Following.fromTwitterAPI(appEmail, victimId, result)
+                    entity.Following.fromTwitterAPI(appUsername, victimId, result)
             }
         })
         return {

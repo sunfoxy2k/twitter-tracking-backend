@@ -3,10 +3,10 @@ import { Context, APIGatewayEvent } from 'aws-lambda';
 import { cancelStripeSubscriptionAtEnd } from '../../../../common/stripe';
 const main: MainFunction = async (event, context, authenticatedUser) => {
     // get api gateway body
-    const appEmail = authenticatedUser.email
+    const appUsername = authenticatedUser.username
 
     // create stripe checkout session
-    const session = await cancelStripeSubscriptionAtEnd(appEmail)
+    const session = await cancelStripeSubscriptionAtEnd(appUsername)
 
     return {
         code: 'CANCEL_SUCCESS',
