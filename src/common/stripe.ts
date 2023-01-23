@@ -30,11 +30,11 @@ export const createStripeCheckoutSession = async (appUsername: string, priceId: 
     }
 }
 
-export const cancelStripeSubscriptionAtEnd = async (appUsername: string) => {
+export const cancelStripeSubscriptionAtEnd = async (appEmail: string) => {
     try {
         // Cancel all subscriptions for a customer immediately by email
         const customers = await stripeClient.customers.list({
-            email: appUsername,
+            email: appEmail,
         })
         const customer = customers.data[0]
         const subscriptions = await stripeClient.subscriptions.list({
@@ -47,6 +47,8 @@ export const cancelStripeSubscriptionAtEnd = async (appUsername: string) => {
         }))
 
         infoLogger('cancelStripeSubscriptionAtEnd', JSON.stringify(results, null, 2))
+
+        return results
     } catch (error) {
         errorLogger('cancelStripeSubscriptionAtEnd', error)
     }

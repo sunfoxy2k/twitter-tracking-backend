@@ -1,6 +1,5 @@
 import { MainFunction, responseWrapper } from "/opt/nodejs/response";
 import { Context, APIGatewayEvent } from 'aws-lambda';
-import axios from "axios";
 import { getItemWithKey, deleteItemByKey } from "/opt/nodejs/database/utils";
 import { variantUserTrackCount } from "/opt/nodejs/database/user";
 import { listAllFollowingsByVictim, batchUpdateFollowing } from '/opt/nodejs/database/following';
@@ -36,12 +35,9 @@ const main: MainFunction = async (event, context, authenticatedUser) => {
 
     const deleteFollowings = await listAllFollowingsByVictim(appUsername, victimId);
 
+    await batchUpdateFollowing([], deleteFollowings)
 
-    await Promise.all([
-        batchUpdateFollowing([], deleteFollowings),
-        variantUserTrackCount(appUsername, -1),
-    ])
-    return {
+        return {
         code: 'SUCCESS',
         message: 'Delete Tracker Successfully',
     }

@@ -79,7 +79,7 @@ export const variantUserTrackCount = async (appUsername: string, variant_trackCo
                 PK: `USER@${appUsername}`,
                 SK: `METADATA`,
             },
-            UpdateExpression: 'SET trackCount = trackCount + :variant_trackCount, updateTime = :update_time',
+            UpdateExpression: `SET trackCount = trackCount + :variant_trackCount, updateTime = :update_time`,
             ExpressionAttributeValues: {
                 ':variant_trackCount': variant_trackCount,
                 ':update_time': Date.now(),
@@ -91,7 +91,7 @@ export const variantUserTrackCount = async (appUsername: string, variant_trackCo
     }
 }
 
-export const updateSubscription = async (appUsername: string, startTime: number, endTime: number) => {
+export const updateSubscription = async (appUsername: string, subscriptionPlan: string, startTime: number, endTime: number, isCancelled: boolean) => {
     try {
         const params: DocumentClient.UpdateItemInput = {
             TableName: TABLE_NAME,
@@ -99,11 +99,13 @@ export const updateSubscription = async (appUsername: string, startTime: number,
                 PK: `USER@${appUsername}`,
                 SK: `METADATA`,
             },
-            UpdateExpression: 'SET subscriptionStartTime = :startTime, subscriptionEndTime = :endTime, updateTime = :updateTime',
+            UpdateExpression: 'SET subscriptionStartTime = :startTime, subscriptionEndTime = :endTime, updateTime = :updateTime, subscriptionPlan = :subscriptionPlan, isCancelled = :isCancelled',
             ExpressionAttributeValues: {
                 ':startTime': startTime,
                 ':endTime': endTime,
                 ':updateTime': Date.now().valueOf(),
+                ':subscriptionPlan': subscriptionPlan,
+                ':isCancelled': isCancelled,
             }
         }
         console.log('=== update database subscription ===')

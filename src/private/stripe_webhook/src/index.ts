@@ -26,13 +26,21 @@ const main: MainFunction = async (event, context) => {
                 const customer = await stripeClient.customers.retrieve(customerId) as Stripe.Customer
                 const customerEmail = customer.email
 
-                const user = await getUserByEmail(customerEmail)
+                const productId = webhookObject.items.data[0].price.product
+                const isCancelled = webhookObject.cancel_at_period_end
+
+                const [user, product] = await Promise.all([
+                    getUserByEmail(customerEmail),
+                    stripeClient.products.retrieve(productId)
+                ])
+
+                const productName = product.name
 
                 infoLogger('Stripe Webhook', `Email from Stripe: ${customerEmail}`)
 
                 infoLogger('Stripe Webhook', `Updating subscription for ${user.appUsername} from ${startTime} to ${endTime} at ${new Date().toISOString()}`)
 
-                await updateSubscription(user.appUsername, startTime, endTime)
+                await updateSubscription(user.appUsername, productName, startTime, endTime, isCancelled)
                 break
             }
             default:

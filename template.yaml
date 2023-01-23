@@ -353,40 +353,6 @@ Resources:
             TableName: !Ref TrackingUserTable
 
 ##################################################################################
-  PrivateAddVictim:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: dist/private/victim/add_victim/src
-      Runtime: nodejs16.x
-      Timeout: 200
-      Events:
-        GetChannelApiEvent:
-          Type: HttpApi
-          Properties:
-            Path: /private/victim
-            Method: post
-            ApiId: !Ref ApiGatewayApi
-      Policies:
-        - DynamoDBCrudPolicy:
-            TableName: !Ref TrackingUserTable
-
-  PrivateDeleteVictim:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: dist/private/victim/delete_victim/src
-      Runtime: nodejs16.x
-      Timeout: 200
-      Events:
-        GetChannelApiEvent:
-          Type: HttpApi
-          Properties:
-            Path: /private/victim
-            Method: delete
-            ApiId: !Ref ApiGatewayApi
-      Policies:
-        - DynamoDBCrudPolicy:
-            TableName: !Ref TrackingUserTable
-##################################################################################
   PutTelegramChatId:
     Type: AWS::Serverless::Function
     Properties:

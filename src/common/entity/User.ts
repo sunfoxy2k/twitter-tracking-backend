@@ -9,6 +9,8 @@ export interface UserInput {
     trackCount?: number;
     subscriptionStartTime?: Date;
     subscriptionEndTime?: Date;
+    subscriptionPlan?: string;
+    isCancelled?: boolean;
 }
 
 export class User extends Entity {
@@ -18,6 +20,9 @@ export class User extends Entity {
     subscriptionStartTime: Date;
     subscriptionEndTime: Date;
     appEmail: string;
+    subscriptionPlan: string;
+    isCancelled: boolean;
+
     constructor(input: UserInput) {
         super();
         this.appUsername = input.appUsername;
@@ -26,6 +31,8 @@ export class User extends Entity {
         this.subscriptionEndTime = input.subscriptionEndTime || null;
         this.trackCount = input.trackCount || 0;
         this.appEmail = input.appEmail;
+        this.subscriptionPlan = input.subscriptionPlan || null;
+        this.isCancelled = input.isCancelled || null;
     }
 
     toORM() {
@@ -37,6 +44,8 @@ export class User extends Entity {
             subscriptionStartTime: this.subscriptionStartTime,
             subscriptionEndTime: this.subscriptionEndTime,
             appEmail: this.appEmail,
+            subscriptionPlan: this.subscriptionPlan,
+            isCancelled: this.isCancelled,
         }
     }
 
@@ -48,6 +57,8 @@ export class User extends Entity {
             trackCount: this.trackCount,
             subscriptionStartTime: this.subscriptionStartTime,
             subscriptionEndTime: this.subscriptionEndTime,
+            subscriptionPlan: this.subscriptionPlan,
+            isCancelled: this.isCancelled,
         }
     }
 
@@ -56,12 +67,21 @@ export class User extends Entity {
         const telegramChatId = orm.telegramChatId
         const trackCount = orm.trackCount
         const appEmail = orm.appEmail
+        const subscriptionStartTime = orm.subscriptionStartTime
+        const subscriptionEndTime = orm.subscriptionEndTime
+        const subscriptionPlan = orm.subscriptionPlan
+        const isCancelled = orm.isCancelled
+        
         
         return new User({
             appUsername,
             telegramChatId,
             trackCount,
             appEmail,
+            subscriptionStartTime,
+            subscriptionEndTime,
+            subscriptionPlan,
+            isCancelled,
         })
     }
 

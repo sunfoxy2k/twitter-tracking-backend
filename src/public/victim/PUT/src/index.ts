@@ -2,7 +2,6 @@ import { MainFunction, responseWrapper } from "/opt/nodejs/response";
 import { Context, APIGatewayEvent } from 'aws-lambda';
 import { Victim } from "/opt/nodejs/entity/Victim";
 import * as twitter_utils from "/opt/nodejs/twitter-utils";
-import axios from "axios";
 import { getUserByUsername, variantUserTrackCount } from "/opt/nodejs/database/user";
 import { listVictimsByAppUsername } from "/opt/nodejs/database/victim";
 import { putEntity } from "/opt/nodejs/database/utils";
