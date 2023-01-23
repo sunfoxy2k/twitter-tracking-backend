@@ -30,7 +30,7 @@ export const getUserByEmail = async (email: string): Promise<User> => {
         const result = await client.query({
             TableName: TABLE_NAME,
             IndexName: EMAIL_GSI,
-            KeyConditionExpression: 'email = :email',
+            KeyConditionExpression: 'appEmail = :email',
             ExpressionAttributeValues: {
                 ':email': email
             }
@@ -42,7 +42,8 @@ export const getUserByEmail = async (email: string): Promise<User> => {
 
         return User.fromORM(result.Items[0])
     } catch (error) {
-        return null
+        console.log(error);
+        return undefined
     }
 }
 

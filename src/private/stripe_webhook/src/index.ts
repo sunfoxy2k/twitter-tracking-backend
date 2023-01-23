@@ -7,7 +7,7 @@ import { updateSubscription } from '/opt/nodejs/database/user';
 import { getUserByEmail } from '/opt/nodejs/database/user';
 import { infoLogger, errorLogger } from '/opt/nodejs/logger';
 const ENDPOINT_SECRET = 'whsec_HF9PFfiHb1Tff3WjXV4rDPq82wumO5Ec'
-
+const STRIPE_UPDATE_SUBSCRIPTION = 'customer.subscription.updated'
 const main: MainFunction = async (event, context) => {
     // implement stripe webhook for subscription
     // https://stripe.com/docs/billing/subscriptions/webhooks
@@ -17,7 +17,7 @@ const main: MainFunction = async (event, context) => {
     try {
         stripeEvent = stripeClient.webhooks.constructEvent(event.body, sig, ENDPOINT_SECRET)
         switch (stripeEvent.type) {
-            case 'customer.subscription.updated': {
+            case STRIPE_UPDATE_SUBSCRIPTION: {
                 const webhookObject = stripeEvent.data.object as any
                 const startTime = webhookObject.current_period_start
                 const endTime = webhookObject.current_period_end
