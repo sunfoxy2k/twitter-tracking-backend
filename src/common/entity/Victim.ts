@@ -52,6 +52,7 @@ export class Victim extends Entity {
             createTime: this.createdTime.valueOf(),
             updateTime: this.updateTime.valueOf(),
             id: this.toQueryKey().SK,
+            profileUrl: `https://twitter.com/${this.victimUsername}`,
             // victimType: this.victimType,
         }
     }

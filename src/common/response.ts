@@ -50,6 +50,11 @@ export async function responseWrapper(config: ResponseWrapperConfig)
             delete result.statusCode
         }
 
+        response.headers = {
+            ...response.headers,
+            ...result.headers,
+        }
+
         switch (config.bodyDataType) {
             case 'json':
                 response.headers['Content-Type'] = 'application/json'

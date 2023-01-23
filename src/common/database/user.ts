@@ -36,7 +36,7 @@ export const getUserByEmail = async (email: string): Promise<User> => {
             }
         }).promise()
 
-        if (!result.Items || result.Items.length === 0) {
+        if (result.Count === 0) {
             return null
         }
 

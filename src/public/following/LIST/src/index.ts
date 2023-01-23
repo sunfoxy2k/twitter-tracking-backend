@@ -5,14 +5,14 @@ import { Context, APIGatewayEvent } from 'aws-lambda';
 const main: MainFunction = async (event, context, authenticatedUser) => {
     
     const appUsername = authenticatedUser.username
-    const { id } = event.queryStringParameters;
+    const { key } = event.pathParameters;
     
-    let [ createdTime, victimId ] = id.split('#')
+    let [ createdTime, victimId ] = key.split('#')
     if (createdTime === undefined || victimId === undefined) {
         return {
             statusCode: 400,
             code: 'INVALID_ID',
-            message: `Invalid id ${id}`
+            message: `Invalid id ${key}`
         }
     }
     victimId = victimId.replace('TWITTER_VICTIM@', '')
@@ -24,7 +24,7 @@ const main: MainFunction = async (event, context, authenticatedUser) => {
     }
     followings.forEach((item) => {
         const queryKey = item.toQueryKey().SK;
-        response.allIds.push({queryKey});
+        response.allIds.push(queryKey);
         response.byId[queryKey] = item.toAPI();
     })
     return response

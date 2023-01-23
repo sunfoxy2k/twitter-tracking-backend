@@ -1,8 +1,9 @@
 import { MainFunction, responseWrapper } from "/opt/nodejs/response";
 import { Context, APIGatewayEvent } from 'aws-lambda';
 import { createStripeCheckoutSession } from '/opt/nodejs/stripe'
+import { getUserByUsername } from '/opt/nodejs/database/user';
 const main: MainFunction = async (event, context, authenticatedUser) => {
-    const appUsername = authenticatedUser.email
+    const appUsername = authenticatedUser.username
     const { plan } = JSON.parse(event.body)
 
     const basicPriceId = 'price_1MIu2TKGvMxyE2EOXC6pMMLE'
@@ -10,10 +11,10 @@ const main: MainFunction = async (event, context, authenticatedUser) => {
     let priceId: string
     
     switch (plan) {
-        case 'basic':
+        case 'Standard':
             priceId = basicPriceId
             break
-        case 'premium':
+        case 'Premium':
             priceId = premiumPriceId
             break
         default: {
@@ -24,8 +25,11 @@ const main: MainFunction = async (event, context, authenticatedUser) => {
             }
         }
     }
+
+    const user = await getUserByUsername(appUsername)
+
     // create stripe checkout session
-    const session = await createStripeCheckoutSession(appUsername, priceId)
+    const session = await createStripeCheckoutSession(user.appEmail, priceId)
 
     return {
         url: session.url

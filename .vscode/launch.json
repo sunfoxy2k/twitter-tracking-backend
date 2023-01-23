@@ -157,6 +157,21 @@
             "outFiles": [
                 "${workspaceRoot}/dist/private/stripe_webhook/src"
             ]
+        },
+        {
+            "name": "Twitter Scheudle",
+            "type": "node",
+            "request": "attach",
+            "address": "localhost",
+            "port": 9999,
+            "localRoot": "${workspaceRoot}/src/schedule/check_and_update/src",
+            "remoteRoot": "/var/task",
+            "protocol": "inspector",
+            "stopOnEntry": false,
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceRoot}/dist/schedule/check_and_update/src"
+            ]
         }
     ]
 }

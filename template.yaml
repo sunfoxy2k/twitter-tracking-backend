@@ -53,7 +53,7 @@ Resources:
         #   AttributeType: S
         - AttributeName: victimType
           AttributeType: S
-        - AttributeName: userEmail
+        - AttributeName: appEmail
           AttributeType: S
       KeySchema:
         - AttributeName: PK
@@ -69,9 +69,9 @@ Resources:
             KeyType: RANGE
           Projection:
             ProjectionType: ALL
-        - IndexName: userEmailIndex
+        - IndexName: appEmailIndex
           KeySchema:
-          - AttributeName: userEmail
+          - AttributeName: appEmail
             KeyType: HASH
           Projection:
             ProjectionType: ALL
@@ -215,19 +215,19 @@ Resources:
         - DynamoDBCrudPolicy:
             TableName: !Ref TrackingUserTable
 
-  PostVictimUserApi:
+  PutVictimUserApi:
     Type: AWS::Serverless::Function
     Properties:
       MemorySize: 256
-      CodeUri: dist/public/victim/POST/src
+      CodeUri: dist/public/victim/PUT/src
       Runtime: nodejs16.x
       Timeout: 600
       Events:
         GetChannelApiEvent:
           Type: HttpApi
           Properties:
-            Path: /api/victim
-            Method: post
+            Path: /api/victim/{id}
+            Method: put
             ApiId: !Ref ApiGatewayApi
       Policies:
         - DynamoDBCrudPolicy:
@@ -244,7 +244,7 @@ Resources:
         GetChannelApiEvent:
           Type: HttpApi
           Properties:
-            Path: /api/victim
+            Path: /api/victim/{id}
             Method: delete
             ApiId: !Ref ApiGatewayApi
       Policies:
@@ -261,7 +261,7 @@ Resources:
         GetChannelApiEvent:
           Type: HttpApi
           Properties:
-            Path: /api/list/following
+            Path: /api/list/following/{key}
             Method: get
             ApiId: !Ref ApiGatewayApi
       Policies:

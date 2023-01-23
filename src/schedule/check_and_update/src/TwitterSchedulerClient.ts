@@ -5,7 +5,7 @@ import { send_message } from "./telegram"
 import { getUserByUsername } from "/opt/nodejs/database/user"
 import { putEntity } from "/opt/nodejs/database/utils"
 import { batchUpdateFollowing, listFollowingsByVictimByUser } from "/opt/nodejs/database/following"
-import { Following } from '../../../common/entity/Following';
+import { Following } from '/opt/nodejs/entity/Following';
 
 
 export class TwitterSchedulerClient {
@@ -31,7 +31,7 @@ export class TwitterSchedulerClient {
                     delete responseFollowings[key]
                 }
             }
-            Promise.all([
+            await Promise.all([
                 putEntity(victim),
                 batchUpdateFollowing(Object.values(responseFollowings), Object.values(currentFollowings)),
                 send_message(this.users[victim.appUsername], victim, responseFollowings, currentFollowings),

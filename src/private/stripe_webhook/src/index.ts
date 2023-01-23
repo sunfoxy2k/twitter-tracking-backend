@@ -4,6 +4,8 @@ import { Context, APIGatewayEvent } from 'aws-lambda';
 import { stripeClient } from '/opt/nodejs/stripe';
 import Stripe from "stripe";
 import { updateSubscription } from '/opt/nodejs/database/user';
+import { getUserByEmail } from '/opt/nodejs/database/user';
+import { infoLogger, errorLogger } from '/opt/nodejs/logger';
 const ENDPOINT_SECRET = 'whsec_HF9PFfiHb1Tff3WjXV4rDPq82wumO5Ec'
 
 const main: MainFunction = async (event, context) => {
@@ -24,7 +26,13 @@ const main: MainFunction = async (event, context) => {
                 const customer = await stripeClient.customers.retrieve(customerId) as Stripe.Customer
                 const customerEmail = customer.email
 
-                await updateSubscription(customerEmail, startTime, endTime)
+                const user = await getUserByEmail(customerEmail)
+
+                infoLogger('Stripe Webhook', `Email from Stripe: ${customerEmail}`)
+
+                infoLogger('Stripe Webhook', `Updating subscription for ${user.appUsername} from ${startTime} to ${endTime} at ${new Date().toISOString()}`)
+
+                await updateSubscription(user.appUsername, startTime, endTime)
                 break
             }
             default:
@@ -38,12 +46,13 @@ const main: MainFunction = async (event, context) => {
         }
     }
     catch (err) {
-        console.log(err)
+        errorLogger('Stripe Webhook', err.message)
         return {
             statusCode: 500,
             body: JSON.stringify({
                 message: err.message,
             }),
+            stripeEventData: event.body,
         }
     }
 }

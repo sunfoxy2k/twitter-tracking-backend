@@ -6,14 +6,24 @@ import axios from "axios";
 import { getUserByUsername, variantUserTrackCount } from "/opt/nodejs/database/user";
 import { listVictimsByAppUsername } from "/opt/nodejs/database/victim";
 import { putEntity } from "/opt/nodejs/database/utils";
+import { getAllFollowingApi } from '/opt/nodejs/twitter-utils';
+import { batchUpdateFollowing } from '/opt/nodejs/database/following';
+import { updateVictimTrackCount } from '/opt/nodejs/database/victim';
 
 const MAX_VICTIMS = 50
-const API_URL = 'https://o764uw297g.execute-api.eu-west-3.amazonaws.com/DEV'
 
 const main: MainFunction = async (event, context, authenticatedUser) => {
+    const appUsername = authenticatedUser.username
 
     // Get and validate app user
-    const { id } = event.queryStringParameters;
+    const { id } = event.pathParameters;
+    if (!id) {
+        return {
+            statusCode: 400,
+            code: 'MISSING_PARAMETER',
+            message: 'Missing parameter id',
+        }
+    }
     const [
         user,
         response_victim,
@@ -39,11 +49,11 @@ const main: MainFunction = async (event, context, authenticatedUser) => {
             message: `Twitter user ${id} not found`
         }
     }
-    const new_victim = Victim.fromTwitterAPI(user.appUsername, response_victim.data.user.result);
+    const newVictim = Victim.fromTwitterAPI(appUsername, response_victim.data.user.result);
     // check if victim already exists
-    const victims = await listVictimsByAppUsername(user.appUsername);
-    const existing_victim = victims.Items.find(v => v.victimId === new_victim.victimId);
-    if (existing_victim) {
+    const victims = await listVictimsByAppUsername(appUsername);
+    const existingVictim = victims.Items.find(v => v.victimId === newVictim.victimId);
+    if (existingVictim) {
         return {
             statusCode: 400,
             code: 'VICTIM_ALREADY_EXISTS',
@@ -54,14 +64,15 @@ const main: MainFunction = async (event, context, authenticatedUser) => {
     
     await Promise.all([
         variantUserTrackCount(user.appUsername, 1),
-        putEntity(new_victim),
+        putEntity(newVictim),
     ])
-    await axios.post(`${API_URL}/private/victim`, {
-        appUsername: new_victim.appUsername,
-        victimId: new_victim.victimId,
-        created_time: new_victim.createdTime.valueOf(),
-        victimUsername: new_victim.victimUsername,
-    })
+
+    const newFollowings = await getAllFollowingApi(appUsername, newVictim.victimId)
+
+    await Promise.all([
+        batchUpdateFollowing(newFollowings, []),
+        updateVictimTrackCount(newVictim, newFollowings.length),
+    ])
 
     return {
         code: 'SUCCESS',

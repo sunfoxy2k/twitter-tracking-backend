@@ -3,12 +3,12 @@ import { Context, APIGatewayEvent } from 'aws-lambda';
 import axios from "axios";
 import { getItemWithKey, deleteItemByKey } from "/opt/nodejs/database/utils";
 import { variantUserTrackCount } from "/opt/nodejs/database/user";
-const API_URL = 'https://o764uw297g.execute-api.eu-west-3.amazonaws.com/DEV'
+import { listAllFollowingsByVictim, batchUpdateFollowing } from '/opt/nodejs/database/following';
 
 const main: MainFunction = async (event, context, authenticatedUser) => {
     const appUsername = authenticatedUser.username
 
-    const { id } = event.queryStringParameters
+    const { id } = event.pathParameters
     let [
         created_time,
         victimId,
@@ -34,13 +34,13 @@ const main: MainFunction = async (event, context, authenticatedUser) => {
         variantUserTrackCount(appUsername, -1),
     ])
 
-    await axios.delete(`${API_URL}/private/victim`, {
-        data: {
-            appUsername,
-            victimId: id,
-        }
-    })
+    const deleteFollowings = await listAllFollowingsByVictim(appUsername, victimId);
 
+
+    await Promise.all([
+        batchUpdateFollowing([], deleteFollowings),
+        variantUserTrackCount(appUsername, -1),
+    ])
     return {
         code: 'SUCCESS',
         message: 'Delete Tracker Successfully',
