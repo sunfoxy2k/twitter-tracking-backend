@@ -9,7 +9,8 @@ import { getAllFollowingApi } from '/opt/nodejs/twitter-utils';
 import { batchUpdateFollowing } from '/opt/nodejs/database/following';
 import { updateVictimTrackCount } from '/opt/nodejs/database/victim';
 
-const MAX_VICTIMS = 50
+const BASIC_MAX_VICTIMS = 20
+const PREMIUM_MAX_VICTIMS = 50
 
 const main: MainFunction = async (event, context, authenticatedUser) => {
     const appUsername = authenticatedUser.username
@@ -27,12 +28,13 @@ const main: MainFunction = async (event, context, authenticatedUser) => {
         user,
         response_victim,
     ] = await Promise.all([
-        getUserByUsername(authenticatedUser.username),
+        getUserByUsername(appUsername),
         twitter_utils.getTwitterUserByScreenname(id),
     ])
 
     // Check if user has reached max victims
-    if (user.trackCount >= MAX_VICTIMS) {
+    const isMaxVictimsReached = user.trackCount >= (user.subscriptionPlan === 'Premium Plan' ? PREMIUM_MAX_VICTIMS : BASIC_MAX_VICTIMS)
+    if (isMaxVictimsReached) {
         return {
             statusCode: 400,
             code: 'MAX_VICTIMS_REACHED',

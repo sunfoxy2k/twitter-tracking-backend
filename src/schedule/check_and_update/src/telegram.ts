@@ -5,6 +5,9 @@ import { Following } from '/opt/nodejs/entity/Following';
 
 export const send_message = async (user: User, victim: Victim, newFollowings: { [key: string]: Following }, deletedFollowings: { [key: string]: Following }) => {
     try {
+        if (!user.telegramChatId) {
+            return
+        }
         let newFollowingsStr = ''
         for (const [key, value] of Object.entries(newFollowings)) {
             newFollowingsStr += `+ @${value.followingUsername}\n`

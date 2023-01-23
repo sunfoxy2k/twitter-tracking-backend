@@ -16,6 +16,14 @@ export class TwitterSchedulerClient {
             if (this.users[victim.appUsername] === undefined) {
                 this.users[victim.appUsername] = await getUserByUsername(victim.appUsername)
             }
+            const isSubscriptionExpired = this.users[victim.appUsername].subscriptionEndTime
+            ? this.users[victim.appUsername].subscriptionEndTime.valueOf() < Date.now()
+            : false
+
+            if (isSubscriptionExpired) {
+                continue
+            }
+
             const {
                 currentFollowings,
                 responseFollowings,
