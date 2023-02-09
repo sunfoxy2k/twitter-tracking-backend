@@ -6,7 +6,8 @@ import Stripe from "stripe";
 import { updateSubscription } from '/opt/nodejs/database/user';
 import { getUserByEmail } from '/opt/nodejs/database/user';
 import { infoLogger, errorLogger } from '/opt/nodejs/logger';
-const ENDPOINT_SECRET = 'whsec_HF9PFfiHb1Tff3WjXV4rDPq82wumO5Ec'
+// const ENDPOINT_SECRET = 'whsec_HF9PFfiHb1Tff3WjXV4rDPq82wumO5Ec'
+const ENDPOINT_SECRET = process.env.STRIPE_WEBHOOK_SECRET
 const STRIPE_UPDATE_SUBSCRIPTION = 'customer.subscription.updated'
 const main: MainFunction = async (event, context) => {
     // implement stripe webhook for subscription

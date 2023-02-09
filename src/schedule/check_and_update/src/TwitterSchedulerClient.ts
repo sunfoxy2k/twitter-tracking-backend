@@ -7,6 +7,15 @@ import { putEntity } from "/opt/nodejs/database/utils"
 import { batchUpdateFollowing, listFollowingsByVictimByUser } from "/opt/nodejs/database/following"
 import { Following } from '/opt/nodejs/entity/Following';
 
+const FREE_MAX_VICTIMS = 2
+const STANDARD_MAX_VICTIMS = 20
+const PREMIUM_MAX_VICTIMS = 50
+
+const MAX_VICTIMS = {
+    'Free Plan': FREE_MAX_VICTIMS,
+    'Standard Plan': STANDARD_MAX_VICTIMS,
+    'Premium Plan': PREMIUM_MAX_VICTIMS,
+}
 
 export class TwitterSchedulerClient {
     public processingVictims: Victim[] = []
@@ -16,11 +25,14 @@ export class TwitterSchedulerClient {
             if (this.users[victim.appUsername] === undefined) {
                 this.users[victim.appUsername] = await getUserByUsername(victim.appUsername)
             }
-            const isSubscriptionExpired = this.users[victim.appUsername].subscriptionEndTime
-            ? this.users[victim.appUsername].subscriptionEndTime.valueOf() < Date.now()
-            : false
+            this.users[victim.appUsername].updatingVictims++
+            const currentPlan = this.users[victim.appUsername].getCurrentPlan()
 
-            if (isSubscriptionExpired) {
+            const planMaxVictims = MAX_VICTIMS[currentPlan] || FREE_MAX_VICTIMS
+            // Check if user has reached max victims
+            const isMaxVictimsReached = this.users[victim.appUsername].updatingVictims > planMaxVictims
+
+            if (isMaxVictimsReached) {
                 continue
             }
 

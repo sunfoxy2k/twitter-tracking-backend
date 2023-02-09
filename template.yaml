@@ -21,6 +21,12 @@ Globals:
         COOKIE_AUTH_TOKEN_SCHEDULE: !Ref CookieAuthTokenSchedule
         COOKIE_AUTH_TOKEN_CRUD: !Ref CookieAuthTokenCrud
         TELEGRAM_BOT_TOKEN: !Ref TelegramBotToken
+        STRIPE_WEBHOOK_SECRET: !Ref StripeWebhookSecret
+        STRIPE_PUBLIC_KEY: !Ref StripePublicKey
+        STRIPE_SECRET_KEY: !Ref StripeSecretKey
+        STANDARD_PRICE_ID: !Ref StandardPriceId
+        PREMIUM_PRICE_ID: !Ref PremiumPriceId
+
 Parameters:
   BearerToken:
     Type: String
@@ -37,6 +43,16 @@ Parameters:
   CookieAuthTokenCrud:
     Type: String
   TelegramBotToken:
+    Type: String
+  StripeWebhookSecret:
+    Type: String
+  StripePublicKey:
+    Type: String
+  StripeSecretKey:
+    Type: String
+  StandardPriceId:
+    Type: String
+  PremiumPriceId:
     Type: String
 
 Resources:

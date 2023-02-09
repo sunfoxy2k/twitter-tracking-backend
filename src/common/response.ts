@@ -34,7 +34,7 @@ export async function responseWrapper(config: ResponseWrapperConfig)
         let authenticatedUser = null
         if (config.authentication) {
             const token = config.event.headers.Authorization || config.event.headers.authorization
-            authenticatedUser = token ? decodeToken(token) : null
+            authenticatedUser = token ? verifyToken(token) : null
 
             if (!authenticatedUser) {
                 response.statusCode = 401

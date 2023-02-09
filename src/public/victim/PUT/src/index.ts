@@ -9,8 +9,15 @@ import { getAllFollowingApi } from '/opt/nodejs/twitter-utils';
 import { batchUpdateFollowing } from '/opt/nodejs/database/following';
 import { updateVictimTrackCount } from '/opt/nodejs/database/victim';
 
-const BASIC_MAX_VICTIMS = 20
+const FREE_MAX_VICTIMS = 2
+const STANDARD_MAX_VICTIMS = 20
 const PREMIUM_MAX_VICTIMS = 50
+
+const MAX_VICTIMS = {
+    'Free Plan': FREE_MAX_VICTIMS,
+    'Standard Plan': STANDARD_MAX_VICTIMS,
+    'Premium Plan': PREMIUM_MAX_VICTIMS,
+}
 
 const main: MainFunction = async (event, context, authenticatedUser) => {
     const appUsername = authenticatedUser.username
@@ -32,8 +39,10 @@ const main: MainFunction = async (event, context, authenticatedUser) => {
         twitter_utils.getTwitterUserByScreenname(id),
     ])
 
+    const currentPlan = user.getCurrentPlan()
+    const planMaxVictims = MAX_VICTIMS[currentPlan] || FREE_MAX_VICTIMS
     // Check if user has reached max victims
-    const isMaxVictimsReached = user.trackCount >= (user.subscriptionPlan === 'Premium Plan' ? PREMIUM_MAX_VICTIMS : BASIC_MAX_VICTIMS)
+    const isMaxVictimsReached = user.trackCount >= planMaxVictims
     if (isMaxVictimsReached) {
         return {
             statusCode: 400,

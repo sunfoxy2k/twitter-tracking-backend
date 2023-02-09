@@ -22,6 +22,7 @@ export class User extends Entity {
     appEmail: string;
     subscriptionPlan: string;
     isCancelled: boolean;
+    updatingVictims: number;
 
     constructor(input: UserInput) {
         super();
@@ -33,6 +34,7 @@ export class User extends Entity {
         this.appEmail = input.appEmail;
         this.subscriptionPlan = input.subscriptionPlan || null;
         this.isCancelled = input.isCancelled || null;
+        this.updatingVictims = 0;
     }
 
     toORM() {
@@ -90,5 +92,15 @@ export class User extends Entity {
             PK: `USER@${this.appUsername}`,
             SK: `METADATA`,
         }
+    }
+
+    getCurrentPlan() {
+      if (!this.subscriptionEndTime) return 'Free Plan'
+      const now = Date.now()
+      let endTime = (this.subscriptionEndTime || new Date(0)).valueOf()
+
+      if (now > endTime) return 'Free Plan'
+
+      return this.subscriptionPlan
     }
 }

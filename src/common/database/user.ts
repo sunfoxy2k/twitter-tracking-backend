@@ -73,15 +73,17 @@ export const putTelegramChatId = async (appUsername: string, telegramChatId: str
 export const variantUserTrackCount = async (appUsername: string, variant_trackCount: number) => {
     try {
         // set track count and update last updated time
+        const user = await getUserByUsername(appUsername)
+        const newTrackCount = user.trackCount + variant_trackCount
         const params: DocumentClient.UpdateItemInput = {
             TableName: TABLE_NAME,
             Key: {
                 PK: `USER@${appUsername}`,
                 SK: `METADATA`,
             },
-            UpdateExpression: `SET trackCount = trackCount + :variant_trackCount, updateTime = :update_time`,
+            UpdateExpression: `SET trackCount = :newTrackCount, updateTime = :update_time`,
             ExpressionAttributeValues: {
-                ':variant_trackCount': variant_trackCount,
+                ':newTrackCount': newTrackCount,
                 ':update_time': Date.now(),
             },
         }
